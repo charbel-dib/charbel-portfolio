@@ -20,7 +20,10 @@ const english = {
  contactEyebrow:'WHAT’S NEXT?',contactTitle:'Let’s build what’s next.',contactDesc:'I’m looking for a full-time role in AI, NLP or machine learning to build practical solutions and keep learning alongside a technical team.',emailMe:'Get in touch',cvRequest:'Request my CV ↗',contactMeta:'From October 2026 · Paris / Île-de-France · Mobile across France',spoken:'French · English · Arabic',backTop:'Back to top ↑'
 };
 const elements = [...document.querySelectorAll('[data-i18n]')];
-const french = Object.fromEntries(elements.map(el => [el.dataset.i18n, el.innerText]));
+const french = Object.fromEntries(elements.map(el => [
+  el.dataset.i18n,
+  el.textContent
+]));
 function setLanguage(lang) {
   const selected = lang === 'en' ? 'en' : 'fr';
   const dictionary = selected === 'en' ? english : french;
