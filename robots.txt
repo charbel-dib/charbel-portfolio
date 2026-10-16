@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://charbel-dib.vercel.app/sitemap.xml

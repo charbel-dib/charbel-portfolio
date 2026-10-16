@@ -1,0 +1,20 @@
+{
+  "name": "charbel-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Charbel Dib \u2014 bilingual AI engineering portfolio",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node scripts/build.mjs && node scripts/check.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test:browser": "node scripts/browser-check.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  }
+}
