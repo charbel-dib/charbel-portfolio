@@ -1,9 +1,9 @@
 {
   "name": "charbel-portfolio",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "private": true,
   "type": "module",
-  "description": "Charbel Dib \u2014 bilingual AI engineering portfolio",
+  "description": "Charbel Dib — professional and research portfolios, French and English",
   "engines": {
     "node": ">=22"
   },

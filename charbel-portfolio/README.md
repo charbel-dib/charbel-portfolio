@@ -1,9 +1,25 @@
-# Charbel Dib — Portfolio
+# Charbel Dib — Portfolio professionnel & recherche
 
-Portfolio bilingue d’un ingénieur IA diplômé de l’ENSTA. Sept études de cas relient les problèmes abordés, les choix techniques, les livrables et les preuves publiques : FleetGuard, PosAIdon, ServicePilot, fact-checking climatique, Assistant ENSTA, ATLAS et recherche L-PBF.
+Portfolio bilingue d’un ingénieur IA diplômé de l’ENSTA, avec deux parcours construits à partir des mêmes projets et preuves. Sept études de cas relient les problèmes abordés, les choix techniques, les livrables et les preuves publiques : FleetGuard, PosAIdon, ServicePilot, fact-checking climatique, Assistant ENSTA, ATLAS et recherche L-PBF.
 
 Site : https://charbel-dib.vercel.app/  
 Dépôt : https://github.com/charbel-dib/charbel-portfolio
+
+## Deux liens selon la candidature
+
+Après déploiement sur le domaine existant :
+
+| Parcours | Français | Anglais |
+| --- | --- | --- |
+| Professionnel | `/pro/` | `/en/pro/` |
+| Recherche | `/recherche/` | `/en/research/` |
+
+La racine conserve le parcours professionnel ; aucun écran de choix ne bloque l’accès au contenu. Les boutons **Professionnel / Recherche** restent disponibles sur toutes les pages. Changer de langue conserve le parcours ou le dossier consulté.
+
+- **Professionnel** : réalisations, résultats, intégration, compétences et expériences. Ouverture aux postes en IA, ML et data.
+- **Recherche** : publication IEEE en premier auteur, stages CESI / LINEACT et Astek présentés par question, démarche, apport et limites, puis projets complémentaires. Ouverture aux opportunités de doctorat.
+- **Commun** : mêmes sept dossiers, mêmes faits, même CV fourni, certification Google Data Analytics, coordonnées et liens de preuve. Aucun second CV n’a été inventé.
+- **Certification** : Google Data Analytics Professional Certificate, 23 mars 2024, huit cours ; lien Coursera de vérification et PDF fourni par l’auteur.
 
 ## Démarrage
 
@@ -22,15 +38,16 @@ Ouvrir http://127.0.0.1:4173. Aucun compte, clé API ou service externe n’est 
 | Fichier | Rôle |
 | --- | --- |
 | `content/projects.mjs` | Sept études de cas, FR/EN, périmètre, résultats et liens |
-| `content/site.mjs` | Textes de la page d’accueil et navigation FR/EN |
+| `content/site.mjs` | Textes communs et navigation FR/EN |
+| `content/profiles.mjs` | Accroches, ordre des projets, recherche, publication et certification |
 | `scripts/build.mjs` | Génère les pages, les métadonnées et le sitemap |
 | `styles.css` | Composition, responsive, états et préférence de mouvement réduit |
 | `script.js` | Menu mobile, filtres, copie de l’email et indication de section |
-| `assets/` | CV, capture FleetGuard, photo SPASEA et image de partage |
+| `assets/` | CV, certificat Google, capture FleetGuard, photo SPASEA et image de partage |
 
 Après modification : `npm test`. Committer également les pages HTML régénérées. Le dossier `dist/`, généré à partir d’une liste explicite de fichiers publics, n’est pas committé.
 
-Le français est à la racine, l’anglais dans `en/`. Chaque projet possède une page dans chaque langue. Le sélecteur de langue conserve le projet consulté. Le contenu principal, la navigation et les études de cas restent accessibles sans JavaScript.
+Le français utilise `pro/` et `recherche/`, l’anglais `en/pro/` et `en/research/`. Les accueils historiques `/` et `/en/` restent disponibles et ont une URL canonique vers leur parcours professionnel. Chaque projet possède une page dans chaque langue. Le sélecteur de langue conserve le projet consulté. Le contenu principal, la navigation et les études de cas restent accessibles sans JavaScript.
 
 ## Vérifications
 
@@ -43,24 +60,24 @@ npm run preview
 npm run test:browser
 ```
 
-Le contrôle statique vérifie les liens locaux, les ancres, les identifiants HTML, les textes alternatifs et la complétude des deux langues. Le contrôle navigateur couvre les filtres, le menu mobile, Escape et le retour du focus, les liens de langue, le CV, le fonctionnement sans JavaScript, le mouvement réduit et les débordements de 320 à 1 440 pixels.
+Le contrôle statique vérifie les 21 pages, les liens locaux, les ancres, les identifiants HTML, les textes alternatifs, les quatre parcours, la priorité des projets, la présence de la publication en tête du parcours recherche et le certificat PDF. Le contrôle navigateur couvre les filtres, le menu mobile, Escape et le retour du focus, les liens de langue et de parcours, le CV, le certificat, le fonctionnement sans JavaScript, le mouvement réduit et les débordements de 320 à 1 440 pixels.
 
 La CI GitHub exécute la génération, les vérifications et les tests navigateur. Elle conserve les pages publiables et les captures de contrôle comme artefacts. Consulter `docs/VALIDATION.md` pour distinguer les contrôles locaux réellement exécutés de ceux qui devront tourner après le push.
 
 ## Intégrer dans le dépôt existant
 
 1. Décompresser l’archive.
-2. Copier **le contenu** de son dossier `charbel-portfolio/` dans le clone local du dépôt existant, en remplaçant les fichiers correspondants. Conserver le dossier `.git` existant. Copier aussi `.github/` et les autres fichiers de configuration.
+2. Cette archive corrective est **sans dossier enveloppe**. Copier tous ses fichiers directement à la racine du clone local : `package.json`, `scripts/`, `content/`, `.github/`, `pro/`, `recherche/`, etc. Conserver le dossier `.git` existant. Ne pas créer un second dossier `charbel-portfolio/` à l’intérieur du dépôt. Consulter `INSTALLATION.md` pour corriger le dépôt actuellement imbriqué.
 3. Depuis ce clone, créer une branche et vérifier :
 
 ```powershell
-git switch -c design/portfolio-v2
+git switch -c feat/portfolio-pro-research
 npm ci
 npm test
 git status --short
 git add .
-git commit -m "Redesign portfolio with bilingual project case studies"
-git push -u origin design/portfolio-v2
+git commit -m "Add professional and research profiles with Google certificate"
+git push -u origin feat/portfolio-pro-research
 ```
 
 Ouvrir ensuite une pull request vers `main`. Si le projet Vercel est connecté à ce dépôt et que les previews sont activées, Vercel créera une prévisualisation pour la branche. Après vérification et fusion, le déploiement de production suivra la configuration de la branche de production Vercel.
@@ -92,3 +109,11 @@ Références consultées pour la hiérarchie et la lisibilité :
 - [Charca — Astro blog template](https://github.com/Charca/astro-blog-template) : sobriété d’un site personnel centré sur la lecture.
 
 L’implémentation HTML/CSS/JS de cette refonte est originale ; aucun de ces templates n’a été copié. Les détails et crédits des médias figurent dans `docs/ASSETS.md`.
+
+
+## Correctif CI 3.0.1
+
+- Rétablit la livraison complète du générateur v3 : les parcours `pro/`, `recherche/`, `en/pro/` et `en/research/` sont générés et copiés dans `dist/`.
+- Le test du presse-papiers attend le message de réussite avec `expect(...).toHaveText(...)`, puis vérifie l’adresse effectivement copiée avec `expect.poll(...)`. Une lecture immédiate du texte pouvait échouer avant la résolution de `navigator.clipboard.writeText`.
+- `expect` est fourni par `playwright/test`, inclus dans la dépendance Playwright déjà verrouillée ; aucune nouvelle dépendance n’est ajoutée.
+- Les tests restent stricts : aucun contournement de lien manquant et aucune suppression du test de copie.
