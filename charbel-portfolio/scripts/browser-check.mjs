@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { expect } from 'playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
@@ -24,9 +25,25 @@ try {
   assert.equal(await page.locator('.project-row:visible').count(),total);checks++;
   assert.equal(await page.locator(`[data-filter="${category}"]`).getAttribute('aria-pressed'),'true');checks++;
  }
- await page.locator('[data-copy]').click();assert.match(await page.locator('#copy-feedback').innerText(),/copiée/);checks++;
+ const copyButton=page.locator('[data-copy]');
+ await copyButton.click();
+ // Clipboard writes resolve asynchronously; a click does not await the handler's promise.
+ await expect(page.locator('#copy-feedback')).toHaveText('Adresse copiée');checks++;
+ await expect.poll(()=>page.evaluate(()=>navigator.clipboard.readText())).toBe(await copyButton.getAttribute('data-copy'));checks++;
  await page.getByRole('link',{name:'English',exact:true}).click();assert.equal(await page.locator('html').getAttribute('lang'),'en');checks++;
  assert.match(await page.locator('h1').innerText(),/Charbel Dib/);
+ await page.goto(base+'/recherche/');
+ assert.match(await page.locator('.profile-nav [aria-current="page"]').innerText(),/Recherche/);checks++;
+ assert.equal(await page.locator('.research-study').count(),2);checks++;
+ assert.ok(await page.locator('#publication').isVisible());checks++;
+ await page.getByRole('link',{name:'English',exact:true}).click();
+ assert.equal(new URL(page.url()).pathname,'/en/research/index.html');checks++;
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'research');checks++;
+ await page.locator('.profile-nav a').filter({hasText:'Professional'}).click();
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
+ assert.equal(new URL(page.url()).pathname,'/en/pro/index.html');checks++;
+ const certificate=await context.request.get(base+'/assets/Google-Data-Analytics-Charbel-Dib.pdf');
+ assert.equal(certificate.status(),200);assert.equal((await certificate.body()).subarray(0,4).toString(),'%PDF');checks+=2;
  await page.goto(base+'/projects/atlas.html');
  await page.getByRole('link',{name:'English',exact:true}).click();assert.equal(new URL(page.url()).pathname,'/en/projects/atlas.html');checks++;
  assert.match(await page.locator('.case-meta').innerText(),/In progress/);checks++;
@@ -39,7 +56,7 @@ try {
  await page.locator('.menu-button').click();await page.locator('#main-nav a[href$="#projects"]').click();
  assert.equal(await page.locator('#main-nav').isVisible(),false);checks++;
  await page.goto(base);await page.screenshot({path:reports+'mobile.png',fullPage:true});
- const paths=['/','/en/index.html',...projects.flatMap(p=>[`/projects/${p.slug}.html`,`/en/projects/${p.slug}.html`])];
+ const paths=['/','/en/index.html','/pro/','/recherche/','/en/pro/','/en/research/',...projects.flatMap(p=>[`/projects/${p.slug}.html`,`/en/projects/${p.slug}.html`])];
  for(const width of [320,390,768,1440]){
   await page.setViewportSize({width,height:900});
   for(const path of paths){
@@ -59,5 +76,5 @@ try {
  assert.equal(await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgba(0, 0, 0, 0)');
  await page.getByRole('link',{name:'Revenir au portfolio'}).click();assert.equal(new URL(page.url()).pathname,'/index.html');checks++;
  assert.deepEqual(errors,[]);
- console.log(`PASS: ${checks} checks. FR/EN pages, filters, menu, Escape/focus, clipboard, CV, no-JS, reduced motion and 320–1440px overflow. No browser errors.`);
+ console.log(`PASS: ${checks} checks. FR/EN pages, filters, menu, Escape/focus, clipboard, profile/language switching, publication, certificate, CV, no-JS, reduced motion and 320–1440px overflow. No browser errors.`);
 } finally {await browser.close();}

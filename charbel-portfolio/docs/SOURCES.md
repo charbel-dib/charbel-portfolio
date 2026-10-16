@@ -27,3 +27,12 @@ Consultation : 16 octobre 2026. Les chiffres sont attribués au document qui les
 - Astek : résumé de contributions déjà présentes dans le CV ; pas de rapport interne, de corpus interne ni de nouvelle divulgation de résultats détaillés.
 - Le classifieur LoRA Astek est présenté comme préexistant et évalué, pas comme un modèle entraîné intégralement par Charbel.
 - Aucun nombre d’utilisateurs, client, témoignage, gain financier ou déploiement non documenté n’a été ajouté.
+
+
+## Ajout des parcours professionnel / recherche
+
+- Le contenu de chaque projet reste partagé entre les deux entrées ; seuls l’ordre, les introductions et le contexte de candidature changent.
+- Les deux stages sont présentés par question, méthode, contribution et limites. Astek reste au niveau des contributions déjà décrites publiquement : aucun rapport interne n’est inclus dans le site ou l’archive.
+- Publication : titre, auteurs Charbel Dib et Rima Hleiss, conférence IEEE 3SCEA et DOI. Aucun facteur d’impact, classement de conférence ou gain quantitatif non vérifié n’est ajouté.
+- Google Data Analytics : PDF original fourni dans cette conversation, au nom de Charbel Dib, daté du 23 mars 2024 ; huit cours, SQL, R, Tableau et tableurs. Vérification : https://coursera.org/verify/professional-cert/PABFJT9RQLLB . Le certificat atteste une formation ; il n’est pas présenté comme un diplôme universitaire ou comme une certification avancée en IA.
+- Le rapport ENSTA fourni concerne l’assistant documentaire ; il n’est pas utilisé comme preuve de résultats du stage CESI.

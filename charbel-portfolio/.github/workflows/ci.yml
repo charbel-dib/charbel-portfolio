@@ -21,7 +21,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - name: Generated pages must match the editorial sources
-        run: git diff --exit-code -- index.html en projects 404.html sitemap.xml robots.txt
+        run: git diff --exit-code -- index.html pro recherche en projects 404.html sitemap.xml robots.txt
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-dist
