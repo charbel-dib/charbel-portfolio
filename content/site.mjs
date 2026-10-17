@@ -1,10 +1,268 @@
 export const site = {
-  fr: {
-    title:'Charbel Dib — Ingénieur IA',description:'Portfolio de Charbel Dib, ingénieur IA diplômé ENSTA : agents, RAG, machine learning, projets open source, premier prix SPASEA et publication IEEE.',
-    skip:'Aller au contenu',nav:['Projets','Parcours','Contact'],locale:'English',role:'Ingénieur en intelligence artificielle',hero:'Je construis des systèmes d’IA que l’on peut comprendre, évaluer et utiliser.',heroNote:'Du document à la réponse sourcée. Du modèle à la décision. Avec le même fil conducteur : savoir pourquoi ça fonctionne, et où ça s’arrête.',location:'Paris, France',availability:'À la recherche d’un CDI en IA',mobility:'Île-de-France · Mobilité France',discover:'Explorer mes projets',cv:'Télécharger mon CV',resume:'CV',github:'Mon GitHub',proof:['Diplômé de l’ENSTA','1er prix · SPASEA 2025','Premier auteur · IEEE 2026'],selected:'Travaux sélectionnés',selectedDesc:'Trois projets, trois façons de rapprocher l’IA de son usage.',caseStudy:'Lire le projet',source:'Code source',photo:'Photo : ENSTA · SPASEA 2025',actualUI:'Interface du projet · Capture du dépôt',all:'L’index des projets',allDesc:'Projets personnels, recherche et travail d’équipe. Le contexte et le niveau d’avancement sont précisés dans chaque dossier.',filters:['Tous','Agents IA','NLP & RAG','Machine learning','Data'],count:'projets affichés',viewAll:'Tous les dépôts',research:'Le goût de comprendre',researchIntro:'La recherche m’a appris à décomposer une question, comparer les approches et regarder les erreurs de près.',researchA:'Chez Astek, j’ai travaillé sur la vérification d’informations climatiques : retrouver les bons passages, extraire les preuves et comprendre comment les erreurs se propagent jusqu’à la réponse.',researchB:'Au CESI / LINEACT, j’ai étudié la prédiction de la densité relative en fabrication additive. Ces travaux ont donné lieu à une publication IEEE en premier auteur.',paper:'Publication',paperLink:'Consulter sur IEEE',about:'Derrière les projets',aboutTitle:'Une base d’ingénieur. Une attention aux détails.',aboutText:'Je suis ingénieur diplômé de l’ENSTA, spécialisé en systèmes d’observation et intelligence artificielle. Ce qui m’intéresse : transformer des données dispersées en un outil que quelqu’un peut réellement utiliser.',aboutText2:'Mes projets relient le traitement du langage, l’évaluation des modèles et le développement logiciel. J’accorde autant d’attention aux sources, aux erreurs et aux permissions qu’à la réponse finale.',timeline:[['2026','Astek Innovation Lab','Stage de fin d’études · NLP, RAG & évaluation','La Défense'],['2025','CESI / LINEACT','Stage IA & machine learning · Fabrication additive','Nanterre'],['2024–26','ENSTA','Diplôme d’ingénieur · Systèmes d’observation & IA','Brest']],skillsTitle:'Mes outils, dans leur contexte',skills:[['Rechercher & répondre','Python, Transformers, embeddings, BM25, DPR, FAISS, reranking','Assistant ENSTA & fact-checking'],['Orchestrer & servir','LangGraph, FastAPI, API REST, SQLite, Docker, GitHub Actions','ServicePilot'],['Mesurer & décider','scikit-learn, PyTorch, XGBoost, calibration, analyse d’erreurs','FleetGuard & recherche L-PBF']],contactLabel:'Et maintenant ?',contactTitle:'Un projet exigeant ?<br>Parlons-en.',contactText:'Je recherche une équipe où contribuer à des produits d’IA utiles, approfondir mes choix techniques et continuer à apprendre.',email:'M’écrire',copy:'Copier l’adresse',copied:'Adresse copiée',copyFail:'Copie indisponible — le lien email reste accessible.',languages:'Français · Anglais · Arabe',top:'Retour en haut',footer:'Conçu pour montrer le travail.',back:'Tous les projets',context:'Contexte',contribution:'Ma contribution',problem:'Le problème',choices:'Les choix techniques',results:'Ce que le projet produit',value:'Ce que j’en retiens',limits:'Périmètre & limites',evidence:'Voir les preuves',next:'Projet suivant',jump:'Dans ce projet',notFound:'Cette page a changé d’adresse.',backHome:'Revenir au portfolio',flowLabel:'Architecture simplifiée du prototype',flow:['Procédures','État des services','Incidents','Diagnostic sourcé','Proposition figée','Validation humaine','Création du ticket'],flowNote:'3 outils de lecture. Une écriture autorisée côté serveur.',metricRecall:'rappel · test officiel',metricPrecision:'précision · test officiel',metricScope:'Scania APS · 16 000 observations · résultats du dépôt',award:'1er prix',awardSub:'Hackathon SPASEA 2025',progress:'En construction',number:'Dossier',references:'Références'
+  "fr": {
+    "title": "Charbel Dib — Ingénieur IA",
+    "description": "Portfolio de Charbel Dib, ingénieur IA diplômé ENSTA : agents, RAG, machine learning, projets open source, premier prix SPASEA et publication IEEE.",
+    "skip": "Aller au contenu",
+    "nav": [
+      "Projets",
+      "Parcours",
+      "Contact"
+    ],
+    "locale": "English",
+    "role": "Ingénieur en intelligence artificielle",
+    "hero": "Je construis des systèmes d’IA que l’on peut comprendre, évaluer et utiliser.",
+    "heroNote": "Du document à la réponse sourcée. Du modèle à la décision. Avec le même fil conducteur : savoir pourquoi ça fonctionne, et où ça s’arrête.",
+    "location": "Paris, France",
+    "availability": "À la recherche d’un CDI en IA",
+    "mobility": "Île-de-France · Mobilité France",
+    "discover": "Explorer mes projets",
+    "cv": "Télécharger mon CV",
+    "resume": "CV",
+    "github": "Mon GitHub",
+    "proof": [
+      "Diplômé de l’ENSTA",
+      "1er prix · SPASEA 2025",
+      "Premier auteur · IEEE 2026"
+    ],
+    "selected": "Travaux sélectionnés",
+    "selectedDesc": "Trois projets, trois façons de rapprocher l’IA de son usage.",
+    "caseStudy": "Lire le projet",
+    "source": "Code source",
+    "photo": "Photo : ENSTA · SPASEA 2025",
+    "actualUI": "Interface du projet · Capture du dépôt",
+    "all": "L’index des projets",
+    "allDesc": "Projets personnels, recherche et travail d’équipe. Le contexte et le niveau d’avancement sont précisés dans chaque dossier.",
+    "filters": [
+      "Tous",
+      "Agents IA",
+      "NLP & RAG",
+      "Machine learning",
+      "Data"
+    ],
+    "count": "projets affichés",
+    "viewAll": "Tous les dépôts",
+    "research": "Le goût de comprendre",
+    "researchIntro": "La recherche m’a appris à décomposer une question, comparer les approches et regarder les erreurs de près.",
+    "researchA": "Chez Astek, j’ai travaillé sur la vérification d’informations climatiques : retrouver les bons passages, extraire les preuves et comprendre comment les erreurs se propagent jusqu’à la réponse.",
+    "researchB": "Au CESI / LINEACT, j’ai étudié la prédiction de la densité relative en fabrication additive. Ces travaux ont donné lieu à une publication IEEE en premier auteur.",
+    "paper": "Publication",
+    "paperLink": "Consulter sur IEEE",
+    "about": "Derrière les projets",
+    "aboutTitle": "Une base d’ingénieur. Une attention aux détails.",
+    "aboutText": "Je suis ingénieur diplômé de l’ENSTA, spécialisé en systèmes d’observation et intelligence artificielle. Ce qui m’intéresse : transformer des données dispersées en un outil que quelqu’un peut réellement utiliser.",
+    "aboutText2": "Mes projets relient le traitement du langage, l’évaluation des modèles et le développement logiciel. J’accorde autant d’attention aux sources, aux erreurs et aux permissions qu’à la réponse finale.",
+    "timeline": [
+      [
+        "2026",
+        "Astek Innovation Lab",
+        "Stage de fin d’études · NLP, RAG & évaluation",
+        "La Défense"
+      ],
+      [
+        "2025",
+        "CESI / LINEACT",
+        "Stage IA & machine learning · Fabrication additive",
+        "Nanterre"
+      ],
+      [
+        "2024–26",
+        "ENSTA",
+        "Diplôme d’ingénieur · Systèmes d’observation & IA",
+        "Brest"
+      ]
+    ],
+    "skillsTitle": "Mes outils, dans leur contexte",
+    "skills": [
+      [
+        "Rechercher & répondre",
+        "Python, Transformers, embeddings, BM25, DPR, FAISS, reranking",
+        "Assistant ENSTA & fact-checking"
+      ],
+      [
+        "Orchestrer & servir",
+        "LangGraph, FastAPI, API REST, SQLite, Docker, GitHub Actions",
+        "ServicePilot"
+      ],
+      [
+        "Mesurer & décider",
+        "scikit-learn, PyTorch, XGBoost, calibration, analyse d’erreurs",
+        "FleetGuard & recherche L-PBF"
+      ]
+    ],
+    "contactLabel": "Et maintenant ?",
+    "contactTitle": "Un projet exigeant ?<br>Parlons-en.",
+    "contactText": "Je recherche une équipe où contribuer à des produits d’IA utiles, approfondir mes choix techniques et continuer à apprendre.",
+    "email": "M’écrire",
+    "copy": "Copier l’adresse",
+    "copied": "Adresse copiée",
+    "copyFail": "Copie indisponible — le lien email reste accessible.",
+    "languages": "Français · Anglais · Arabe",
+    "top": "Retour en haut",
+    "footer": "Conçu pour montrer le travail.",
+    "back": "Tous les projets",
+    "context": "Contexte",
+    "contribution": "Ma contribution",
+    "problem": "Le problème",
+    "choices": "Les choix techniques",
+    "results": "Ce que le projet produit",
+    "value": "Ce que j’en retiens",
+    "limits": "Périmètre & limites",
+    "evidence": "Voir les preuves",
+    "next": "Projet suivant",
+    "jump": "Dans ce projet",
+    "notFound": "Page introuvable.",
+    "backHome": "Revenir au portfolio",
+    "flowLabel": "Architecture simplifiée du prototype",
+    "flow": [
+      "Procédures",
+      "État des services",
+      "Incidents",
+      "Diagnostic sourcé",
+      "Proposition figée",
+      "Validation humaine",
+      "Création du ticket"
+    ],
+    "flowNote": "3 outils de lecture. Une écriture autorisée côté serveur.",
+    "metricRecall": "rappel · test officiel",
+    "metricPrecision": "précision · test officiel",
+    "metricScope": "Scania APS · 16 000 observations · résultats du dépôt",
+    "award": "1er prix",
+    "awardSub": "Hackathon SPASEA 2025",
+    "progress": "En construction",
+    "number": "Dossier",
+    "references": "Références"
   },
-  en: {
-    title:'Charbel Dib — AI Engineer',description:'Charbel Dib’s portfolio: ENSTA-trained AI engineer working on agents, RAG and machine learning. Open-source projects, SPASEA first prize and an IEEE publication.',
-    skip:'Skip to content',nav:['Projects','Background','Contact'],locale:'Français',role:'Artificial intelligence engineer',hero:'I build AI systems that people can understand, evaluate and use.',heroNote:'From documents to sourced answers. From models to decisions. With one consistent goal: understand why it works, and where its limits are.',location:'Paris, France',availability:'Open to full-time AI roles',mobility:'Paris region · Mobile across France',discover:'Explore my projects',cv:'Download my résumé',resume:'Résumé',github:'My GitHub',proof:['ENSTA engineering graduate','1st prize · SPASEA 2025','First author · IEEE 2026'],selected:'Selected work',selectedDesc:'Three projects. Three ways to connect AI with its use.',caseStudy:'Explore the project',source:'Source code',photo:'Photo: ENSTA · SPASEA 2025',actualUI:'Project interface · Repository screenshot',all:'Project index',allDesc:'Personal projects, research and teamwork. Each case study explains the context and current stage.',filters:['All','AI agents','NLP & RAG','Machine learning','Data'],count:'projects shown',viewAll:'All repositories',research:'The drive to understand',researchIntro:'Research taught me to break down a question, compare approaches and examine errors closely.',researchA:'At Astek, I worked on climate fact-checking: retrieving relevant passages, extracting evidence and understanding how errors propagate to the final answer.',researchB:'At CESI / LINEACT, I studied relative density prediction in additive manufacturing. This work led to a first-author IEEE publication.',paper:'Publication',paperLink:'Read on IEEE',about:'Behind the projects',aboutTitle:'Engineering foundations. Attention to detail.',aboutText:'I am an ENSTA engineering graduate specialised in observation systems and artificial intelligence. I enjoy turning scattered data into a tool someone can actually use.',aboutText2:'My projects connect natural language processing, model evaluation and software development. I pay as much attention to sources, errors and permissions as to the final answer.',timeline:[['2026','Astek Innovation Lab','Final-year internship · NLP, RAG & evaluation','La Défense'],['2025','CESI / LINEACT','AI & ML internship · Additive manufacturing','Nanterre'],['2024–26','ENSTA','Engineering degree · Observation systems & AI','Brest']],skillsTitle:'My tools, in context',skills:[['Retrieve & answer','Python, Transformers, embeddings, BM25, DPR, FAISS, reranking','ENSTA assistant & fact-checking'],['Orchestrate & serve','LangGraph, FastAPI, REST APIs, SQLite, Docker, GitHub Actions','ServicePilot'],['Measure & decide','scikit-learn, PyTorch, XGBoost, calibration, error analysis','FleetGuard & L-PBF research']],contactLabel:'What comes next?',contactTitle:'A challenging project?<br>Let’s talk.',contactText:'I’m looking for a team where I can contribute to useful AI products, deepen my technical judgement and keep learning.',email:'Email me',copy:'Copy email address',copied:'Email copied',copyFail:'Copy unavailable — you can still use the email link.',languages:'French · English · Arabic',top:'Back to top',footer:'Designed to show the work.',back:'All projects',context:'Context',contribution:'My contribution',problem:'The problem',choices:'Technical decisions',results:'What the project delivers',value:'What I take from it',limits:'Scope & limits',evidence:'Explore the evidence',next:'Next project',jump:'In this project',notFound:'This page has moved.',backHome:'Back to the portfolio',flowLabel:'Simplified prototype architecture',flow:['Procedures','Service health','Incidents','Sourced diagnosis','Frozen proposal','Human approval','Ticket creation'],flowNote:'3 read-only tools. A server-authorised write.',metricRecall:'recall · official test',metricPrecision:'precision · official test',metricScope:'Scania APS · 16,000 observations · repository results',award:'1st prize',awardSub:'SPASEA 2025 hackathon',progress:'Work in progress',number:'Case study',references:'References'
+  "en": {
+    "title": "Charbel Dib — AI Engineer",
+    "description": "Charbel Dib’s portfolio: ENSTA-trained AI engineer working on agents, RAG and machine learning. Open-source projects, SPASEA first prize and an IEEE publication.",
+    "skip": "Skip to content",
+    "nav": [
+      "Projects",
+      "Background",
+      "Contact"
+    ],
+    "locale": "Français",
+    "role": "Artificial intelligence engineer",
+    "hero": "I build AI systems that people can understand, evaluate and use.",
+    "heroNote": "From documents to sourced answers. From models to decisions. With one consistent goal: understand why it works, and where its limits are.",
+    "location": "Paris, France",
+    "availability": "Open to full-time AI roles",
+    "mobility": "Paris region · Mobile across France",
+    "discover": "Explore my projects",
+    "cv": "Download my résumé",
+    "resume": "Résumé",
+    "github": "My GitHub",
+    "proof": [
+      "ENSTA engineering graduate",
+      "1st prize · SPASEA 2025",
+      "First author · IEEE 2026"
+    ],
+    "selected": "Selected work",
+    "selectedDesc": "Three projects. Three ways to connect AI with its use.",
+    "caseStudy": "Explore the project",
+    "source": "Source code",
+    "photo": "Photo: ENSTA · SPASEA 2025",
+    "actualUI": "Project interface · Repository screenshot",
+    "all": "Project index",
+    "allDesc": "Personal projects, research and teamwork. Each case study explains the context and current stage.",
+    "filters": [
+      "All",
+      "AI agents",
+      "NLP & RAG",
+      "Machine learning",
+      "Data"
+    ],
+    "count": "projects shown",
+    "viewAll": "All repositories",
+    "research": "The drive to understand",
+    "researchIntro": "Research taught me to break down a question, compare approaches and examine errors closely.",
+    "researchA": "At Astek, I worked on climate fact-checking: retrieving relevant passages, extracting evidence and understanding how errors propagate to the final answer.",
+    "researchB": "At CESI / LINEACT, I studied relative density prediction in additive manufacturing. This work led to a first-author IEEE publication.",
+    "paper": "Publication",
+    "paperLink": "Read on IEEE",
+    "about": "Behind the projects",
+    "aboutTitle": "Engineering foundations. Attention to detail.",
+    "aboutText": "I am an ENSTA engineering graduate specialised in observation systems and artificial intelligence. I enjoy turning scattered data into a tool someone can actually use.",
+    "aboutText2": "My projects connect natural language processing, model evaluation and software development. I pay as much attention to sources, errors and permissions as to the final answer.",
+    "timeline": [
+      [
+        "2026",
+        "Astek Innovation Lab",
+        "Final-year internship · NLP, RAG & evaluation",
+        "La Défense"
+      ],
+      [
+        "2025",
+        "CESI / LINEACT",
+        "AI & ML internship · Additive manufacturing",
+        "Nanterre"
+      ],
+      [
+        "2024–26",
+        "ENSTA",
+        "Engineering degree · Observation systems & AI",
+        "Brest"
+      ]
+    ],
+    "skillsTitle": "My tools, in context",
+    "skills": [
+      [
+        "Retrieve & answer",
+        "Python, Transformers, embeddings, BM25, DPR, FAISS, reranking",
+        "ENSTA assistant & fact-checking"
+      ],
+      [
+        "Orchestrate & serve",
+        "LangGraph, FastAPI, REST APIs, SQLite, Docker, GitHub Actions",
+        "ServicePilot"
+      ],
+      [
+        "Measure & decide",
+        "scikit-learn, PyTorch, XGBoost, calibration, error analysis",
+        "FleetGuard & L-PBF research"
+      ]
+    ],
+    "contactLabel": "What comes next?",
+    "contactTitle": "A challenging project?<br>Let’s talk.",
+    "contactText": "I’m looking for a team where I can contribute to useful AI products, deepen my technical judgement and keep learning.",
+    "email": "Email me",
+    "copy": "Copy email address",
+    "copied": "Email copied",
+    "copyFail": "Copy unavailable — you can still use the email link.",
+    "languages": "French · English · Arabic",
+    "top": "Back to top",
+    "footer": "Designed to show the work.",
+    "back": "All projects",
+    "context": "Context",
+    "contribution": "My contribution",
+    "problem": "The problem",
+    "choices": "Technical decisions",
+    "results": "What the project delivers",
+    "value": "What I take from it",
+    "limits": "Scope & limits",
+    "evidence": "Explore the evidence",
+    "next": "Next project",
+    "jump": "In this project",
+    "notFound": "Page not found.",
+    "backHome": "Back to the portfolio",
+    "flowLabel": "Simplified prototype architecture",
+    "flow": [
+      "Procedures",
+      "Service health",
+      "Incidents",
+      "Sourced diagnosis",
+      "Frozen proposal",
+      "Human approval",
+      "Ticket creation"
+    ],
+    "flowNote": "3 read-only tools. A server-authorised write.",
+    "metricRecall": "recall · official test",
+    "metricPrecision": "precision · official test",
+    "metricScope": "Scania APS · 16,000 observations · repository results",
+    "award": "1st prize",
+    "awardSub": "SPASEA 2025 hackathon",
+    "progress": "Work in progress",
+    "number": "Case study",
+    "references": "References"
   }
 };

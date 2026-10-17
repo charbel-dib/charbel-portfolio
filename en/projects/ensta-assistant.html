@@ -1,17 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Assistant ENSTA — Charbel Dib</title><meta name="description" content="A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately.">
-<meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
-<link rel="canonical" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html"><link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html"><link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html">
-<meta property="og:type" content="website"><meta property="og:title" content="Assistant ENSTA — Charbel Dib"><meta property="og:description" content="A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately."><meta property="og:url" content="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html"><meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../styles.css"><script src="../../script.js" defer></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENSTA assistant — Charbel Dib</title><meta name="description" content="A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately.">
+  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html">
+  <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
+  <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html">
+  <meta property="og:type" content="website"><meta property="og:title" content="ENSTA assistant — Charbel Dib">
+  <meta property="og:description" content="A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately."><meta property="og:url" content="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-en-pro.png">
+  <meta property="og:image:alt" content="Charbel Dib — Professional · AI engineer">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css"><script src="../../script.js" defer></script>
 </head>
-<body id="top" data-profile="pro">
-<a class="skip" href="#main">Skip to content</a>
-<header class="header"><div class="wrap header-inner"><a class="identity" href="../pro/index.html" aria-label="Charbel Dib"><span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button><nav id="main-nav" aria-label="Main navigation"><a href="../pro/index.html#projects">Projects</a><a href="../pro/index.html#about">Background</a><a href="../pro/index.html#contact">Contact</a></nav><a class="locale" href="../../projects/ensta-assistant.html" lang="fr" hreflang="fr" aria-label="Français">FR <span aria-hidden="true">↗</span></a></div></header>
-<div class="profile-bar"><div class="wrap profile-inner"><p>Two perspectives on my work</p><nav class="profile-nav" aria-label="Choose a profile"><a href="../pro/index.html">Professional<span aria-hidden="true">↗</span></a><a href="../research/index.html">Research<span aria-hidden="true">↗</span></a></nav></div></div>
-<main id="main" class="case-main"><section class="wrap case-hero"><a class="back-link" href="../pro/index.html#projects">← All projects</a><p class="eyebrow">CASE STUDY / 05 · Academic project · Document assistant</p><div class="case-title-line"><h1>Assistant ENSTA<span>.</span></h1><span class="case-year">2026</span></div><p class="case-headline">Find the information, then verify it.</p><p class="case-summary">A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately.</p><div class="case-meta"><div><span class="eyebrow">Context</span><p>Prototype · Web, PDF & XLSX corpus</p></div><div><span class="eyebrow">My contribution</span><p>Document pipeline, answer service, session management and web integration.</p></div></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div></section><div class="wrap"></div><div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#results">What the project delivers</a><a href="#limits">Scope & limits</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav><div class="case-body"><section id="problem"><p class="eyebrow">01 / The problem</p><h2>Find the information, then verify it.</h2><p>Campus information is spread across webpages, PDFs and spreadsheets. It needs to become searchable while retaining source references and handling updates.</p></section><section id="choices"><p class="eyebrow">02 / Technical decisions</p><article class="decision"><span>01</span><div><h3>Separate ingestion from serving</h3><p>Collect, clean, chunk and index documents upstream of the answering service.</p></div></article><article class="decision"><span>02</span><div><h3>Keep sources in the answer</h3><p>Multilingual-E5 embeddings, a FAISS index, retrieval threshold and citations connect answers to documents.</p></div></article><article class="decision"><span>03</span><div><h3>Account for corpus updates</h3><p>Daily web-corpus rebuild and index reloading without restarting the service.</p></div></article></section><section id="results"><p class="eyebrow">03 / What the project delivers</p><p class="result-text">An end-to-end prototype with a FastAPI service, sessions, chat interface and embeddable widget. Refusal and email escalation complement source-backed answers.</p><div class="takeaway"><h3>What I take from it</h3><p>Turn a document collection into a usable service whose answers remain connected to their origin.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div></section><section id="limits" class="limits"><p class="eyebrow">04 / Scope & limits</p><p>Academic prototype: the repository does not establish an official institutional deployment or large-scale measured answer quality.</p></section></div></div><a class="wrap next-project" href="atlas.html"><span class="eyebrow">Next project</span><span>ATLAS <span aria-hidden="true">↗</span></span></a></main>
-<footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Designed to show the work.</span><a href="#top">Back to top ↑</a></footer>
+<body id="top" data-profile="pro" data-page="case">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" aria-label="Charbel Dib">
+        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="projects">Projects</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="about">Background</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="contact">Contact</a>
+      </nav>
+      <a class="locale" href="../../projects/ensta-assistant.html?profile=pro" lang="fr" hreflang="fr" aria-label="Français">FR <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <div class="profile-bar"><div class="wrap profile-inner">
+    <p>Explore my work</p>
+    <nav class="profile-nav" aria-label="Choose a profile">
+      <a href="../pro/index.html" data-profile-choice="pro" aria-current="page">Professional</a><a href="../research/index.html" data-profile-choice="research">Research</a>
+    </nav>
+  </div></div>
+  <main id="main" class="case-main">
+    <section class="wrap case-hero" aria-labelledby="case-title">
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../research/index.html">← All projects</a>
+      <p class="eyebrow">Academic project · Document assistant · 2026</p>
+      <h1 id="case-title">ENSTA assistant<span>.</span></h1>
+      <p class="case-headline">Find the information, then verify it.</p><p class="case-summary">A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately.</p>
+      <dl class="case-meta"><div><dt>Context</dt><dd>Prototype · Web, PDF & XLSX corpus</dd></div><div><dt>My contribution</dt><dd>Document pipeline, answer service, session management and web integration.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+    </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-title">
+    <p class="eyebrow">THE APPROACH</p>
+    <h2 id="method-title">An answer connected to its sources</h2>
+    <ol class="method-steps"><li>
+      <span class="method-number" aria-hidden="true">01</span><h3>Prepare</h3><p>Webpages · PDF · XLSX</p>
+    </li><li>
+      <span class="method-number" aria-hidden="true">02</span><h3>Retrieve</h3><p>Multilingual-E5 embeddings · FAISS index</p>
+    </li><li>
+      <span class="method-number" aria-hidden="true">03</span><h3>Answer</h3><p>Citations, or refusal and email escalation</p>
+    </li></ol>
+    <figcaption>Simplified academic prototype architecture. The web corpus is rebuilt daily and the index reloaded without restarting.</figcaption>
+  </figure></div>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#results">What the project delivers</a><a href="#limits">Scope & limits</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav>
+      <div class="case-body">
+        <section id="problem"><p class="eyebrow" aria-hidden="true">01</p><h2>The problem</h2><p>Campus information is spread across webpages, PDFs and spreadsheets. It needs to become searchable while retaining source references and handling updates.</p></section>
+        <section id="choices"><p class="eyebrow" aria-hidden="true">02</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Separate ingestion from serving</h3><p>Collect, clean, chunk and index documents upstream of the answering service.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Keep sources in the answer</h3><p>Multilingual-E5 embeddings, a FAISS index, retrieval threshold and citations connect answers to documents.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Account for corpus updates</h3><p>Daily web-corpus rebuild and index reloading without restarting the service.</p></div></article></section>
+        <section id="results"><p class="eyebrow" aria-hidden="true">03</p><h2>What the project delivers</h2><p>An end-to-end prototype with a FastAPI service, sessions, chat interface and embeddable widget. Refusal and email escalation complement source-backed answers.</p>
+
+          <div class="takeaway"><h3>What I take from it</h3><p>Turn a document collection into a usable service whose answers remain connected to their origin.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+        </section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">04</p><h2>Scope & limits</h2><p>Academic prototype: the repository does not establish an official institutional deployment or large-scale measured answer quality.</p></section>
+      </div>
+    </div>
+    <a class="wrap next-project" href="fact-checking.html?profile=pro" data-next-project
+      data-next-pro="fact-checking.html?profile=pro" data-next-research="fleetguard.html?profile=research"
+      data-name-pro="Climate fact-checking" data-name-research="FleetGuard">
+      <span class="eyebrow">Next project</span><span><span data-next-name>Climate fact-checking</span><span aria-hidden="true">↗</span></span>
+    </a>
+  </main>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Designed to show the work.</span><a href="#top">Back to top ↑</a></footer>
 </body></html>

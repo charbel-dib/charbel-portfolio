@@ -1,37 +1,39 @@
-# Validation — version 3.0.1
+# Validation — révision du 17 octobre 2026
 
-Contrôles exécutés localement le 16 octobre 2026 après l’ajout des parcours.
+## Exécuté localement sur cette révision
 
-## Exécutés sur cette version
+- `npm test` : génération et validation de 21 pages, dont 18 pages canoniques, deux accueils historiques et une page 404.
+- 664 références locales contrôlées : pages, ressources, ancres et destinations de navigation contextualisées.
+- Sept dossiers communs aux parcours, dans les deux langues ; noms, descriptions et tags localisés.
+- Un H1 par page, IDs uniques et hiérarchie de titres sans saut de niveau.
+- Quatre pages d’entrée ; ordre des projets et priorité de la publication en recherche vérifiés.
+- Signature PDF du certificat et identité binaire du CV publié sous ses deux URL.
+- Quatre images de partage FR/EN et professionnel/recherche générées localement.
+- `npm run test:browser` : **306 contrôles réussis**, sans erreur navigateur.
+- Conservation du parcours lors de l’ouverture d’un dossier, du changement de langue, du projet suivant et du retour à l’index ; paramètre invalide rejeté au profit du parcours par défaut.
+- Filtres avec état sélectionné et compteur de résultats accessible sur mobile.
+- Menu mobile : contenu stable à l’ouverture, Escape, focus rendu au bouton, fermeture sur navigation.
+- Zones tactiles d’au moins 44 × 44 pixels pour le menu, la langue, l’identité et les filtres.
+- Copie de l’adresse email avec attente du message de réussite et contrôle du contenu du presse-papiers.
+- Navigation sans JavaScript, certificat, CV, préférence de mouvement réduit et récupération depuis une URL inexistante.
+- Toutes les pages de contenu vérifiées aux largeurs 320, 390, 768 et 1440 pixels, sans débordement horizontal ni image cassée.
+- Ces mêmes pages et largeurs vérifiées avec une taille de texte de 200 %, sans débordement horizontal.
+- Inspection visuelle des entrées professionnel/recherche sur desktop et mobile et des dossiers représentatifs. Captures dans `reports/`.
 
-- `npm test` : génération et contrôle de 21 pages (18 pages canoniques, 2 accueils historiques et 404).
-- Vérification de 469 références locales : pages, ressources, ancres, CV et certificat.
-- Quatre pages d’entrée : professionnel et recherche en français et en anglais.
-- Priorité des sept projets vérifiée pour chaque parcours ; publication placée avant les expériences sur les pages recherche.
-- Vérification du nom, de la date, du lien de vérification et de la signature PDF du certificat Google Data Analytics.
-- Sept dossiers FR/EN communs aux deux parcours, un seul H1 par page, IDs uniques, textes alternatifs présents.
-- Vérification syntaxique du générateur, du JavaScript client et du script de tests navigateur.
-- Liste de publication explicite : aucun rapport interne, donnée de recherche privée, secret ou node_modules dans `dist/`.
+## Résultats de composition
 
-## Vérifications encore à exécuter
+Au format 1440 × 900, le premier visuel professionnel commence vers Y=704, contre Y=936 avant la révision. Au format 390 × 844, il commence vers Y=727, contre Y=954. Sur l’entrée recherche mobile, le titre de la publication commence vers Y=744.
 
-Le navigateur de contrôle prévu par l’environnement n’était pas disponible pour cette modification. Le rendu visuel et les interactions de la version 3 n’ont donc pas été revérifiés en navigateur ici.
+Les pages professionnelles passent d’environ 5902 à 4642 pixels sur desktop et de 8575 à 7347 pixels sur mobile, tout en agrandissant les textes de soutien. Ces mesures décrivent le rendu Chromium local, pas un gain de conversion mesuré.
 
-Le script Playwright et la CI existants ont été adaptés pour couvrir les nouvelles pages, les changements de parcours et de langue, la publication, le certificat et les largeurs 320, 390, 768 et 1440 px. Ils restent à exécuter sur cette version via `npm run test:browser` ou GitHub Actions.
+## Périmètre de ces vérifications
 
-La version 2 avait été testée en navigateur ; ces résultats antérieurs ne valident pas les ajouts de cette version.
+Les tests utilisent Chromium et le serveur local avec les en-têtes de sécurité Vercel. L’agrandissement du texte est simulé en doublant la taille de police racine ; ce contrôle ne remplace pas les réglages de texte et de zoom propres à chaque navigateur.
 
-À contrôler après intégration : preview Vercel, navigation sur mobile, téléchargement du certificat, déploiement sur le domaine et résultats GitHub Actions. Aucun push ou déploiement Vercel n’a été effectué dans cette livraison.
+Les contrôles d’arbre accessible, de navigation clavier et de structure ne constituent pas un audit exhaustif WCAG. Safari et VoiceOver n’ont pas été validés ici.
 
-Les résultats ML présentés proviennent des sources des projets ; ils n’ont pas été recalculés pour le portfolio.
+Les évaluations ML, sources externes et liens de preuve n’ont pas été réexécutés ou revérifiés sur Internet. Les schémas expliquent les contributions déjà documentées ; aucun nouveau chiffre de performance n’a été ajouté.
 
+## À vérifier après intégration
 
-## Correctif après échec de GitHub Actions
-
-Les logs transmis montraient le générateur v2 (16 pages bilingues) exécuté avec des liens vers les parcours v3. Le dépôt `main` a ensuite été consulté au commit `a2bf5c5fbd129ecff15badbd01cde19b06269909` : tous les fichiers applicatifs, y compris le workflow, se trouvaient sous `charbel-portfolio/` et non à la racine.
-
-Le correctif complet est livré dans une archive sans dossier enveloppe. Il faut l’intégrer à la racine du clone et remettre le workflow sous `.github/workflows/ci.yml`.
-
-Le test du presse-papiers attend maintenant la réussite et contrôle le contenu réellement copié. Import de `playwright/test` et disponibilité de `expect.poll` vérifiés localement. La suite de génération/liens repasse sur 21 pages et 469 références. Le test navigateur complet n’a pas été exécuté dans cet environnement ; sa validation distante reste à confirmer après le push.
-
-Référence : https://playwright.dev/docs/test-assertions (assertions avec attente automatique).
+GitHub Actions, preview Vercel et production restent des vérifications séparées. Aucun push ou déploiement n’a été effectué pendant cette révision.

@@ -18,9 +18,9 @@ export const profiles = {
     fr: {
       title: 'Charbel Dib — Ingénieur IA · Portfolio professionnel',
       description: 'RAG, agents IA, machine learning et données : projets, expériences et résultats de Charbel Dib, ingénieur diplômé de l’ENSTA.',
-      label: 'Professionnel', overline: 'Ingénierie IA & données',
+      label: 'Professionnel', overline: 'Ingénieur IA · RAG, agents & machine learning',
       hero: 'Des données à une solution que l’on peut utiliser.',
-      heroNote: 'Recherche documentaire, modèles prédictifs, API et agents : je relie les choix techniques au besoin, puis je vérifie ce que le système sait réellement faire.',
+      heroNote: 'Des modèles évalués, des API et des interfaces pour rendre l’IA utilisable.',
       selectedDesc: 'Du modèle évalué au prototype utilisable : trois réalisations, leurs choix techniques et leurs limites.',
       availability: 'Ouvert aux opportunités en IA, ML & data',
       contactText: 'Je recherche un poste d’ingénieur en IA, machine learning ou data, avec une équipe attentive à la qualité des données, à l’évaluation et à l’usage des solutions.'
@@ -28,9 +28,9 @@ export const profiles = {
     en: {
       title: 'Charbel Dib — AI Engineer · Professional Portfolio',
       description: 'RAG, AI agents, machine learning and data: projects, experience and results from Charbel Dib, an ENSTA engineering graduate.',
-      label: 'Professional', overline: 'AI & data engineering',
+      label: 'Professional', overline: 'AI engineer · RAG, agents & machine learning',
       hero: 'From data to a solution people can use.',
-      heroNote: 'Document retrieval, predictive models, APIs and agents: I connect technical decisions to a need, then check what the system can actually do.',
+      heroNote: 'Evaluated models, APIs and interfaces that make AI usable.',
       selectedDesc: 'From an evaluated model to a usable prototype: three projects, their technical decisions and their limits.',
       availability: 'Open to AI, ML & data opportunities',
       contactText: 'I’m looking for an AI, machine learning or data engineering role with a team that values data quality, evaluation and the way people use its solutions.'
@@ -43,7 +43,7 @@ export const profiles = {
       description: 'Publication IEEE en premier auteur, stages de recherche chez CESI/LINEACT et Astek : machine learning, RAG et évaluation expérimentale.',
       label: 'Recherche', overline: 'Recherche en intelligence artificielle',
       hero: 'Comprendre ce qu’un modèle apprend. Mesurer ce qu’il apporte.',
-      heroNote: 'Deux terrains d’étude : la prédiction de qualité en fabrication additive et la vérification d’informations climatiques. Un même intérêt pour les données, la comparaison des méthodes et l’analyse des erreurs.',
+      heroNote: 'Machine learning en fabrication additive et évaluation de systèmes RAG.',
       availability: 'Ouvert aux opportunités de doctorat en IA', discover: 'Découvrir mes travaux',
       all: 'Les projets, en complément',
       allDesc: 'Les mêmes travaux et réalisations, avec la recherche en premier. Les prototypes montrent aussi ma capacité à mettre une méthode en œuvre.',
@@ -64,7 +64,7 @@ export const profiles = {
       description: 'First-author IEEE publication and research internships at CESI/LINEACT and Astek: machine learning, RAG and experimental evaluation.',
       label: 'Research', overline: 'Artificial intelligence research',
       hero: 'Understand what a model learns. Measure what it contributes.',
-      heroNote: 'Two areas of study: quality prediction in additive manufacturing and climate fact-checking. A shared interest in data, method comparison and error analysis.',
+      heroNote: 'Machine learning for additive manufacturing and evaluation of RAG systems.',
       availability: 'Open to PhD opportunities in AI', discover: 'Explore my research',
       all: 'Projects beyond the studies',
       allDesc: 'The same work and projects, with research first. The prototypes also demonstrate my ability to implement a method.',

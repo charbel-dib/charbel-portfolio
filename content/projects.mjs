@@ -1,15 +1,30 @@
 // Public editorial content. Technical claims are tied to the sources below.
+export const fleetguardMetrics = {
+  observations: 16000, recall: 95.73, precision: 43.05,
+  missedFailures: 16, falseAlerts: 475, missedFailureCost: 500, falseAlertCost: 10
+};
+const totalCost = fleetguardMetrics.missedFailures * fleetguardMetrics.missedFailureCost
+  + fleetguardMetrics.falseAlerts * fleetguardMetrics.falseAlertCost;
+export function fleetguardResult(lang) {
+  const number = value => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB').format(value);
+  const m = fleetguardMetrics;
+  return lang === 'fr'
+    ? `Sur les ${number(m.observations)} observations du test officiel : ${number(m.recall)} % de rappel, ${number(m.precision)} % de précision, ${number(m.missedFailures)} défaillances APS manquées et ${number(m.falseAlerts)} fausses alertes. Coût total : ${number(totalCost)} unités du challenge. Ces résultats sont consignés dans la model card du dépôt.`
+    : `On the ${number(m.observations)}-row official test: ${number(m.recall)}% recall, ${number(m.precision)}% precision, ${number(m.missedFailures)} missed APS failures and ${number(m.falseAlerts)} false alarms. Total cost: ${number(totalCost)} challenge units. These results are recorded in the repository’s model card.`;
+}
 export const projects = [
   {
-    slug: 'fleetguard', name: 'FleetGuard', year: '2026', category: 'ml', kind: {fr:'Projet personnel · ML appliqué',en:'Personal project · Applied ML'},
+    slug: 'fleetguard', name: {fr:'FleetGuard',en:'FleetGuard'}, year: '2026', category: 'ml', kind: {fr:'Projet personnel · ML appliqué',en:'Personal project · Applied ML'},
+    descriptor: {fr:'Classification de défaillances guidée par les coûts',en:'Cost-aware failure classification'},
+    metrics: fleetguardMetrics,
     status: {fr:'Modèle évalué · API & interface',en:'Evaluated model · API & interface'},
     headline: {fr:'Une panne manquée coûte plus qu’une fausse alerte.',en:'A missed failure costs more than a false alarm.'},
     summary: {fr:'Classifier les défaillances APS de camions Scania, choisir un seuil selon le coût des erreurs, puis rendre la décision inspectable dans une application.',en:'Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application.'},
-    tags:['Python','XGBoost','scikit-learn','FastAPI','React'],
+    tags:{fr:['Python','XGBoost','scikit-learn','FastAPI','React'],en:['Python','XGBoost','scikit-learn','FastAPI','React']},
     role: {fr:'Conception du pipeline ML, protocole d’évaluation, API et interface de consultation.',en:'ML pipeline, evaluation protocol, API and review interface.'},
     problem: {fr:'Sur un jeu déséquilibré, un bon taux d’exactitude peut masquer les défaillances les plus coûteuses. Le défi Scania attribue un coût de 10 à une fausse alerte et de 500 à une panne APS manquée. C’est ce compromis qui doit guider la décision.',en:'On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure. That trade-off should drive the decision.'},
     decisions: {fr:[['Évaluer avant d’optimiser','Baselines explicites, partitions par groupes de doublons et séparation des rôles d’entraînement, de calibration et de choix du seuil.'],['Figer une décision complète','Le modèle, le prétraitement, la calibration et le seuil sont enregistrés ensemble. Le test officiel est évalué après ce gel.'],['Rendre le modèle utilisable','API FastAPI, revue de lots CSV et interface React. Les scores et les données manquantes restent visibles pour interpréter une décision.']],en:[['Evaluate before optimising','Explicit baselines, duplicate-aware group splits, and separate fitting, calibration and threshold-selection roles.'],['Freeze the entire decision','Model, preprocessing, calibration and threshold are recorded together. The official test is evaluated after that freeze.'],['Make the model usable','FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.']]},
-    result: {fr:'Sur les 16 000 observations du test officiel : 95,73 % de rappel, 43,05 % de précision, 16 défaillances APS manquées et 475 fausses alertes. Coût total : 12 750 unités du challenge. Ces résultats sont consignés dans la model card du dépôt.',en:'On the 16,000-row official test: 95.73% recall, 43.05% precision, 16 missed APS failures and 475 false alarms. Total cost: 12,750 challenge units. These results are recorded in the repository’s model card.'},
+    result: {fr:fleetguardResult('fr'),en:fleetguardResult('en')},
     value: {fr:'Relier une métrique ML à une décision opérationnelle, sans dissimuler le prix à payer en fausses alertes.',en:'Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.'},
     limit: {fr:'Classification sur un jeu public anonymisé, pas prévision d’une panne future. Les résultats ne valident pas un usage en flotte réelle. L’infrastructure AWS est préparée dans le dépôt ; un déploiement AWS effectif n’est pas établi par le rapport consulté.',en:'Classification on an anonymised public dataset, not a forecast of future failures. Results do not validate use on a real fleet. AWS infrastructure is prepared in the repository; the inspected report does not establish an actual AWS deployment.'},
     links:[{label:{fr:'Code source',en:'Source code'},url:'https://github.com/charbel-dib/fleetguard'},{label:{fr:'Résultats & model card',en:'Results & model card'},url:'https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md'}],
@@ -17,11 +32,12 @@ export const projects = [
     caption:{fr:'Capture de l’interface publiée dans le dépôt FleetGuard.',en:'Interface screenshot published in the FleetGuard repository.'}
   },
   {
-    slug:'posaidon',name:'PosAIdon',year:'2025',category:'agents',kind:{fr:'Projet d’équipe · Hackathon SPASEA',en:'Team project · SPASEA hackathon'},
+    slug:'posaidon',name:{fr:'PosAIdon',en:'PosAIdon'},year:'2025',category:'agents',kind:{fr:'Projet d’équipe · Hackathon SPASEA',en:'Team project · SPASEA hackathon'},
+    descriptor:{fr:'Copilote maritime multi-sources',en:'Maritime copilot combining multiple sources'},
     status:{fr:'1er prix · SPASEA 2025',en:'1st prize · SPASEA 2025'},
     headline:{fr:'Voir ce qu’un signal seul ne raconte pas.',en:'See what a single signal cannot reveal.'},
     summary:{fr:'Un copilote maritime qui croise les trajectoires AIS, les signaux RF et les informations satellites pour aider à comprendre une situation suspecte.',en:'A maritime copilot combining AIS tracks, RF signals and satellite information to help make sense of suspicious activity.'},
-    tags:['Agents IA','AIS','RF','Fusion de données'],
+    tags:{fr:['Agents IA','AIS','RF','Fusion de données'],en:['AI agents','AIS','RF','Data fusion']},
     role:{fr:'Contribution aux outils agentiques, à la corrélation multi-sources et aux rapports d’aide à la décision, au sein de l’équipe PosAIdon.',en:'Contributed agent tools, multi-source correlation and decision-support reports as part of the PosAIdon team.'},
     problem:{fr:'Un navire qui ne transmet plus sa position AIS n’est pas nécessairement suspect. L’enjeu est de croiser plusieurs observations pour fournir à un opérateur une situation explicable, plutôt qu’une alerte isolée.',en:'A vessel that stops transmitting its AIS position is not necessarily suspicious. The challenge is to combine observations into an explainable situation for an operator, rather than an isolated alert.'},
     decisions:{fr:[['Croiser les observations','Exploiter les trajectoires AIS, les signaux radiofréquences et les éphémérides satellites à travers des outils dédiés.'],['Donner une place à l’opérateur','Une interface de type assistant permet d’interroger la situation et d’obtenir une synthèse des éléments analysés.'],['Livrer en équipe et sous contrainte','Concentrer le prototype sur un scénario démontrable et présenter l’approche à un jury technique et opérationnel.']],en:[['Combine observations','Use dedicated tools for AIS tracks, radio-frequency signals and satellite ephemerides.'],['Keep the operator involved','An assistant-style interface supports questions about the situation and summarises the analysed evidence.'],['Deliver together under time pressure','Focus the prototype on a demonstrable scenario and present the approach to a technical and operational jury.']]},
@@ -33,11 +49,12 @@ export const projects = [
     caption:{fr:'L’équipe PosAIdon, lauréate de SPASEA 2025. Photo publiée par l’ENSTA.',en:'The PosAIdon team, SPASEA 2025 winners. Photo published by ENSTA.'}
   },
   {
-    slug:'servicepilot',name:'ServicePilot',year:'2026',category:'agents',kind:{fr:'Projet personnel · Agents & backend',en:'Personal project · Agents & backend'},
+    slug:'servicepilot',name:{fr:'ServicePilot',en:'ServicePilot'},year:'2026',category:'agents',kind:{fr:'Projet personnel · Agents & backend',en:'Personal project · Agents & backend'},
+    descriptor:{fr:'Agent de support avec validation humaine',en:'Support agent with human approval'},
     status:{fr:'Prototype exécutable · SDK Python',en:'Runnable prototype · Python SDK'},
     headline:{fr:'L’agent propose. L’humain garde la main.',en:'The agent proposes. The human stays in control.'},
     summary:{fr:'Un assistant de support qui rapproche procédures, état des services et incidents, puis demande une validation explicite avant de créer un ticket.',en:'A support assistant that combines procedures, service health and incidents, then requires explicit approval before creating a ticket.'},
-    tags:['LangGraph','FastAPI','SQLite','FAISS','Java'],
+    tags:{fr:['LangGraph','FastAPI','SQLite','FAISS','Java'],en:['LangGraph','FastAPI','SQLite','FAISS','Java']},
     role:{fr:'Conception du SDK Python, du workflow agentique, des connecteurs et du parcours de validation.',en:'Python SDK, agent workflow, connectors and approval experience.'},
     problem:{fr:'Répondre à une question de support demande souvent de consulter plusieurs outils. Donner à un agent le droit d’écrire dans ces outils introduit une autre question : qui autorise exactement quelle action ?',en:'Answering a support question often requires multiple tools. Giving an agent write access introduces another question: who authorises exactly which action?'},
     decisions:{fr:[['Trois outils de lecture','Recherche de procédures autorisées, consultation d’une API de statut et recherche d’incidents. Le modèle n’a pas d’outil direct de création de ticket.'],['Une proposition avant l’action','Le contenu proposé est figé, associé à un propriétaire, à une empreinte et à une expiration. Le serveur vérifie la validation et les droits au moment de l’écriture.'],['Un workflow que l’on peut reprendre','LangGraph et SQLite conservent l’état. La création du ticket est idempotente, pour éviter les doublons lors d’une reprise.']],en:[['Three read-only tools','Search authorised procedures, call a status API and retrieve incidents. The model has no direct ticket-creation tool.'],['A proposal before an action','The proposed content is frozen and linked to an owner, digest and expiry. The server checks approval and permissions when writing.'],['A resumable workflow','LangGraph and SQLite persist state. Ticket creation is idempotent to avoid duplicates on resumption.']]},
@@ -47,10 +64,11 @@ export const projects = [
     links:[{label:{fr:'Code source',en:'Source code'},url:'https://github.com/charbel-dib/servicepilot'},{label:{fr:'Architecture & limites',en:'Architecture & limits'},url:'https://github.com/charbel-dib/servicepilot/blob/main/docs/architecture.md'}]
   },
   {
-    slug:'fact-checking',name:'Fact-checking climatique',year:'2026',category:'rag',kind:{fr:'Astek Innovation Lab · Stage R&D',en:'Astek Innovation Lab · R&D internship'},status:{fr:'Stage de fin d’études',en:'Final-year internship'},
+    slug:'fact-checking',name:{fr:'Fact-checking climatique',en:'Climate fact-checking'},year:'2026',category:'rag',kind:{fr:'Astek Innovation Lab · Stage R&D',en:'Astek Innovation Lab · R&D internship'},status:{fr:'Stage de fin d’études',en:'Final-year internship'},
+    descriptor:{fr:'Évaluation d’un pipeline RAG, étape par étape',en:'Stage-by-stage evaluation of a RAG pipeline'},
     headline:{fr:'Une réponse vaut ce que valent ses preuves.',en:'An answer is only as good as its evidence.'},
     summary:{fr:'Conception et évaluation d’un pipeline RAG de vérification de déclarations climatiques, du passage retrouvé à la classification finale.',en:'Design and evaluation of a RAG pipeline for climate claims, from retrieved passages to final classification.'},
-    tags:['RAG','DPR + BM25','Reranking','Phi-3','Évaluation'],
+    tags:{fr:['RAG','DPR + BM25','Reranking','Phi-3','Évaluation'],en:['RAG','DPR + BM25','Reranking','Phi-3','Evaluation']},
     role:{fr:'Segmentation, recherche d’information, extraction de preuves et évaluation du pipeline pendant mon stage de fin d’études.',en:'Chunking, information retrieval, evidence extraction and pipeline evaluation during my final-year internship.'},
     problem:{fr:'Trouver le bon document ne suffit pas : le système doit retrouver le bon passage, en extraire une preuve pertinente et classifier la déclaration sans amplifier les erreurs des étapes précédentes.',en:'Finding the right document is not enough: the system must retrieve the right passage, extract relevant evidence and classify the claim without amplifying upstream errors.'},
     decisions:{fr:[['Comparer les unités de recherche','Benchmark de stratégies de segmentation, recherche hybride DPR + BM25 et comparaison de rerankers.'],['Séparer les erreurs du pipeline','Évaluer la recherche, l’extraction et la classification pour comprendre à quelle étape la qualité se dégrade.'],['Rendre les expériences reproductibles','Protocoles communs, métriques de retrieval et de classification, expériences GPU avec Docker, cache et logs.']],en:[['Compare retrieval units','Benchmark chunking strategies, DPR + BM25 hybrid retrieval and rerankers.'],['Separate pipeline errors','Evaluate retrieval, extraction and classification to identify where quality deteriorates.'],['Make experiments reproducible','Shared protocols, retrieval and classification metrics, GPU experiments with Docker, caching and logs.']]},
@@ -60,11 +78,12 @@ export const projects = [
     links:[{label:{fr:'Mon CV',en:'My résumé'},url:'assets/CV_Charbel_Dib.pdf',local:true}]
   },
   {
-    slug:'ensta-assistant',name:'Assistant ENSTA',year:'2026',category:'rag',kind:{fr:'Projet académique · Assistant documentaire',en:'Academic project · Document assistant'},
+    slug:'ensta-assistant',name:{fr:'Assistant ENSTA',en:'ENSTA assistant'},year:'2026',category:'rag',kind:{fr:'Projet académique · Assistant documentaire',en:'Academic project · Document assistant'},
+    descriptor:{fr:'Réponses documentaires bilingues et sourcées',en:'Bilingual answers with source citations'},
     status:{fr:'Prototype · Corpus web, PDF & XLSX',en:'Prototype · Web, PDF & XLSX corpus'},
     headline:{fr:'Retrouver l’information, et pouvoir la vérifier.',en:'Find the information, then verify it.'},
     summary:{fr:'Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante.',en:'A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately.'},
-    tags:['FastAPI','FAISS','multilingual-E5','Python'],
+    tags:{fr:['FastAPI','FAISS','multilingual-E5','Python'],en:['FastAPI','FAISS','multilingual-E5','Python']},
     role:{fr:'Pipeline documentaire, service de réponse, gestion des sessions et intégration web.',en:'Document pipeline, answer service, session management and web integration.'},
     problem:{fr:'Les informations d’un campus sont réparties entre pages web, PDF et tableaux. Il faut les rendre interrogeables tout en conservant les sources et en tenant compte de leur mise à jour.',en:'Campus information is spread across webpages, PDFs and spreadsheets. It needs to become searchable while retaining source references and handling updates.'},
     decisions:{fr:[['Un pipeline distinct du service','Collecter, nettoyer, segmenter et indexer les documents en amont du service de réponse.'],['Des sources dans la réponse','Embeddings multilingual-E5, index FAISS, seuil de recherche et citations pour rattacher la réponse aux documents.'],['Prévoir le renouvellement du corpus','Reconstruction quotidienne du corpus web et rechargement de l’index sans redémarrer le service.']],en:[['Separate ingestion from serving','Collect, clean, chunk and index documents upstream of the answering service.'],['Keep sources in the answer','Multilingual-E5 embeddings, a FAISS index, retrieval threshold and citations connect answers to documents.'],['Account for corpus updates','Daily web-corpus rebuild and index reloading without restarting the service.']]},
@@ -74,11 +93,12 @@ export const projects = [
     links:[{label:{fr:'Code source',en:'Source code'},url:'https://github.com/charbel-dib/ensta_chatbot'}]
   },
   {
-    slug:'atlas',name:'ATLAS',year:'2026',category:'data',kind:{fr:'Projet personnel · Données financières',en:'Personal project · Financial data'},
+    slug:'atlas',name:{fr:'ATLAS',en:'ATLAS'},year:'2026',category:'data',kind:{fr:'Projet personnel · Données financières',en:'Personal project · Financial data'},
+    descriptor:{fr:'Collecte SEC et provenance des documents',en:'SEC ingestion and document provenance'},
     status:{fr:'En cours · Fondations d’ingestion',en:'In progress · Ingestion foundations'},
     headline:{fr:'Avant de répondre, construire une source fiable.',en:'Before answering, build a reliable source.'},
     summary:{fr:'Les fondations d’un assistant d’analyse d’entreprises : collecte des documents SEC, suivi des métadonnées et stockage structuré.',en:'Foundations for a company-analysis assistant: SEC document collection, metadata tracking and structured storage.'},
-    tags:['Python','SEC EDGAR','SQLAlchemy','Alembic'],
+    tags:{fr:['Python','SEC EDGAR','SQLAlchemy','Alembic'],en:['Python','SEC EDGAR','SQLAlchemy','Alembic']},
     role:{fr:'Développement de la couche d’ingestion et du modèle de données.',en:'Development of the ingestion layer and data model.'},
     problem:{fr:'Analyser une entreprise suppose de relier les chiffres à leurs documents d’origine. Avant la génération d’une réponse, il faut savoir quel document a été collecté, pour quelle entreprise et à quelle date.',en:'Company analysis requires linking figures to their original documents. Before generating an answer, the system must know which document was collected, for which company and on what date.'},
     decisions:{fr:[['Partir des documents officiels','Client SEC, ingestion des métadonnées des filings et téléchargement des documents.'],['Structurer la provenance','Modèles de données, identifiants de dépôt, contraintes d’unicité et migrations de schéma.'],['Vérifier les composants de collecte','Tests du téléchargement et du parsing pour construire une base avant d’ajouter une couche d’assistance.']],en:[['Start with official documents','SEC client, filing metadata ingestion and document downloads.'],['Structure provenance','Data models, filing identifiers, uniqueness constraints and schema migrations.'],['Check ingestion components','Downloader and parser tests establish a foundation before adding the assistant layer.']]},
@@ -88,11 +108,12 @@ export const projects = [
     links:[{label:{fr:'Explorer le dépôt',en:'Explore the repository'},url:'https://github.com/charbel-dib/atlas-ai'}]
   },
   {
-    slug:'lpbf',name:'Qualité en fabrication additive',year:'2025–26',category:'ml',kind:{fr:'CESI / LINEACT · Recherche',en:'CESI / LINEACT · Research'},
+    slug:'lpbf',name:{fr:'Qualité en fabrication additive',en:'Quality in additive manufacturing'},year:'2025–26',category:'ml',kind:{fr:'CESI / LINEACT · Recherche',en:'CESI / LINEACT · Research'},
+    descriptor:{fr:'Apprentissage et prédiction de densité relative',en:'Learning to predict relative density'},
     status:{fr:'Publication IEEE · Premier auteur',en:'IEEE publication · First author'},
     headline:{fr:'Relier les paramètres de fabrication à la qualité.',en:'Connect manufacturing parameters to quality.'},
     summary:{fr:'Machine learning et clustering pour étudier la densité relative de pièces obtenues par fusion laser sur lit de poudre.',en:'Machine learning and clustering to study the relative density of parts made with laser powder bed fusion.'},
-    tags:['Machine learning','Clustering','L-PBF','Recherche'],
+    tags:{fr:['Machine learning','Clustering','L-PBF','Recherche'],en:['Machine learning','Clustering','L-PBF','Research']},
     role:{fr:'Construction de la base expérimentale, comparaison de modèles et analyse des configurations pendant mon stage au CESI / LINEACT.',en:'Experimental database construction, model comparison and configuration analysis during my CESI / LINEACT internship.'},
     problem:{fr:'Les paramètres du procédé L-PBF influencent la densité relative et la porosité des pièces. L’objectif est d’étudier ces relations à partir de données expérimentales et de modèles prédictifs.',en:'L-PBF process parameters affect part relative density and porosity. The goal is to study those relationships using experimental data and predictive models.'},
     decisions:{fr:[['Construire la base d’étude','Structurer les observations expérimentales et les paramètres du procédé.'],['Comparer les approches','Étudier des modèles de machine learning et le clustering des configurations de fabrication.'],['Formaliser les résultats','Contribuer à un article scientifique en premier auteur, avec Rima Hleiss.']],en:[['Build the study dataset','Structure experimental observations and process parameters.'],['Compare approaches','Study machine learning models and clusters of manufacturing configurations.'],['Formalise the findings','Contribute a first-author research paper with Rima Hleiss.']]},

@@ -17,6 +17,7 @@ try {
  page.on('response',r=>{if(r.status()>=400&&!r.url().endsWith('/missing/deep/page'))errors.push(`${r.status()} ${r.url()}`);});
  await page.goto(base,{waitUntil:'networkidle'});
  assert.equal(await page.locator('h1').innerText(),'Charbel Dib.');checks++;
+ assert.ok(await page.locator('.project-visual').first().evaluate(el=>el.getBoundingClientRect().top)<800,'First project should appear in the opening desktop viewport');checks++;
  await page.screenshot({path:reports+'desktop.png',fullPage:true});
  await page.screenshot({path:reports+'desktop-fold.png'});
  await page.locator('#projects').screenshot({path:reports+'selected-work.png'});
@@ -50,11 +51,43 @@ try {
  await page.goto(base+'/projects/servicepilot.html');await page.screenshot({path:reports+'servicepilot.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});await page.goto(base);
  assert.equal(await page.locator('#main-nav').isVisible(),false);checks++;
- await page.locator('.menu-button').click();assert.equal(await page.locator('#main-nav').isVisible(),true);checks++;
- await page.keyboard.press('Escape');assert.equal(await page.locator('#main-nav').isVisible(),false);checks++;
+ assert.ok(await page.locator('.project-visual').first().evaluate(el=>el.getBoundingClientRect().top)<800,'First project should appear in the opening mobile viewport');checks++;
+ const heroTop=await page.locator('.hero').evaluate(el=>el.getBoundingClientRect().top);
+ await page.locator('.menu-button').click();await expect(page.locator('#main-nav')).toBeVisible();checks++;
+ assert.equal(await page.locator('.hero').evaluate(el=>el.getBoundingClientRect().top),heroTop);checks++;
+ await page.keyboard.press('Escape');await expect(page.locator('#main-nav')).toBeHidden();checks++;
  assert.equal(await page.locator('.menu-button').evaluate(el=>el===document.activeElement),true);checks++;
  await page.locator('.menu-button').click();await page.locator('#main-nav a[href$="#projects"]').click();
- assert.equal(await page.locator('#main-nav').isVisible(),false);checks++;
+ await expect(page.locator('#main-nav')).toBeHidden();checks++;
+ await page.locator('[data-filter="agents"]').click();
+ await expect(page.getByRole('status').filter({hasText:'2 projets affichés'})).toBeVisible();checks++;
+ assert.match(await page.locator('.filter-count').ariaSnapshot(),/2 projets affichés/);checks++;
+ for(const target of await page.locator('.menu-button, .locale, .identity, .filters button').all()) {
+  const box=await target.boundingBox();assert.ok(box.height>=44&&box.width>=44,'Touch control smaller than 44px');checks++;
+ }
+ await page.goto(base+'/recherche/');
+ await page.locator('.row-title a[href*="fleetguard.html"]').click();
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'research');checks++;
+ assert.match(await page.locator('.back-link').getAttribute('href'),/recherche\/index.html#project-index$/);checks++;
+ await page.locator('.locale').click();
+ assert.equal(new URL(page.url()).searchParams.get('profile'),'research');checks++;
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'research');checks++;
+ await page.locator('[data-next-project]').click();
+ assert.equal(new URL(page.url()).pathname,'/en/projects/posaidon.html');checks++;
+ assert.equal(new URL(page.url()).searchParams.get('profile'),'research');checks++;
+ await page.locator('.back-link').click();
+ assert.equal(new URL(page.url()).pathname,'/en/research/index.html');checks++;
+ assert.equal(new URL(page.url()).hash,'#project-index');checks++;
+ await page.goto(base+'/pro/');
+ await page.locator('.row-title a[href*="lpbf.html"]').click();
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
+ await page.locator('.locale').click();
+ assert.match(await page.locator('h1').innerText(),/Quality in additive manufacturing/);checks++;
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
+ await page.locator('[data-next-project]').click();
+ assert.equal(new URL(page.url()).pathname,'/en/projects/fleetguard.html');checks++;
+ await page.goto(base+'/projects/atlas.html?profile=invalid');
+ assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  await page.goto(base);await page.screenshot({path:reports+'mobile.png',fullPage:true});
  const paths=['/','/en/index.html','/pro/','/recherche/','/en/pro/','/en/research/',...projects.flatMap(p=>[`/projects/${p.slug}.html`,`/en/projects/${p.slug}.html`])];
  for(const width of [320,390,768,1440]){
@@ -64,6 +97,10 @@ try {
    const result=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,broken:[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.src)}));
    assert.ok(result.scroll<=result.width+1,`Overflow at ${width}: ${path} (${result.scroll})`);checks++;
    assert.deepEqual(result.broken,[],`Broken images: ${path}`);checks++;
+   await page.evaluate(()=>{document.documentElement.style.fontSize='200%';});
+   const enlarged=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,font:getComputedStyle(document.documentElement).fontSize}));
+   assert.equal(enlarged.font,'32px');
+   assert.ok(enlarged.scroll<=enlarged.width+1,`Enlarged text overflow at ${width}: ${path} (${enlarged.scroll})`);checks++;
   }
  }
  await page.emulateMedia({reducedMotion:'reduce'});await page.goto(base);
@@ -71,10 +108,14 @@ try {
  const response=await context.request.get(base+'/assets/CV_Charbel_Dib.pdf');assert.equal(response.status(),200);assert.equal((await response.body()).subarray(0,4).toString(),'%PDF');checks++;
  const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const plain=await nojs.newPage();await plain.goto(base);
  assert.equal(await plain.locator('.project-row:visible').count(),7);assert.equal(await plain.locator('#main-nav').isVisible(),true);checks+=2;
+ await plain.goto(base+'/projects/fleetguard.html?profile=research');
+ assert.equal(await plain.locator('.profile-nav a').count(),2);checks++;
+ assert.ok(await plain.getByRole('link',{name:'Recherche',exact:true}).isVisible());checks++;
  const missing=await page.goto(base+'/missing/deep/page');assert.equal(missing.status(),404);checks++;
- assert.equal(await page.locator('h1').innerText(),'Cette page a changé d’adresse.');checks++;
+ assert.equal(await page.locator('h1').innerText(),'Page introuvable.');checks++;
+ assert.ok(await page.getByRole('link',{name:'Open the English portfolio'}).isVisible());checks++;
  assert.equal(await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgba(0, 0, 0, 0)');
- await page.getByRole('link',{name:'Revenir au portfolio'}).click();assert.equal(new URL(page.url()).pathname,'/index.html');checks++;
+ await page.getByRole('link',{name:'Revenir au portfolio'}).click();assert.equal(new URL(page.url()).pathname,'/pro/index.html');checks++;
  assert.deepEqual(errors,[]);
- console.log(`PASS: ${checks} checks. FR/EN pages, filters, menu, Escape/focus, clipboard, profile/language switching, publication, certificate, CV, no-JS, reduced motion and 320–1440px overflow. No browser errors.`);
+ console.log(`PASS: ${checks} checks. FR/EN pages, profile context through cases/languages/return, accessible filters, stable menu, touch targets, clipboard, publication, PDFs, no-JS, reduced motion and 320–1440px overflow at normal and 200% text. No browser errors.`);
 } finally {await browser.close();}

@@ -1,5 +1,7 @@
 # Sources éditoriales
 
+Révision de présentation du 17 octobre 2026 : les noms et tags ont été localisés ; les schémas reformulent les démarches déjà décrites ci-dessous. Aucun résultat expérimental, déploiement ou nouvelle source externe n’a été ajouté. Les métriques FleetGuard sont désormais structurées dans un objet commun et leur coût est calculé à partir des valeurs documentées.
+
 Consultation : 16 octobre 2026. Les chiffres sont attribués au document qui les publie ; cette refonte ne réexécute pas les entraînements ML ou les évaluations des projets sous-jacents.
 
 | Sujet | Source | Utilisation |
