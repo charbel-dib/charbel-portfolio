@@ -1,17 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FleetGuard — Charbel Dib</title><meta name="description" content="Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application.">
-<meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
-<link rel="canonical" href="https://charbel-dib.vercel.app/en/projects/fleetguard.html"><link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/fleetguard.html"><link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/fleetguard.html">
-<meta property="og:type" content="website"><meta property="og:title" content="FleetGuard — Charbel Dib"><meta property="og:description" content="Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application."><meta property="og:url" content="https://charbel-dib.vercel.app/en/projects/fleetguard.html"><meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../styles.css"><script src="../../script.js" defer></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FleetGuard — Charbel Dib</title><meta name="description" content="Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application.">
+  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://charbel-dib.vercel.app/en/projects/fleetguard.html">
+  <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/fleetguard.html">
+  <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/fleetguard.html">
+  <meta property="og:type" content="website"><meta property="og:title" content="FleetGuard — Charbel Dib">
+  <meta property="og:description" content="Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application."><meta property="og:url" content="https://charbel-dib.vercel.app/en/projects/fleetguard.html">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-en-pro.png">
+  <meta property="og:image:alt" content="Charbel Dib — Professional · AI engineer">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css"><script src="../../script.js" defer></script>
 </head>
-<body id="top" data-profile="pro">
-<a class="skip" href="#main">Skip to content</a>
-<header class="header"><div class="wrap header-inner"><a class="identity" href="../pro/index.html" aria-label="Charbel Dib"><span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button><nav id="main-nav" aria-label="Main navigation"><a href="../pro/index.html#projects">Projects</a><a href="../pro/index.html#about">Background</a><a href="../pro/index.html#contact">Contact</a></nav><a class="locale" href="../../projects/fleetguard.html" lang="fr" hreflang="fr" aria-label="Français">FR <span aria-hidden="true">↗</span></a></div></header>
-<div class="profile-bar"><div class="wrap profile-inner"><p>Two perspectives on my work</p><nav class="profile-nav" aria-label="Choose a profile"><a href="../pro/index.html">Professional<span aria-hidden="true">↗</span></a><a href="../research/index.html">Research<span aria-hidden="true">↗</span></a></nav></div></div>
-<main id="main" class="case-main"><section class="wrap case-hero"><a class="back-link" href="../pro/index.html#projects">← All projects</a><p class="eyebrow">CASE STUDY / 01 · Personal project · Applied ML</p><div class="case-title-line"><h1>FleetGuard<span>.</span></h1><span class="case-year">2026</span></div><p class="case-headline">A missed failure costs more than a false alarm.</p><p class="case-summary">Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application.</p><div class="case-meta"><div><span class="eyebrow">Context</span><p>Evaluated model · API & interface</p></div><div><span class="eyebrow">My contribution</span><p>ML pipeline, evaluation protocol, API and review interface.</p></div></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div></section><div class="wrap"><figure class="case-visual case-interface"><img src="../../assets/fleetguard.webp" alt="FleetGuard interface: batch upload and frozen model information." width="1440" height="1280"><figcaption>Interface screenshot published in the FleetGuard repository.</figcaption></figure></div><div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#results">What the project delivers</a><a href="#limits">Scope & limits</a><ul class="tags"><li>Python</li><li>XGBoost</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul></nav><div class="case-body"><section id="problem"><p class="eyebrow">01 / The problem</p><h2>A missed failure costs more than a false alarm.</h2><p>On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure. That trade-off should drive the decision.</p></section><section id="choices"><p class="eyebrow">02 / Technical decisions</p><article class="decision"><span>01</span><div><h3>Evaluate before optimising</h3><p>Explicit baselines, duplicate-aware group splits, and separate fitting, calibration and threshold-selection roles.</p></div></article><article class="decision"><span>02</span><div><h3>Freeze the entire decision</h3><p>Model, preprocessing, calibration and threshold are recorded together. The official test is evaluated after that freeze.</p></div></article><article class="decision"><span>03</span><div><h3>Make the model usable</h3><p>FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.</p></div></article></section><section id="results"><p class="eyebrow">03 / What the project delivers</p><p class="result-text">On the 16,000-row official test: 95.73% recall, 43.05% precision, 16 missed APS failures and 475 false alarms. Total cost: 12,750 challenge units. These results are recorded in the repository’s model card.</p><div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div></section><section id="limits" class="limits"><p class="eyebrow">04 / Scope & limits</p><p>Classification on an anonymised public dataset, not a forecast of future failures. Results do not validate use on a real fleet. AWS infrastructure is prepared in the repository; the inspected report does not establish an actual AWS deployment.</p></section></div></div><a class="wrap next-project" href="posaidon.html"><span class="eyebrow">Next project</span><span>PosAIdon <span aria-hidden="true">↗</span></span></a></main>
-<footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Designed to show the work.</span><a href="#top">Back to top ↑</a></footer>
+<body id="top" data-profile="pro" data-page="case">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" aria-label="Charbel Dib">
+        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="projects">Projects</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="about">Background</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="contact">Contact</a>
+      </nav>
+      <a class="locale" href="../../projects/fleetguard.html?profile=pro" lang="fr" hreflang="fr" aria-label="Français">FR <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <div class="profile-bar"><div class="wrap profile-inner">
+    <p>Explore my work</p>
+    <nav class="profile-nav" aria-label="Choose a profile">
+      <a href="../pro/index.html" data-profile-choice="pro" aria-current="page">Professional</a><a href="../research/index.html" data-profile-choice="research">Research</a>
+    </nav>
+  </div></div>
+  <main id="main" class="case-main">
+    <section class="wrap case-hero" aria-labelledby="case-title">
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../research/index.html">← All projects</a>
+      <p class="eyebrow">Personal project · Applied ML · 2026</p>
+      <h1 id="case-title">FleetGuard<span>.</span></h1>
+      <p class="case-headline">A missed failure costs more than a false alarm.</p><p class="case-summary">Classify APS failures in Scania trucks, choose a threshold based on error costs, and make the decision inspectable in an application.</p>
+      <dl class="case-meta"><div><dt>Context</dt><dd>Evaluated model · API & interface</dd></div><div><dt>My contribution</dt><dd>ML pipeline, evaluation protocol, API and review interface.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div>
+    </section><div class="wrap case-artifact"><figure class="case-visual case-interface"><img src="../../assets/fleetguard.webp" alt="FleetGuard interface: batch upload and frozen model information." width="1440" height="1280"><figcaption>Interface screenshot published in the FleetGuard repository.</figcaption></figure></div>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#results">What the project delivers</a><a href="#limits">Scope & limits</a><ul class="tags"><li>Python</li><li>XGBoost</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul></nav>
+      <div class="case-body">
+        <section id="problem"><p class="eyebrow" aria-hidden="true">01</p><h2>The problem</h2><p>On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure. That trade-off should drive the decision.</p></section>
+        <section id="choices"><p class="eyebrow" aria-hidden="true">02</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Evaluate before optimising</h3><p>Explicit baselines, duplicate-aware group splits, and separate fitting, calibration and threshold-selection roles.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Freeze the entire decision</h3><p>Model, preprocessing, calibration and threshold are recorded together. The official test is evaluated after that freeze.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Make the model usable</h3><p>FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.</p></div></article></section>
+        <section id="results"><p class="eyebrow" aria-hidden="true">03</p><h2>What the project delivers</h2><p>On the 16,000-row official test: 95.73% recall, 43.05% precision, 16 missed APS failures and 475 false alarms. Total cost: 12,750 challenge units. These results are recorded in the repository’s model card.</p>
+          <div class="result-panel">
+    <p class="eyebrow">THE MEASURED TRADE-OFF</p>
+    <dl class="result-stats">
+      <div><dt>Missed failures</dt><dd>16</dd></div>
+      <div><dt>False alerts</dt><dd>475</dd></div>
+      <div><dt>Challenge cost</dt><dd>12,750</dd></div>
+    </dl>
+    <p>Official test · 16,000 observations. A missed failure costs 500 units; a false alert, 10.</p>
+    <a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a>
+  </div>
+          <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div>
+        </section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">04</p><h2>Scope & limits</h2><p>Classification on an anonymised public dataset, not a forecast of future failures. Results do not validate use on a real fleet. AWS infrastructure is prepared in the repository; the inspected report does not establish an actual AWS deployment.</p></section>
+      </div>
+    </div>
+    <a class="wrap next-project" href="posaidon.html?profile=pro" data-next-project
+      data-next-pro="posaidon.html?profile=pro" data-next-research="posaidon.html?profile=research"
+      data-name-pro="PosAIdon" data-name-research="PosAIdon">
+      <span class="eyebrow">Next project</span><span><span data-next-name>PosAIdon</span><span aria-hidden="true">↗</span></span>
+    </a>
+  </main>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Designed to show the work.</span><a href="#top">Back to top ↑</a></footer>
 </body></html>

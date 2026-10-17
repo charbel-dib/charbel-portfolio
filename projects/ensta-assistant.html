@@ -1,17 +1,78 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Assistant ENSTA — Charbel Dib</title><meta name="description" content="Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante.">
-<meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
-<link rel="canonical" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html"><link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html"><link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
-<meta property="og:type" content="website"><meta property="og:title" content="Assistant ENSTA — Charbel Dib"><meta property="og:description" content="Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante."><meta property="og:url" content="https://charbel-dib.vercel.app/projects/ensta-assistant.html"><meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css"><script src="../script.js" defer></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assistant ENSTA — Charbel Dib</title><meta name="description" content="Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante.">
+  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
+  <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html">
+  <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
+  <meta property="og:type" content="website"><meta property="og:title" content="Assistant ENSTA — Charbel Dib">
+  <meta property="og:description" content="Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante."><meta property="og:url" content="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-fr-pro.png">
+  <meta property="og:image:alt" content="Charbel Dib — Professionnel · Ingénieur IA">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css"><script src="../script.js" defer></script>
 </head>
-<body id="top" data-profile="pro">
-<a class="skip" href="#main">Aller au contenu</a>
-<header class="header"><div class="wrap header-inner"><a class="identity" href="../pro/index.html" aria-label="Charbel Dib"><span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button><nav id="main-nav" aria-label="Navigation principale"><a href="../pro/index.html#projects">Projets</a><a href="../pro/index.html#about">Parcours</a><a href="../pro/index.html#contact">Contact</a></nav><a class="locale" href="../en/projects/ensta-assistant.html" lang="en" hreflang="en" aria-label="English">EN <span aria-hidden="true">↗</span></a></div></header>
-<div class="profile-bar"><div class="wrap profile-inner"><p>Deux regards sur mon travail</p><nav class="profile-nav" aria-label="Choisir un parcours"><a href="../pro/index.html">Professionnel<span aria-hidden="true">↗</span></a><a href="../recherche/index.html">Recherche<span aria-hidden="true">↗</span></a></nav></div></div>
-<main id="main" class="case-main"><section class="wrap case-hero"><a class="back-link" href="../pro/index.html#projects">← Tous les projets</a><p class="eyebrow">DOSSIER / 05 · Projet académique · Assistant documentaire</p><div class="case-title-line"><h1>Assistant ENSTA<span>.</span></h1><span class="case-year">2026</span></div><p class="case-headline">Retrouver l’information, et pouvoir la vérifier.</p><p class="case-summary">Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante.</p><div class="case-meta"><div><span class="eyebrow">Contexte</span><p>Prototype · Corpus web, PDF & XLSX</p></div><div><span class="eyebrow">Ma contribution</span><p>Pipeline documentaire, service de réponse, gestion des sessions et intégration web.</p></div></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">↗</span></a></div></section><div class="wrap"></div><div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="eyebrow">Dans ce projet</p><a href="#problem">Le problème</a><a href="#choices">Les choix techniques</a><a href="#results">Ce que le projet produit</a><a href="#limits">Périmètre & limites</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav><div class="case-body"><section id="problem"><p class="eyebrow">01 / Le problème</p><h2>Retrouver l’information, et pouvoir la vérifier.</h2><p>Les informations d’un campus sont réparties entre pages web, PDF et tableaux. Il faut les rendre interrogeables tout en conservant les sources et en tenant compte de leur mise à jour.</p></section><section id="choices"><p class="eyebrow">02 / Les choix techniques</p><article class="decision"><span>01</span><div><h3>Un pipeline distinct du service</h3><p>Collecter, nettoyer, segmenter et indexer les documents en amont du service de réponse.</p></div></article><article class="decision"><span>02</span><div><h3>Des sources dans la réponse</h3><p>Embeddings multilingual-E5, index FAISS, seuil de recherche et citations pour rattacher la réponse aux documents.</p></div></article><article class="decision"><span>03</span><div><h3>Prévoir le renouvellement du corpus</h3><p>Reconstruction quotidienne du corpus web et rechargement de l’index sans redémarrer le service.</p></div></article></section><section id="results"><p class="eyebrow">03 / Ce que le projet produit</p><p class="result-text">Un prototype de bout en bout avec API FastAPI, sessions, interface de chat et widget intégrable. Un parcours de refus et d’escalade par email complète les réponses sourcées.</p><div class="takeaway"><h3>Ce que j’en retiens</h3><p>Passer d’une collection de documents à un service consultable dont les réponses restent rattachées à leur origine.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">↗</span></a></div></section><section id="limits" class="limits"><p class="eyebrow">04 / Périmètre & limites</p><p>Prototype académique : le dépôt ne démontre pas un déploiement institutionnel officiel ni un niveau de qualité mesuré à grande échelle.</p></section></div></div><a class="wrap next-project" href="atlas.html"><span class="eyebrow">Projet suivant</span><span>ATLAS <span aria-hidden="true">↗</span></span></a></main>
-<footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Conçu pour montrer le travail.</span><a href="#top">Retour en haut ↑</a></footer>
+<body id="top" data-profile="pro" data-page="case">
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" aria-label="Charbel Dib">
+        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
+      <nav id="main-nav" aria-label="Navigation principale">
+        <a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="projects">Projets</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="about">Parcours</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="contact">Contact</a>
+      </nav>
+      <a class="locale" href="../en/projects/ensta-assistant.html?profile=pro" lang="en" hreflang="en" aria-label="English">EN <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <div class="profile-bar"><div class="wrap profile-inner">
+    <p>Explorer mon travail</p>
+    <nav class="profile-nav" aria-label="Choisir un parcours">
+      <a href="../pro/index.html" data-profile-choice="pro" aria-current="page">Professionnel</a><a href="../recherche/index.html" data-profile-choice="research">Recherche</a>
+    </nav>
+  </div></div>
+  <main id="main" class="case-main">
+    <section class="wrap case-hero" aria-labelledby="case-title">
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../recherche/index.html">← Tous les projets</a>
+      <p class="eyebrow">Projet académique · Assistant documentaire · 2026</p>
+      <h1 id="case-title">Assistant ENSTA<span>.</span></h1>
+      <p class="case-headline">Retrouver l’information, et pouvoir la vérifier.</p><p class="case-summary">Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante.</p>
+      <dl class="case-meta"><div><dt>Contexte</dt><dd>Prototype · Corpus web, PDF & XLSX</dd></div><div><dt>Ma contribution</dt><dd>Pipeline documentaire, service de réponse, gestion des sessions et intégration web.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">↗</span></a></div>
+    </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-title">
+    <p class="eyebrow">LA DÉMARCHE</p>
+    <h2 id="method-title">Une réponse qui reste reliée à ses sources</h2>
+    <ol class="method-steps"><li>
+      <span class="method-number" aria-hidden="true">01</span><h3>Préparer</h3><p>Pages web · PDF · XLSX</p>
+    </li><li>
+      <span class="method-number" aria-hidden="true">02</span><h3>Rechercher</h3><p>Embeddings multilingual-E5 · index FAISS</p>
+    </li><li>
+      <span class="method-number" aria-hidden="true">03</span><h3>Répondre</h3><p>Citations ou refus et escalade par email</p>
+    </li></ol>
+    <figcaption>Architecture simplifiée du prototype académique. Le corpus web est reconstruit quotidiennement et l’index rechargé sans redémarrage.</figcaption>
+  </figure></div>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="eyebrow">Dans ce projet</p><a href="#problem">Le problème</a><a href="#choices">Les choix techniques</a><a href="#results">Ce que le projet produit</a><a href="#limits">Périmètre & limites</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav>
+      <div class="case-body">
+        <section id="problem"><p class="eyebrow" aria-hidden="true">01</p><h2>Le problème</h2><p>Les informations d’un campus sont réparties entre pages web, PDF et tableaux. Il faut les rendre interrogeables tout en conservant les sources et en tenant compte de leur mise à jour.</p></section>
+        <section id="choices"><p class="eyebrow" aria-hidden="true">02</p><h2>Les choix techniques</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Un pipeline distinct du service</h3><p>Collecter, nettoyer, segmenter et indexer les documents en amont du service de réponse.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Des sources dans la réponse</h3><p>Embeddings multilingual-E5, index FAISS, seuil de recherche et citations pour rattacher la réponse aux documents.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Prévoir le renouvellement du corpus</h3><p>Reconstruction quotidienne du corpus web et rechargement de l’index sans redémarrer le service.</p></div></article></section>
+        <section id="results"><p class="eyebrow" aria-hidden="true">03</p><h2>Ce que le projet produit</h2><p>Un prototype de bout en bout avec API FastAPI, sessions, interface de chat et widget intégrable. Un parcours de refus et d’escalade par email complète les réponses sourcées.</p>
+
+          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Passer d’une collection de documents à un service consultable dont les réponses restent rattachées à leur origine.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">↗</span></a></div>
+        </section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">04</p><h2>Périmètre & limites</h2><p>Prototype académique : le dépôt ne démontre pas un déploiement institutionnel officiel ni un niveau de qualité mesuré à grande échelle.</p></section>
+      </div>
+    </div>
+    <a class="wrap next-project" href="fact-checking.html?profile=pro" data-next-project
+      data-next-pro="fact-checking.html?profile=pro" data-next-research="fleetguard.html?profile=research"
+      data-name-pro="Fact-checking climatique" data-name-research="FleetGuard">
+      <span class="eyebrow">Projet suivant</span><span><span data-next-name>Fact-checking climatique</span><span aria-hidden="true">↗</span></span>
+    </a>
+  </main>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Conçu pour montrer le travail.</span><a href="#top">Retour en haut ↑</a></footer>
 </body></html>

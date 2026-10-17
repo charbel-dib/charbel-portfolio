@@ -1,54 +1,42 @@
-# Installer le correctif 3.0.1
+# Installation et configuration
 
-L’archive contient directement les fichiers du site, sans dossier parent supplémentaire.
+## Développement
 
-## 1. Dans le clone local du dépôt GitHub
-
-La racine du dépôt est le dossier qui contient `.git`. Copier **tout le contenu de cette archive** dans ce dossier, en remplaçant les fichiers correspondants. Conserver `.git`.
-
-Ces éléments doivent être au même niveau :
-
-- `.git/` : déjà présent dans votre clone, à conserver ;
-- `.github/workflows/ci.yml` ;
-- `package.json` (version `3.0.1`) et `package-lock.json` ;
-- `scripts/`, `content/`, `assets/` ;
-- `pro/`, `recherche/`, `en/`, `projects/` ;
-- `index.html`, `styles.css`, `script.js`, `vercel.json`.
-
-Le dépôt actuel contient un ancien sous-dossier `charbel-portfolio/`. Une fois les fichiers de cette archive copiés à la racine, retirer ce sous-dossier ancien. Depuis la racine du clone, cette commande retire uniquement ce dossier suivi par Git (sans forcer la perte de modifications locales) :
-
-```powershell
-git rm -r -- charbel-portfolio
-```
-
-Ne pas exécuter cette commande si ce sous-dossier n’existe plus. Ne pas supprimer le dossier `.git`.
-
-## 2. Vérifier et envoyer
-
-Dans PowerShell, à la racine du clone :
+Le dossier contenant `package.json` et `.git` est la racine du dépôt. Utiliser Node.js 22 ou supérieur.
 
 ```powershell
 npm ci
 npm test
-git status --short
-git add .
-git commit -m "Fix portfolio layout and asynchronous clipboard test"
-git push
+npm run preview
 ```
 
-`npm test` doit annoncer `charbel-portfolio@3.0.1`, puis :
+Ouvrir http://127.0.0.1:4173. Le serveur lit `dist/` ; régénérer les fichiers après chaque modification avec `npm run build`.
 
-```text
-Built 18 canonical content pages + 2 root aliases + 404 into dist/.
-PASS: 21 pages, 469 local references, ...
+Pour les contrôles navigateur, installer Chromium une fois, puis exécuter la suite pendant que le serveur est actif :
+
+```powershell
+npx playwright install chromium
+npm run test:browser
 ```
 
-Si `2.0.0` ou `16 bilingual content pages` apparaît encore, les fichiers complets n’ont pas remplacé l’ancienne version ou la commande est lancée depuis un autre dossier.
+## Vercel
 
-## 3. Vérifier Vercel
+Conserver le projet existant avec :
 
-Pour cette structure, la **Root Directory** du projet Vercel doit être la racine du dépôt (champ vide / valeur par défaut), avec `npm run build` et sortie `dist`.
+- Root Directory : racine du dépôt, champ vide ou valeur par défaut.
+- Framework Preset : Other.
+- Build Command : `npm run build`.
+- Output Directory : `dist`.
+- Aucune variable d’environnement requise.
 
-GitHub Actions trouvera alors le workflow à la racine et relancera les deux jobs. Le test navigateur attend maintenant la fin de la copie de l’adresse email.
+`vercel.json` contient les en-têtes de sécurité. Les pages de projet utilisent `.html` ; conserver ces URL.
 
-Aucun push ou déploiement n’est réalisé par cette archive. Les tests navigateur distants devront confirmer le correctif.
+## Préparer une contribution
+
+Modifier les sources de contenu ou les templates, puis exécuter `npm test` et `npm run test:browser`. Examiner `git diff` et committer les HTML régénérés avec leurs sources. La CI vérifie leur cohérence.
+
+Les dossiers `dist/`, `reports/` et `node_modules/` ne sont pas committés. Les sources maintenues et les ressources publiques restent à la racine ; aucun sous-dossier supplémentaire n’est nécessaire.
+
+Le CV source est `assets/CV_Charbel_Dib.pdf`. L’ancienne URL `/CV_Charbel_Dib.pdf` est conservée par une copie générée à partir de cette source unique.
+
+Un build local ne réalise aucun push ni déploiement.

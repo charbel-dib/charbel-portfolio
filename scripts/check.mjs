@@ -15,12 +15,26 @@ for(const file of pages){
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`Expected one h1: ${file}`);
  assert.match(html,/<html lang="(fr|en)">/);
  assert.match(html,/<meta name="description" content="[^"]+">/);
- assert.match(html,/<link rel="canonical"/);
+  if(file.endsWith('404.html')) assert.match(html,/<meta name="robots" content="noindex">/);
+  else assert.match(html,/<link rel="canonical"/);
+  let previousLevel=0;
+  for(const heading of html.matchAll(/<h([1-6])\b/g)) {
+   const level=Number(heading[1]);
+   assert.ok(level<=previousLevel+1,`Skipped heading level: ${file} (h${previousLevel} → h${level})`);
+   previousLevel=level;
+  }
+ const socialImage=html.match(/<meta property="og:image" content="https:\/\/[^/]+\/([^"]+)">/);
+ assert.ok(socialImage,`Missing share image: ${file}`);
+ const png=await readFile(join(root,socialImage[1]));
+ assert.equal(png.subarray(1,4).toString(),'PNG',`Invalid PNG: ${file}`);
+ assert.equal(png.readUInt32BE(16),1200);
+ assert.equal(png.readUInt32BE(20),630);
+ assert.match(html,/<meta property="og:image:alt" content="[^"]+">/);
  for(const image of html.matchAll(/<img\b[^>]*>/g))assert.match(image[0],/alt="[^"]+"/,`Missing alt in ${file}`);
  for(const attr of html.matchAll(/(?:href|src)="([^"]+)"/g)){
   const url=attr[1].replaceAll('&amp;','&');
   if(/^(https?:|mailto:|data:)/.test(url))continue;
-  const [path,hash]=url.split('#'),target=path?(path.startsWith('/')?resolve(root,'.'+decodeURIComponent(path)):resolve(dirname(file),decodeURIComponent(path))):file;
+  const [pathWithQuery,hash]=url.split('#'),path=pathWithQuery.split('?')[0],target=path?(path.startsWith('/')?resolve(root,'.'+decodeURIComponent(path)):resolve(dirname(file),decodeURIComponent(path))):file;
   assert.ok((await stat(target)).isFile(),`Broken local URL: ${url} in ${file}`);links++;
   if(hash){const targetHtml=target===file?html:await readFile(target,'utf8');assert.ok(targetHtml.includes(`id="${hash}"`),`Missing anchor: ${url}`);}
  }
@@ -29,7 +43,7 @@ for(const file of pages){
 assert.equal(pages.length,21);
 assert.equal(projects.length,7);
 for(const p of projects){
- for(const lang of ['fr','en'])for(const key of ['headline','summary','role','problem','decisions','result','value','limit'])assert.ok(p[key][lang],`Missing ${lang}.${key}: ${p.slug}`);
+ for(const lang of ['fr','en'])for(const key of ['name','descriptor','tags','headline','summary','role','problem','decisions','result','value','limit'])assert.ok(p[key][lang],`Missing ${lang}.${key}: ${p.slug}`);
  assert.ok(p.links.length>0,`No evidence: ${p.slug}`);
 }
 assert.ok(!files.some(f=>/research-astek|rapport_de_stage|\.env|node_modules/.test(f)));
@@ -44,9 +58,14 @@ for (const lang of ['fr','en']) {
   assert.ok(html.includes(certificate.url));
   assert.ok(html.includes(`datetime="${certificate.date}"`));
   assert.ok(html.includes('Google-Data-Analytics-Charbel-Dib.pdf'));
-  const rows=[...html.matchAll(/<div class="row-title"><h3><a href="[^"]*projects\/([^"/]+)\.html"/g)].map(m=>m[1]);
+  const rows=[...html.matchAll(/<div class="row-title"><h3><a href="[^"]*projects\/([^"/?]+)\.html\?profile=(?:pro|research)"/g)].map(m=>m[1]);
   assert.deepEqual(rows,profiles[profile].order,`Wrong project priority: ${lang}/${profile}`);
   assert.match(html,/<nav class="profile-nav"[^>]*>[\s\S]*?aria-current="page"/);
+  assert.ok(html.includes('id="project-index"'));
+  for(const p of projects) {
+   assert.ok(html.includes(`projects/${p.slug}.html?profile=${profile}`));
+   assert.ok(html.includes(p.name[lang]),`Missing localized name ${lang}/${p.slug}`);
+  }
   if(profile==='research') {
    assert.ok(html.indexOf('id="publication"')<html.indexOf('id="projects"'));
    assert.ok(html.includes(publication.title)&&html.includes(publication.authors));
@@ -54,6 +73,15 @@ for (const lang of ['fr','en']) {
   }
  }
 }
+for(const p of projects)for(const lang of ['fr','en']) {
+ const html=await readFile(join(root,lang==='en'?'en':'','projects',p.slug+'.html'),'utf8');
+ assert.ok(html.includes(`<h1 id="case-title">${p.name[lang]}`));
+ assert.ok(html.includes('data-home-anchor="project-index"'));
+ for(const id of ['problem','choices','results','limits'])assert.ok(html.includes(`id="${id}"`));
+ assert.ok(html.includes('data-next-pro=')&&html.includes('data-next-research='));
+}
+const legacyCV=await readFile(join(root,'CV_Charbel_Dib.pdf'));
+assert.deepEqual(legacyCV,await readFile(join(root,'assets/CV_Charbel_Dib.pdf')));
 const cert=await readFile(join(root,certificate.file));
 assert.equal(cert.subarray(0,4).toString(),'%PDF');
 const sitemap=await readFile(join(root,'sitemap.xml'),'utf8');
