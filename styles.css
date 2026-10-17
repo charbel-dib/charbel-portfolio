@@ -358,20 +358,21 @@ h1 > span, h2 > span, .identity-dot { color: var(--accent); }
   .profile-nav { width: 100%; justify-content: center; }
   .profile-nav a { flex: 1; padding-inline: .5rem; }
   .hero { padding-block: 1.5rem; }
-  .hero-overline { align-items: start; gap: .75rem; }
-  .hero-overline .eyebrow { font-size: var(--text-caption); max-width: 75%; letter-spacing: .01em; text-transform: none; }
+  .hero-overline { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: .75rem; }
+  .hero-overline .eyebrow { font-size: var(--text-caption); max-width: none; letter-spacing: .01em; text-transform: none; }
   .location { font-size: var(--text-caption); }
   .hero h1 { font-size: clamp(2.8rem, 15.2vw, 5rem); margin-block: .875rem 1rem; }
   .hero-lead { font-size: 1.5rem; }
   .hero-actions { gap: .25rem .875rem; margin-top: .75rem; }
   .hero-actions .button { font-size: var(--text-caption); padding-inline: .75rem; gap: .75rem; }
   .hero-aside .availability { font-size: var(--text-caption); }
-  .proof-strip { justify-content: flex-start; gap: 0 1rem; padding-block: .5rem; }
-  .proof-strip > span { width: 100%; }
-  .proof-strip a { gap: .375rem; }
+  .proof-strip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; padding-block: .5rem; }
+  .proof-strip > span { grid-column: 1 / -1; }
+  .proof-strip a { min-width: 0; gap: .375rem; }
+  .proof-strip a > span { flex-shrink: 0; }
   .section { padding-block: 2rem; }
   .section-heading { display: block; margin-bottom: 1.5rem; }
-  .section-heading h2 { font-size: 2.125rem; }
+  .section-heading h2 { font-size: 2rem; }
   .section-heading > p { margin-top: .75rem; max-width: none; }
   .featured-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .project-visual { height: 16rem; }

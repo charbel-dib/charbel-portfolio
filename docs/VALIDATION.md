@@ -9,7 +9,7 @@
 - Quatre pages d’entrée ; ordre des projets et priorité de la publication en recherche vérifiés.
 - Signature PDF du certificat et identité binaire du CV publié sous ses deux URL.
 - Quatre images de partage FR/EN et professionnel/recherche générées localement.
-- `npm run test:browser` : **306 contrôles réussis**, sans erreur navigateur.
+- `npm run test:browser` : **308 contrôles réussis**, sans erreur navigateur.
 - Conservation du parcours lors de l’ouverture d’un dossier, du changement de langue, du projet suivant et du retour à l’index ; paramètre invalide rejeté au profit du parcours par défaut.
 - Filtres avec état sélectionné et compteur de résultats accessible sur mobile.
 - Menu mobile : contenu stable à l’ouverture, Escape, focus rendu au bouton, fermeture sur navigation.
@@ -22,9 +22,19 @@
 
 ## Résultats de composition
 
-Au format 1440 × 900, le premier visuel professionnel commence vers Y=704, contre Y=936 avant la révision. Au format 390 × 844, il commence vers Y=727, contre Y=954. Sur l’entrée recherche mobile, le titre de la publication commence vers Y=744.
+Au format 1440 × 900, le premier visuel professionnel commence vers Y=704, contre Y=936 avant la révision. Au format 390 × 844, il commence vers Y=725 avec les polices système Windows, contre Y=954 avant la révision.
 
 Les pages professionnelles passent d’environ 5902 à 4642 pixels sur desktop et de 8575 à 7347 pixels sur mobile, tout en agrandissant les textes de soutien. Ces mesures décrivent le rendu Chromium local, pas un gain de conversion mesuré.
+
+## Correctif après l’échec du contrôle mobile en CI
+
+Le seuil initial de 800 pixels avait été validé avec les polices Windows. Le problème a été reproduit localement en chargeant DejaVu Sans, Serif et Sans Mono : les retours à la ligne repoussaient le premier projet à Y=867 dans une fenêtre de 390 × 844.
+
+La ligne de spécialité/localisation et les liens de preuve utilisent maintenant des colonnes explicites sur mobile. Le titre de section à 2 rem tient sur une ligne à cette largeur avec DejaVu Serif. Le lien anglais du CV est raccourci, avec un libellé accessible complet, pour garder les actions sur la même ligne.
+
+Après correction, le premier projet commence à Y=749 en français et en anglais avec DejaVu. Les deux pages passent aussi le nouveau contrôle avec Verdana comme police de repli. La suite complète de 308 contrôles réussit localement ; l’exécution Ubuntu distante reste à confirmer après le push.
+
+Le test mesure désormais la hauteur de projet visible : au moins 10 % de la fenêtre sur mobile et 20 % sur desktop, sans défilement. À 390 × 844, il exige environ 84 pixels visibles, contre seulement 44 autorisés par l’ancien seuil. Les captures et mesures JSON sont enregistrées avant l’assertion et conservées dans les artefacts CI, y compris en cas d’échec.
 
 ## Périmètre de ces vérifications
 
