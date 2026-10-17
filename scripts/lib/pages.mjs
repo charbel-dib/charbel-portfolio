@@ -13,7 +13,7 @@ function hero(lang, profile, path, t) {
     <div class="hero-bottom"><div><p class="hero-lead">${t.hero}</p>
       <div class="hero-actions">
         <a class="button" href="${profile === 'research' ? '#publication' : '#projects'}">${t.discover} ${down}</a>
-        <a class="underlink" href="${rel(path, 'assets/CV_Charbel_Dib.pdf')}" download>${t.resume} ${down}</a>
+        <a class="underlink" href="${rel(path, 'assets/CV_Charbel_Dib.pdf')}" download aria-label="${t.cv}">${t.resume} ${down}</a>
         <a class="underlink" href="mailto:charbel.dib@ensta.fr">${t.email} ${arrow}</a>
       </div>
     </div><aside class="hero-aside"><p>${t.heroNote}</p>

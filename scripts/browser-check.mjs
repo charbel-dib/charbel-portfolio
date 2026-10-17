@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { expect } from 'playwright/test';
-import { mkdir, readFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { projects } from '../content/projects.mjs';
@@ -10,6 +10,26 @@ const base=process.env.PORTFOLIO_URL || 'http://127.0.0.1:4173';
 const browser=await chromium.launch({headless:true,...(process.env.PORTFOLIO_BROWSER?{executablePath:process.env.PORTFOLIO_BROWSER}:{}),args:['--no-sandbox']});
 const reports=fileURLToPath(new URL('../reports/',import.meta.url));await mkdir(reports,{recursive:true});
 const errors=[];let checks=0;
+async function assertOpeningProject(page,label) {
+ // Native font metrics vary by OS. Require actual visible content, not a fixed Y coordinate.
+ await page.evaluate(()=>document.fonts.ready);
+ const metrics=await page.locator('.project-visual').first().evaluate(el=>{
+  const rect=el.getBoundingClientRect();
+  return {
+   viewport:{width:innerWidth,height:innerHeight},scrollY,
+   project:{top:rect.top,bottom:rect.bottom,height:rect.height},
+   visibleHeight:Math.max(0,Math.min(rect.bottom,innerHeight)-Math.max(rect.top,0)),
+   requiredHeight:Math.min(rect.height,innerHeight*(innerWidth>640?.2:.1)),
+   font:getComputedStyle(document.documentElement).fontFamily
+  };
+ });
+ // Save evidence before asserting, so a CI failure includes the mobile screen and measurements.
+ await page.screenshot({path:reports+label+'-opening.png'});
+ await writeFile(reports+label+'-opening.json',JSON.stringify(metrics,null,2)+'\n');
+ assert.ok(metrics.scrollY===0&&metrics.project.top>=0&&metrics.visibleHeight>=metrics.requiredHeight,
+  `First project must be visible in the opening viewport (${label}): ${JSON.stringify(metrics)}`);
+ checks++;
+}
 try {
  const context=await browser.newContext({viewport:{width:1440,height:1000},permissions:['clipboard-read','clipboard-write']});
  const page=await context.newPage();
@@ -17,7 +37,7 @@ try {
  page.on('response',r=>{if(r.status()>=400&&!r.url().endsWith('/missing/deep/page'))errors.push(`${r.status()} ${r.url()}`);});
  await page.goto(base,{waitUntil:'networkidle'});
  assert.equal(await page.locator('h1').innerText(),'Charbel Dib.');checks++;
- assert.ok(await page.locator('.project-visual').first().evaluate(el=>el.getBoundingClientRect().top)<800,'First project should appear in the opening desktop viewport');checks++;
+ await assertOpeningProject(page,'desktop');
  await page.screenshot({path:reports+'desktop.png',fullPage:true});
  await page.screenshot({path:reports+'desktop-fold.png'});
  await page.locator('#projects').screenshot({path:reports+'selected-work.png'});
@@ -51,7 +71,7 @@ try {
  await page.goto(base+'/projects/servicepilot.html');await page.screenshot({path:reports+'servicepilot.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});await page.goto(base);
  assert.equal(await page.locator('#main-nav').isVisible(),false);checks++;
- assert.ok(await page.locator('.project-visual').first().evaluate(el=>el.getBoundingClientRect().top)<800,'First project should appear in the opening mobile viewport');checks++;
+ await assertOpeningProject(page,'mobile');
  const heroTop=await page.locator('.hero').evaluate(el=>el.getBoundingClientRect().top);
  await page.locator('.menu-button').click();await expect(page.locator('#main-nav')).toBeVisible();checks++;
  assert.equal(await page.locator('.hero').evaluate(el=>el.getBoundingClientRect().top),heroTop);checks++;
@@ -89,6 +109,12 @@ try {
  await page.goto(base+'/projects/atlas.html?profile=invalid');
  assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  await page.goto(base);await page.screenshot({path:reports+'mobile.png',fullPage:true});
+ for(const [lang,path] of [['fr','/pro/'],['en','/en/pro/']]) {
+  await page.goto(base+path);
+  // A wider fallback catches text wrapping that Windows system-ui alone does not exercise.
+  await page.evaluate(()=>{document.documentElement.style.fontFamily='Verdana, sans-serif';});
+  await assertOpeningProject(page,`mobile-fallback-${lang}`);
+ }
  const paths=['/','/en/index.html','/pro/','/recherche/','/en/pro/','/en/research/',...projects.flatMap(p=>[`/projects/${p.slug}.html`,`/en/projects/${p.slug}.html`])];
  for(const width of [320,390,768,1440]){
   await page.setViewportSize({width,height:900});

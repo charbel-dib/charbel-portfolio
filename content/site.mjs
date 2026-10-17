@@ -150,7 +150,7 @@ export const site = {
     "mobility": "Paris region · Mobile across France",
     "discover": "Explore my projects",
     "cv": "Download my résumé",
-    "resume": "Résumé",
+    "resume": "CV",
     "github": "My GitHub",
     "proof": [
       "ENSTA engineering graduate",
