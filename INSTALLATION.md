@@ -37,6 +37,6 @@ Modifier les sources de contenu ou les templates, puis exécuter `npm test` et `
 
 Les dossiers `dist/`, `reports/` et `node_modules/` ne sont pas committés. Les sources maintenues et les ressources publiques restent à la racine ; aucun sous-dossier supplémentaire n’est nécessaire.
 
-Le CV source est `assets/CV_Charbel_Dib.pdf`. L’ancienne URL `/CV_Charbel_Dib.pdf` est conservée par une copie générée à partir de cette source unique.
+Les quatre CV sources sont dans `assets/cv/` ; leur association langue/parcours est définie dans `content/cvs.mjs`. Les anciennes URL `/assets/CV_Charbel_Dib.pdf` et `/CV_Charbel_Dib.pdf` servent une copie du nouveau CV emploi FR.
 
 Un build local ne réalise aucun push ni déploiement.

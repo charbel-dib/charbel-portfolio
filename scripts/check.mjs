@@ -2,8 +2,11 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join, dirname, resolve } from 'node:path';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { cvs } from '../content/cvs.mjs';
 import { projects } from '../content/projects.mjs';
 import { profiles, publication, certificate } from '../content/profiles.mjs';
+import { base, homePath, publicPath } from './lib/html.mjs';
 const root=fileURLToPath(new URL('../dist/',import.meta.url));
 async function walk(dir){return (await Promise.all((await readdir(dir,{withFileTypes:true})).map(e=>e.isDirectory()?walk(join(dir,e.name)):join(dir,e.name)))).flat();}
 const files=await walk(root),pages=files.filter(f=>f.endsWith('.html'));
@@ -16,7 +19,17 @@ for(const file of pages){
  assert.match(html,/<html lang="(fr|en)">/);
  assert.match(html,/<meta name="description" content="[^"]+">/);
   if(file.endsWith('404.html')) assert.match(html,/<meta name="robots" content="noindex">/);
-  else assert.match(html,/<link rel="canonical"/);
+  else {
+   const path=file.slice(root.length).replaceAll('\\','/').replace(/^\//,''), lang=html.match(/<html lang="([^"]+)"/)[1];
+   const expected=base+'/'+publicPath(['index.html','en/index.html'].includes(path)?homePath(lang,'pro'):path);
+   assert.ok(html.includes(`<link rel="canonical" href="${expected}">`),`Canonical: ${file}`);
+   assert.ok(html.includes(`<meta property="og:url" content="${expected}">`));
+   const other=lang==='fr'?'en':'fr', alternate=html.match(new RegExp(`<link rel="alternate" hreflang="${other}" href="([^"]+)">`))[1];
+   const alternatePath=new URL(alternate).pathname.replace(/^\//,'').replace(/\/$/,'/index.html');
+   const counterpart=await readFile(join(root,alternatePath),'utf8');
+   assert.ok(counterpart.includes(`<link rel="alternate" hreflang="${lang}" href="${expected}">`),`Reciprocal alternate: ${file}`);
+   assert.ok(!/href="[^"]*\/CV_Charbel_Dib\.pdf"/.test(html),'Old editorial CV link');
+  }
   let previousLevel=0;
   for(const heading of html.matchAll(/<h([1-6])\b/g)) {
    const level=Number(heading[1]);
@@ -43,10 +56,11 @@ for(const file of pages){
 assert.equal(pages.length,21);
 assert.equal(projects.length,7);
 for(const p of projects){
- for(const lang of ['fr','en'])for(const key of ['name','descriptor','tags','headline','summary','role','problem','decisions','result','value','limit'])assert.ok(p[key][lang],`Missing ${lang}.${key}: ${p.slug}`);
+ for(const lang of ['fr','en'])for(const key of ['name','descriptor','tags','headline','summary','role','problem','decisions','result','evaluation','value','limit'])assert.ok(p[key][lang],`Missing ${lang}.${key}: ${p.slug}`);
+ assert.ok(p.categories.length>0 && p.categories.every(c=>['ml','rag','data','agents'].includes(c)));
  assert.ok(p.links.length>0,`No evidence: ${p.slug}`);
 }
-assert.ok(!files.some(f=>/research-astek|rapport_de_stage|\.env|node_modules/.test(f)));
+assert.ok(!files.some(f=>/research-astek|rapport_de_stage|\.env|node_modules|INSTRUCTIONS_CODEX|Pack_Codex|[\\/]reports[\\/]|[\\/]docs[\\/]/.test(f)));
 const js=await readFile(join(root,'script.js'),'utf8');assert.ok(!/innerHTML|eval\(/.test(js));
 for (const lang of ['fr','en']) {
  const prefix=lang==='en'?'en/':'';
@@ -55,6 +69,9 @@ for (const lang of ['fr','en']) {
   const html=await readFile(join(root,prefix,folder,'index.html'),'utf8');
   assert.ok(html.includes(`data-profile="${profile}"`));
   assert.ok(html.includes(profiles[profile][lang].availability));
+  assert.ok(html.includes(cvs[profile][lang].file));
+  assert.ok(html.includes(cvs[profile][lang].label));
+  assert.ok(html.indexOf('ENSTA</h3>')<html.indexOf('Astek Innovation Lab</h3>'));
   assert.ok(html.includes(certificate.url));
   assert.ok(html.includes(`datetime="${certificate.date}"`));
   assert.ok(html.includes('Google-Data-Analytics-Charbel-Dib.pdf'));
@@ -82,8 +99,18 @@ for(const p of projects)for(const lang of ['fr','en']) {
 }
 const legacyCV=await readFile(join(root,'CV_Charbel_Dib.pdf'));
 assert.deepEqual(legacyCV,await readFile(join(root,'assets/CV_Charbel_Dib.pdf')));
+assert.deepEqual(legacyCV,await readFile(join(root,cvs.pro.fr.file)));
+for (const profile of ['pro','research']) for (const lang of ['fr','en']) {
+ const cv=cvs[profile][lang], bytes=await readFile(join(root,cv.file));
+ assert.equal(bytes.subarray(0,4).toString(),'%PDF');
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),cv.sha256);
+ // The supplied PDFs have uncompressed page dictionaries (no object streams).
+ assert.equal((bytes.toString('latin1').match(/\/Type\s*\/Page\b/g)||[]).length,cv.pages);
+}
 const cert=await readFile(join(root,certificate.file));
 assert.equal(cert.subarray(0,4).toString(),'%PDF');
 const sitemap=await readFile(join(root,'sitemap.xml'),'utf8');
 for (const path of ['/pro/','/recherche/','/en/pro/','/en/research/'])assert.ok(sitemap.includes(path+'</loc>'));
+assert.equal((sitemap.match(/<loc>/g)||[]).length,18);
+assert.ok(!/\?profile=|index\.html|lastmod/.test(sitemap));
 console.log(`PASS: ${pages.length} pages, ${links} local references, 7 shared bilingual case studies, 4 profile entries, certificate PDF, research order, unique IDs, alt text and publication allowlist.`);

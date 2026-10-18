@@ -1,5 +1,17 @@
 # Sources éditoriales
 
+## Vérification du 18 octobre 2026
+
+Le cahier des charges et les quatre CV fournis dans `Pack_Codex_Portfolio_Charbel_Dib.zip` sont les sources de cette révision. Les rapports privés ENSTA/Astek ne sont pas présents dans cette archive : les informations explicitement validées par le cahier des charges sont utilisées, sans prétendre avoir relu ces rapports. Aucun document privé n’est publié.
+
+- La [model card FleetGuard](https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md) a été relue intégralement via la version raw : release `20261007T210839Z-3b5571e8`, tableau « Measured outcomes » et section « Selection and separation ». Elle confirme 16 000 observations, 375 positifs, 475 FP, 16 FN, rappel 95,73 %, précision 43,05 % et coût 12 750. Les 359 vrais positifs sont 375 − 16. La recherche d’hyperparamètres réutilise des données de calibration ; aucune validation imbriquée n’est revendiquée.
+- L’[architecture ServicePilot](https://github.com/charbel-dib/servicepilot/blob/main/docs/architecture.md) a été relue : contrôles serveur, trois outils de lecture, proposition figée, reprise/idempotence, mode déterministe et limites SQLite. Java sert à une petite API de statut ; le tag a été retiré de la vitrine pour privilégier les composants centraux. Les tests du projet ne sont pas réexécutés et aucun contrôle précis n’est présenté comme un nouveau test réussi.
+- L’[article ENSTA](https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea) confirme le premier prix collectif PosAIdon. Le crédit photo est conservé.
+- Les quatre dépôts GitHub répondent en HTTP 200. Coursera répond en 200 après redirection vers la page de certificat. LinkedIn répond en 999 (restriction automatisée) ; cela ne prouve pas un lien cassé.
+- Le [DOI](https://doi.org/10.1109/3SCEA68071.2026.11603067) redirige vers `https://ieeexplore.ieee.org/document/11603067/`, qui répond en 202 sans texte d’article exploitable. Aucune version auteur partageable n’est présente dans le dépôt. La fiche L-PBF utilise donc la référence et les contributions fournies, sans données numériques ou protocole détaillé inventés.
+
+Les réponses HTTP et les deux documents publics consultés sont conservés localement dans `reports/`, hors publication. Les notes ci-dessous décrivent les vérifications antérieures et ne constituent pas de nouvelles exécutions des projets.
+
 Révision de présentation du 17 octobre 2026 : les noms et tags ont été localisés ; les schémas reformulent les démarches déjà décrites ci-dessous. Aucun résultat expérimental, déploiement ou nouvelle source externe n’a été ajouté. Les métriques FleetGuard sont désormais structurées dans un objet commun et leur coût est calculé à partir des valeurs documentées.
 
 Consultation : 16 octobre 2026. Les chiffres sont attribués au document qui les publie ; cette refonte ne réexécute pas les entraînements ML ou les évaluations des projets sous-jacents.
