@@ -37,13 +37,15 @@ Le site publié utilise HTML, CSS et JavaScript sans framework, police distante,
 | `scripts/build.mjs` | Génération et liste explicite de publication |
 | `styles.css` | Typographie, composants, responsive et préférences d’accessibilité |
 | `script.js` | Contexte de navigation, menu, filtres, copie de l’email et section active |
-| `assets/` | Source unique du CV, certificat, captures et images de partage |
+| `assets/` | Quatre CV originaux, certificat, captures et images de partage |
 
 Les noms éditoriaux, descriptions et tags sont localisés. Les noms de produits restent stables. Les chiffres FleetGuard viennent d’un objet commun et sont formatés selon la langue.
 
 Les liens de dossier portent `?profile=pro` ou `?profile=research`. JavaScript conserve ce contexte dans la navigation, le retour à l’index, le changement de langue et le projet suivant. Les URL canoniques restent sans paramètre. En accès direct ou sans JavaScript, chaque dossier conserve une destination par défaut et propose les deux parcours explicitement.
 
-Le CV est maintenu uniquement dans `assets/CV_Charbel_Dib.pdf`. La génération copie ce même fichier dans `dist/CV_Charbel_Dib.pdf` pour préserver l’ancienne URL de téléchargement.
+Les quatre CV originaux sont maintenus dans `assets/cv/`, avec chemins, libellés, pagination et empreintes dans `content/cvs.mjs`. Le build sert le nouveau CV emploi FR aux deux anciennes URL `/assets/CV_Charbel_Dib.pdf` et `/CV_Charbel_Dib.pdf`. Sur les fiches, JavaScript résout tous les liens CV selon `profile` ; sans JavaScript, « Autres versions du CV » donne accès aux deux types dans la langue courante. Une query invalide utilise le profil par défaut de la fiche.
+
+Les filtres utilisent les catégories multiples de `content/projects.mjs`, sans état URL persistant. Les ordres des index et des liens « Projet suivant » viennent de `content/profiles.mjs` ; le dernier projet revient à l’index. L’accueil emploi développe FleetGuard, ServicePilot et Assistant ENSTA, après une synthèse Astek. L’accueil recherche présente publication, stages et intérêts scientifiques avant l’index.
 
 ## Vérification
 
@@ -60,7 +62,7 @@ Les contrôles statiques vérifient les 21 pages, les ressources et ancres, la s
 
 Les contrôles navigateur couvrent les interactions, les parcours et langues, les contrôles tactiles, le fonctionnement sans JavaScript, les préférences de mouvement et les débordements de 320 à 1 440 pixels, y compris avec le texte agrandi à 200 %. Les captures sont enregistrées dans `reports/`, ignoré par Git.
 
-Après modification, committer également les HTML régénérés. `dist/` reste ignoré. La CI contrôle la cohérence des pages générées et conserve les fichiers publiables et captures comme artefacts. Voir [docs/VALIDATION.md](docs/VALIDATION.md) pour les résultats effectivement obtenus.
+Après modification, committer également les HTML régénérés. `dist/` reste ignoré. La CI contrôle la cohérence des pages générées et conserve les fichiers publiables et captures comme artefacts. Voir [le compte rendu du 18 octobre 2026](docs/VALIDATION-2026-10-18.md) pour les résultats effectivement obtenus, et [l’historique](docs/VALIDATION.md).
 
 Les quatre images de partage FR/EN et professionnel/recherche sont fournies dans `assets/`. Pour les régénérer avec Chromium installé :
 

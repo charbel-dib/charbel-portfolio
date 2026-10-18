@@ -35,6 +35,8 @@ await mkdir(output);
 for (const file of ['index.html', 'pro', 'recherche', 'en', 'projects', '404.html', 'styles.css', 'script.js', 'favicon.svg', 'assets', 'sitemap.xml', 'robots.txt']) {
   await cp(join(root, file), join(output, file), { recursive: true });
 }
-// Preserve the historical download URL using the single maintained CV asset.
-await cp(join(root, 'assets/CV_Charbel_Dib.pdf'), join(output, 'CV_Charbel_Dib.pdf'));
+// Both historical URLs serve the supplied, disclosure-safe French industry CV.
+for (const target of ['assets/CV_Charbel_Dib.pdf','CV_Charbel_Dib.pdf']) {
+  await cp(join(root, 'assets/cv/CV_Charbel_Dib_Emploi_FR.pdf'), join(output, target));
+}
 console.log(`Built ${paths.length} canonical content pages + 2 root aliases + 404 into dist/.`);

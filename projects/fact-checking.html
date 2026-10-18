@@ -2,16 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fact-checking climatique — Charbel Dib</title><meta name="description" content="Conception et évaluation d’un pipeline RAG de vérification de déclarations climatiques, du passage retrouvé à la classification finale.">
+  <title>Fact-checking climatique — Évaluation d’un pipeline RAG, étape par étape — Charbel Dib</title><meta name="description" content="Pendant mon stage de fin d’études chez Astek, j’ai comparé des stratégies de segmentation, de recherche hybride et de reranking, puis étudié l’extraction de preuves et la classification de déclarations climatiques. L’objectif était d’identifier les pertes de qualité et la propagation des erreurs entre les étapes du pipeline RAG (génération augmentée par recherche documentaire).">
   <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
   <link rel="canonical" href="https://charbel-dib.vercel.app/projects/fact-checking.html">
   <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/fact-checking.html">
   <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/fact-checking.html">
-  <meta property="og:type" content="website"><meta property="og:title" content="Fact-checking climatique — Charbel Dib">
-  <meta property="og:description" content="Conception et évaluation d’un pipeline RAG de vérification de déclarations climatiques, du passage retrouvé à la classification finale."><meta property="og:url" content="https://charbel-dib.vercel.app/projects/fact-checking.html">
+  <meta property="og:type" content="website"><meta property="og:title" content="Fact-checking climatique — Évaluation d’un pipeline RAG, étape par étape — Charbel Dib">
+  <meta property="og:description" content="Pendant mon stage de fin d’études chez Astek, j’ai comparé des stratégies de segmentation, de recherche hybride et de reranking, puis étudié l’extraction de preuves et la classification de déclarations climatiques. L’objectif était d’identifier les pertes de qualité et la propagation des erreurs entre les étapes du pipeline RAG (génération augmentée par recherche documentaire)."><meta property="og:url" content="https://charbel-dib.vercel.app/projects/fact-checking.html">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:image" content="https://charbel-dib.vercel.app/assets/social-fr-research.png">
-  <meta property="og:image:alt" content="Charbel Dib — Recherche · Ingénieur IA">
+  <meta property="og:image:alt" content="Charbel Dib — Recherche & doctorat · Ingénieur IA">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -26,7 +26,7 @@
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="main-nav" aria-label="Navigation principale">
-        <a href="../recherche/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="projects">Projets</a><a href="../recherche/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="about">Parcours</a><a href="../recherche/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="contact">Contact</a>
+        <a href="../recherche/index.html#publication" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="publication">Publication</a><a href="../recherche/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="projects">Travaux</a><a href="../recherche/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="about">Parcours</a><a href="../recherche/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="contact">Contact</a>
       </nav>
       <a class="locale" href="../en/projects/fact-checking.html?profile=research" lang="en" hreflang="en" aria-label="English">EN <span aria-hidden="true">↗</span></a>
     </div>
@@ -34,7 +34,7 @@
   <div class="profile-bar"><div class="wrap profile-inner">
     <p>Explorer mon travail</p>
     <nav class="profile-nav" aria-label="Choisir un parcours">
-      <a href="../pro/index.html" data-profile-choice="pro">Professionnel</a><a href="../recherche/index.html" data-profile-choice="research" aria-current="page">Recherche</a>
+      <a href="../pro/index.html" data-profile-choice="pro">Emploi & projets</a><a href="../recherche/index.html" data-profile-choice="research" aria-current="page">Recherche & doctorat</a>
     </nav>
   </div></div>
   <main id="main" class="case-main">
@@ -42,37 +42,49 @@
       <a class="back-link" href="../recherche/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../recherche/index.html">← Tous les projets</a>
       <p class="eyebrow">Astek Innovation Lab · Stage R&D · 2026</p>
       <h1 id="case-title">Fact-checking climatique<span>.</span></h1>
-      <p class="case-headline">Une réponse vaut ce que valent ses preuves.</p><p class="case-summary">Conception et évaluation d’un pipeline RAG de vérification de déclarations climatiques, du passage retrouvé à la classification finale.</p>
-      <dl class="case-meta"><div><dt>Contexte</dt><dd>Stage de fin d’études</dd></div><div><dt>Ma contribution</dt><dd>Segmentation, recherche d’information, extraction de preuves et évaluation du pipeline pendant mon stage de fin d’études.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="../assets/CV_Charbel_Dib.pdf" >Mon CV <span aria-hidden="true">↓</span></a></div>
-    </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-title">
+      <p class="case-headline">Évaluer un pipeline de fact-checking, étape par étape.</p><p class="case-summary">Pendant mon stage de fin d’études chez Astek, j’ai comparé des stratégies de segmentation, de recherche hybride et de reranking, puis étudié l’extraction de preuves et la classification de déclarations climatiques. L’objectif était d’identifier les pertes de qualité et la propagation des erreurs entre les étapes du pipeline RAG (génération augmentée par recherche documentaire).</p>
+      <dl class="case-meta"><div><dt>Contexte</dt><dd>Stage de fin d’études · mars–septembre 2026</dd></div><div><dt>Ma contribution</dt><dd>Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, analyse d’erreurs et organisation des expériences.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi · FR · 1 page" data-label-research="CV recherche · FR · 2 pages" aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a></div><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi · FR · 1 page"><span data-cv-label>CV emploi · FR · 1 page</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a></div></details>
+    </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-fact-checking">
     <p class="eyebrow">LA DÉMARCHE</p>
-    <h2 id="method-title">Évaluer chaque étape, puis la réponse finale</h2>
+    <h2 id="method-fact-checking">Évaluer chaque étape, puis la réponse finale</h2>
     <ol class="method-steps"><li>
-      <span class="method-number" aria-hidden="true">01</span><h3>Retrouver</h3><p>Segmentation · DPR + BM25 · reranking</p>
+      <span class="method-number" aria-hidden="true">01</span><h3>Préparer</h3><p>Corpus → segmentation</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">02</span><h3>Extraire</h3><p>Preuves pertinentes dans les passages</p>
+      <span class="method-number" aria-hidden="true">02</span><h3>Rechercher</h3><p>Recherche hybride → reranking · évaluation NDCG et rappel</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">03</span><h3>Classifier</h3><p>Analyse du classifieur Phi-3 adapté par LoRA</p>
+      <span class="method-number" aria-hidden="true">03</span><h3>Extraire et classifier</h3><p>Extraction de preuves → classification Phi-3 préexistant · analyse d’erreurs et macro-F1</p>
     </li></ol>
     <figcaption>Schéma de la démarche. Les erreurs sont étudiées séparément pour comprendre leur propagation. Aucun résultat interne n’est présenté.</figcaption>
   </figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="eyebrow">Dans ce projet</p><a href="#problem">Le problème</a><a href="#choices">Les choix techniques</a><a href="#results">Ce que le projet produit</a><a href="#limits">Périmètre & limites</a><ul class="tags"><li>RAG</li><li>DPR + BM25</li><li>Reranking</li><li>Phi-3</li><li>Évaluation</li></ul></nav>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="eyebrow">Dans ce projet</p><a href="#results">Ce que le projet produit</a><a href="#problem">Le problème</a><a href="#choices">Les choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Périmètre & limites</a><ul class="tags"><li>RAG</li><li>DPR + BM25</li><li>Reranking</li><li>Phi-3</li><li>Évaluation</li></ul></nav>
       <div class="case-body">
-        <section id="problem"><p class="eyebrow" aria-hidden="true">01</p><h2>Le problème</h2><p>Trouver le bon document ne suffit pas : le système doit retrouver le bon passage, en extraire une preuve pertinente et classifier la déclaration sans amplifier les erreurs des étapes précédentes.</p></section>
-        <section id="choices"><p class="eyebrow" aria-hidden="true">02</p><h2>Les choix techniques</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Comparer les unités de recherche</h3><p>Benchmark de stratégies de segmentation, recherche hybride DPR + BM25 et comparaison de rerankers.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Séparer les erreurs du pipeline</h3><p>Évaluer la recherche, l’extraction et la classification pour comprendre à quelle étape la qualité se dégrade.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Rendre les expériences reproductibles</h3><p>Protocoles communs, métriques de retrieval et de classification, expériences GPU avec Docker, cache et logs.</p></div></article></section>
-        <section id="results"><p class="eyebrow" aria-hidden="true">03</p><h2>Ce que le projet produit</h2><p>Une démarche d’évaluation de bout en bout : comparaison de configurations de recherche, travail sur les prompts d’extraction et analyse d’un classifieur Phi-3 préexistant adapté par LoRA. Les contributions publiques sont résumées dans mon CV.</p>
+        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>Ce que le projet produit</h2><p>Une méthode de diagnostic et de comparaison expérimentale, de la recherche documentaire à la décision finale. J’ai évalué le classifieur Phi-3, déjà adapté par LoRA dans des travaux antérieurs ; je ne l’ai pas fine-tuné.</p>
 
-          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Identifier ce qui améliore réellement la réponse finale, au-delà d’un score isolé sur un composant.</p></div><div class="case-links"><a class="underlink" href="../assets/CV_Charbel_Dib.pdf" >Mon CV <span aria-hidden="true">↓</span></a></div>
+
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">04</p><h2>Périmètre & limites</h2><p>Présentation des contributions à haut niveau. Les rapports, données internes et résultats détaillés du stage ne sont pas diffusés sur ce site.</p></section>
+        <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>Le problème</h2><p>Trouver le bon document ne suffit pas : le système doit retrouver le bon passage, en extraire une preuve pertinente et classifier la déclaration sans amplifier les erreurs des étapes précédentes.</p></section>
+        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Les choix techniques</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Comparer les unités de recherche</h3><p>Benchmark de stratégies de segmentation, recherche hybride DPR + BM25 et comparaison de rerankers.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Séparer les erreurs du pipeline</h3><p>Évaluer la recherche, l’extraction et la classification pour comprendre à quelle étape la qualité se dégrade.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Rendre les expériences reproductibles</h3><p>Protocoles communs, métriques de retrieval et de classification, expériences GPU avec Docker, cache et logs.</p></div></article></section>
+        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Évaluation</h2><p>NDCG mesure la qualité du classement des passages, le rappel leur couverture et la macro-F1 l’équilibre de la classification entre classes. Séparer ces mesures permet de comprendre pourquoi un meilleur classement ne garantit pas une meilleure décision finale.</p>
+
+
+          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Identifier ce qui améliore réellement la réponse finale, au-delà d’un score isolé sur un composant.</p></div><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi · FR · 1 page" data-label-research="CV recherche · FR · 2 pages" aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a></div>
+        </section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Périmètre & limites</h2><p>Présentation des contributions à haut niveau. Les rapports, données internes et résultats détaillés du stage ne sont pas diffusés sur ce site.</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="ensta-assistant.html?profile=research" data-next-project
-      data-next-pro="atlas.html?profile=pro" data-next-research="ensta-assistant.html?profile=research"
-      data-name-pro="ATLAS" data-name-research="Assistant ENSTA">
-      <span class="eyebrow">Projet suivant</span><span><span data-next-name>Assistant ENSTA</span><span aria-hidden="true">↗</span></span>
+      data-next-pro="posaidon.html?profile=pro" data-next-research="ensta-assistant.html?profile=research"
+      data-name-pro="PosAIdon" data-name-research="Assistant ENSTA" data-label-pro="Projet suivant" data-label-research="Projet suivant">
+      <span class="eyebrow" data-next-label>Projet suivant</span><span><span data-next-name>Assistant ENSTA</span><span aria-hidden="true">↗</span></span>
     </a>
+    <section class="wrap contact section" id="contact" aria-labelledby="contact-title">
+    <div><p class="eyebrow">Contact</p><h2 id="contact-title">Échangeons sur ce travail.</h2><p>Pour une opportunité professionnelle ou un sujet de recherche, contactez-moi.</p></div>
+    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr <span aria-hidden="true">↗</span></a>
+      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Adresse copiée" data-error="Copie indisponible — le lien email reste accessible." hidden>Copier l’adresse</button></div>
+      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi · FR · 1 page" data-label-research="CV recherche · FR · 2 pages" aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi · FR · 1 page"><span data-cv-label>CV emploi · FR · 1 page</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a></div></details><p class="contact-location">Île-de-France · Mobilité France<br>Français courant · Anglais courant · Arabe langue maternelle</p>
+    </div>
+  </section>
   </main>
   <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Conçu pour montrer le travail.</span><a href="#top">Retour en haut ↑</a></footer>
 </body></html>

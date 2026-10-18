@@ -20,11 +20,11 @@ export const site = {
     "resume": "CV",
     "github": "Mon GitHub",
     "proof": [
-      "Diplômé de l’ENSTA",
+      "ENSTA · Diplôme d’ingénieur · 2026",
       "1er prix · SPASEA 2025",
-      "Premier auteur · IEEE 2026"
+      "Premier auteur · IEEE 3SCEA 2026"
     ],
-    "selected": "Travaux sélectionnés",
+    "selected": "Réalisations",
     "selectedDesc": "Trois projets, trois façons de rapprocher l’IA de son usage.",
     "caseStudy": "Lire le projet",
     "source": "Code source",
@@ -47,28 +47,28 @@ export const site = {
     "researchB": "Au CESI / LINEACT, j’ai étudié la prédiction de la densité relative en fabrication additive. Ces travaux ont donné lieu à une publication IEEE en premier auteur.",
     "paper": "Publication",
     "paperLink": "Consulter sur IEEE",
-    "about": "Derrière les projets",
+    "about": "Parcours",
     "aboutTitle": "Une base d’ingénieur. Une attention aux détails.",
     "aboutText": "Je suis ingénieur diplômé de l’ENSTA, spécialisé en systèmes d’observation et intelligence artificielle. Ce qui m’intéresse : transformer des données dispersées en un outil que quelqu’un peut réellement utiliser.",
     "aboutText2": "Mes projets relient le traitement du langage, l’évaluation des modèles et le développement logiciel. J’accorde autant d’attention aux sources, aux erreurs et aux permissions qu’à la réponse finale.",
     "timeline": [
       [
-        "2026",
+        "2024–2026",
+        "ENSTA",
+        "Diplôme d’ingénieur · Systèmes d’observation et intelligence artificielle",
+        "Campus de Brest"
+      ],
+      [
+        "mars–sept. 2026",
         "Astek Innovation Lab",
         "Stage de fin d’études · NLP, RAG & évaluation",
         "La Défense"
       ],
       [
-        "2025",
+        "mai–août 2025",
         "CESI / LINEACT",
         "Stage IA & machine learning · Fabrication additive",
         "Nanterre"
-      ],
-      [
-        "2024–26",
-        "ENSTA",
-        "Diplôme d’ingénieur · Systèmes d’observation & IA",
-        "Brest"
       ]
     ],
     "skillsTitle": "Mes outils, dans leur contexte",
@@ -89,14 +89,14 @@ export const site = {
         "FleetGuard & recherche L-PBF"
       ]
     ],
-    "contactLabel": "Et maintenant ?",
+    "contactLabel": "Contact",
     "contactTitle": "Un projet exigeant ?<br>Parlons-en.",
     "contactText": "Je recherche une équipe où contribuer à des produits d’IA utiles, approfondir mes choix techniques et continuer à apprendre.",
     "email": "M’écrire",
     "copy": "Copier l’adresse",
     "copied": "Adresse copiée",
     "copyFail": "Copie indisponible — le lien email reste accessible.",
-    "languages": "Français · Anglais · Arabe",
+    "languages": "Français courant · Anglais courant · Arabe langue maternelle",
     "top": "Retour en haut",
     "footer": "Conçu pour montrer le travail.",
     "back": "Tous les projets",
@@ -112,7 +112,7 @@ export const site = {
     "jump": "Dans ce projet",
     "notFound": "Page introuvable.",
     "backHome": "Revenir au portfolio",
-    "flowLabel": "Architecture simplifiée du prototype",
+    "flowLabel": "Architecture du prototype",
     "flow": [
       "Procédures",
       "État des services",
@@ -120,9 +120,10 @@ export const site = {
       "Diagnostic sourcé",
       "Proposition figée",
       "Validation humaine",
+      "Vérification serveur",
       "Création du ticket"
     ],
-    "flowNote": "3 outils de lecture. Une écriture autorisée côté serveur.",
+    "flowNote": "3 outils de lecture · Mode déterministe par défaut · Adaptateur LLM optionnel",
     "metricRecall": "rappel · test officiel",
     "metricPrecision": "précision · test officiel",
     "metricScope": "Scania APS · 16 000 observations · résultats du dépôt",
@@ -153,9 +154,9 @@ export const site = {
     "resume": "CV",
     "github": "My GitHub",
     "proof": [
-      "ENSTA engineering graduate",
+      "ENSTA · Engineering degree · 2026",
       "1st prize · SPASEA 2025",
-      "First author · IEEE 2026"
+      "First author · IEEE 3SCEA 2026"
     ],
     "selected": "Selected work",
     "selectedDesc": "Three projects. Three ways to connect AI with its use.",
@@ -180,28 +181,28 @@ export const site = {
     "researchB": "At CESI / LINEACT, I studied relative density prediction in additive manufacturing. This work led to a first-author IEEE publication.",
     "paper": "Publication",
     "paperLink": "Read on IEEE",
-    "about": "Behind the projects",
+    "about": "Background",
     "aboutTitle": "Engineering foundations. Attention to detail.",
     "aboutText": "I am an ENSTA engineering graduate specialised in observation systems and artificial intelligence. I enjoy turning scattered data into a tool someone can actually use.",
     "aboutText2": "My projects connect natural language processing, model evaluation and software development. I pay as much attention to sources, errors and permissions as to the final answer.",
     "timeline": [
       [
-        "2026",
+        "2024–2026",
+        "ENSTA",
+        "Engineering degree (Master’s level) · Observation systems and artificial intelligence",
+        "Brest campus"
+      ],
+      [
+        "March–Sept. 2026",
         "Astek Innovation Lab",
         "Final-year internship · NLP, RAG & evaluation",
         "La Défense"
       ],
       [
-        "2025",
+        "May–Aug. 2025",
         "CESI / LINEACT",
-        "AI & ML internship · Additive manufacturing",
+        "AI & machine learning internship · Additive manufacturing",
         "Nanterre"
-      ],
-      [
-        "2024–26",
-        "ENSTA",
-        "Engineering degree · Observation systems & AI",
-        "Brest"
       ]
     ],
     "skillsTitle": "My tools, in context",
@@ -222,14 +223,14 @@ export const site = {
         "FleetGuard & L-PBF research"
       ]
     ],
-    "contactLabel": "What comes next?",
+    "contactLabel": "Contact",
     "contactTitle": "A challenging project?<br>Let’s talk.",
     "contactText": "I’m looking for a team where I can contribute to useful AI products, deepen my technical judgement and keep learning.",
     "email": "Email me",
     "copy": "Copy email address",
     "copied": "Email copied",
     "copyFail": "Copy unavailable — you can still use the email link.",
-    "languages": "French · English · Arabic",
+    "languages": "Fluent French · Fluent English · Native Arabic",
     "top": "Back to top",
     "footer": "Designed to show the work.",
     "back": "All projects",
@@ -245,7 +246,7 @@ export const site = {
     "jump": "In this project",
     "notFound": "Page not found.",
     "backHome": "Back to the portfolio",
-    "flowLabel": "Simplified prototype architecture",
+    "flowLabel": "Prototype architecture",
     "flow": [
       "Procedures",
       "Service health",
@@ -253,9 +254,10 @@ export const site = {
       "Sourced diagnosis",
       "Frozen proposal",
       "Human approval",
+      "Server verification",
       "Ticket creation"
     ],
-    "flowNote": "3 read-only tools. A server-authorised write.",
+    "flowNote": "3 read-only tools · Deterministic default · Optional LLM adapter",
     "metricRecall": "recall · official test",
     "metricPrecision": "precision · official test",
     "metricScope": "Scania APS · 16,000 observations · repository results",

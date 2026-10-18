@@ -11,25 +11,16 @@ const browser=await chromium.launch({headless:true,...(process.env.PORTFOLIO_BRO
 const reports=fileURLToPath(new URL('../reports/',import.meta.url));await mkdir(reports,{recursive:true});
 const errors=[];let checks=0;
 async function assertOpeningProject(page,label) {
- // Native font metrics vary by OS. Require actual visible content, not a fixed Y coordinate.
  await page.evaluate(()=>document.fonts.ready);
- const metrics=await page.locator('.project-visual').first().evaluate(el=>{
-  const rect=el.getBoundingClientRect();
-  return {
-   viewport:{width:innerWidth,height:innerHeight},scrollY,
-   project:{top:rect.top,bottom:rect.bottom,height:rect.height},
-   visibleHeight:Math.max(0,Math.min(rect.bottom,innerHeight)-Math.max(rect.top,0)),
-   requiredHeight:Math.min(rect.height,innerHeight*(innerWidth>640?.2:.1)),
-   font:getComputedStyle(document.documentElement).fontFamily
-  };
- });
- // Save evidence before asserting, so a CI failure includes the mobile screen and measurements.
+ for(const selector of ['h1','.hero-lead','.hero-description','.hero-education','.availability','.hero-actions']) {
+  await expect(page.locator(selector)).toBeVisible(); checks++;
+ }
+ // Qualification remains readable; the brief explicitly permits scrolling on small screens.
+ const rect=await page.locator('h1').boundingBox();
+ assert.ok(rect.y<await page.evaluate(()=>innerHeight)); checks++;
  await page.screenshot({path:reports+label+'-opening.png'});
- await writeFile(reports+label+'-opening.json',JSON.stringify(metrics,null,2)+'\n');
- assert.ok(metrics.scrollY===0&&metrics.project.top>=0&&metrics.visibleHeight>=metrics.requiredHeight,
-  `First project must be visible in the opening viewport (${label}): ${JSON.stringify(metrics)}`);
- checks++;
 }
+
 try {
  const context=await browser.newContext({viewport:{width:1440,height:1000},permissions:['clipboard-read','clipboard-write']});
  const page=await context.newPage();
@@ -41,7 +32,7 @@ try {
  await page.screenshot({path:reports+'desktop.png',fullPage:true});
  await page.screenshot({path:reports+'desktop-fold.png'});
  await page.locator('#projects').screenshot({path:reports+'selected-work.png'});
- for(const [category,total] of [['agents',2],['rag',2],['ml',2],['data',1],['all',7]]){
+ for(const [category,total] of [['agents',2],['rag',3],['ml',3],['data',5],['all',7]]){
   await page.locator(`[data-filter="${category}"]`).click();
   assert.equal(await page.locator('.project-row:visible').count(),total);checks++;
   assert.equal(await page.locator(`[data-filter="${category}"]`).getAttribute('aria-pressed'),'true');checks++;
@@ -60,7 +51,7 @@ try {
  await page.getByRole('link',{name:'English',exact:true}).click();
  assert.equal(new URL(page.url()).pathname,'/en/research/index.html');checks++;
  assert.equal(await page.locator('body').getAttribute('data-profile'),'research');checks++;
- await page.locator('.profile-nav a').filter({hasText:'Professional'}).click();
+ await page.locator('.profile-nav a').filter({hasText:'Careers & projects'}).click();
  assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  assert.equal(new URL(page.url()).pathname,'/en/pro/index.html');checks++;
  const certificate=await context.request.get(base+'/assets/Google-Data-Analytics-Charbel-Dib.pdf');
@@ -93,7 +84,7 @@ try {
  assert.equal(new URL(page.url()).searchParams.get('profile'),'research');checks++;
  assert.equal(await page.locator('body').getAttribute('data-profile'),'research');checks++;
  await page.locator('[data-next-project]').click();
- assert.equal(new URL(page.url()).pathname,'/en/projects/posaidon.html');checks++;
+ assert.equal(new URL(page.url()).pathname,'/en/projects/servicepilot.html');checks++;
  assert.equal(new URL(page.url()).searchParams.get('profile'),'research');checks++;
  await page.locator('.back-link').click();
  assert.equal(new URL(page.url()).pathname,'/en/research/index.html');checks++;
@@ -105,7 +96,7 @@ try {
  assert.match(await page.locator('h1').innerText(),/Quality in additive manufacturing/);checks++;
  assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  await page.locator('[data-next-project]').click();
- assert.equal(new URL(page.url()).pathname,'/en/projects/fleetguard.html');checks++;
+ assert.equal(new URL(page.url()).pathname,'/en/projects/atlas.html');checks++;
  await page.goto(base+'/projects/atlas.html?profile=invalid');
  assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  await page.goto(base);await page.screenshot({path:reports+'mobile.png',fullPage:true});
@@ -116,7 +107,7 @@ try {
   await assertOpeningProject(page,`mobile-fallback-${lang}`);
  }
  const paths=['/','/en/index.html','/pro/','/recherche/','/en/pro/','/en/research/',...projects.flatMap(p=>[`/projects/${p.slug}.html`,`/en/projects/${p.slug}.html`])];
- for(const width of [320,390,768,1440]){
+ for(const width of [320,375,390,768,1024,1440]){
   await page.setViewportSize({width,height:900});
   for(const path of paths){
    await page.goto(base+path,{waitUntil:'load'});
@@ -136,7 +127,7 @@ try {
  assert.equal(await plain.locator('.project-row:visible').count(),7);assert.equal(await plain.locator('#main-nav').isVisible(),true);checks+=2;
  await plain.goto(base+'/projects/fleetguard.html?profile=research');
  assert.equal(await plain.locator('.profile-nav a').count(),2);checks++;
- assert.ok(await plain.getByRole('link',{name:'Recherche',exact:true}).isVisible());checks++;
+ assert.ok(await plain.getByRole('link',{name:'Recherche & doctorat',exact:true}).isVisible());checks++;
  const missing=await page.goto(base+'/missing/deep/page');assert.equal(missing.status(),404);checks++;
  assert.equal(await page.locator('h1').innerText(),'Page introuvable.');checks++;
  assert.ok(await page.getByRole('link',{name:'Open the English portfolio'}).isVisible());checks++;

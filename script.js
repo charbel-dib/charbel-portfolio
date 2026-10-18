@@ -15,14 +15,40 @@ if (document.body.dataset.page === 'case') {
     else link.removeAttribute('aria-current');
   });
   const locale = document.querySelector('.locale');
-  const alternatePath = locale.getAttribute('href').split('?')[0];
-  const alternate = new URL(locale.getAttribute('href'), window.location.href);
-  alternate.searchParams.set('profile', profile);
-  locale.setAttribute('href', alternatePath + alternate.search);
+  if (locale) {
+    const alternate = new URL(locale.getAttribute('href'), window.location.href);
+    alternate.searchParams.set('profile', profile);
+    if (document.getElementById(location.hash.slice(1))) alternate.hash=location.hash;
+    locale.setAttribute('href', alternate.pathname + alternate.search + alternate.hash);
+  }
+  document.querySelectorAll('[data-cv]').forEach(link => {
+    const research=profile==='research';
+    link.href=research ? link.dataset.cvResearch : link.dataset.cvPro;
+    const label=research ? link.dataset.labelResearch : link.dataset.labelPro;
+    link.setAttribute('aria-label',label);
+    const text=link.querySelector('[data-cv-label]');
+    if (text) text.textContent=label;
+  });
+  // A shared case may use either profile; keep the research-only nav entry in sync.
+  const publicationLink=document.querySelector('#main-nav [data-home-anchor="publication"]');
+  if (publicationLink) publicationLink.hidden=profile!=='research';
+  const workLink=document.querySelector('#main-nav [data-home-anchor="projects"]');
+  if (workLink) workLink.textContent=document.documentElement.lang==='fr' ? (profile==='research'?'Travaux':'Projets') : (profile==='research'?'Work':'Projects');
   const next = document.querySelector('[data-next-project]');
-  next.setAttribute('href', profile === 'research' ? next.dataset.nextResearch : next.dataset.nextPro);
-  next.querySelector('[data-next-name]').textContent = profile === 'research' ? next.dataset.nameResearch : next.dataset.namePro;
+  if (next) {
+    next.setAttribute('href', profile === 'research' ? next.dataset.nextResearch : next.dataset.nextPro);
+    const name=next.querySelector('[data-next-name]'), label=next.querySelector('[data-next-label]');
+    if (name) name.textContent = profile === 'research' ? next.dataset.nameResearch : next.dataset.namePro;
+    if (label) label.textContent = profile === 'research' ? next.dataset.labelResearch : next.dataset.labelPro;
+  }
 }
+
+// Both languages share the same anchor IDs. Resolve at click time after native scrolling.
+document.querySelector('.locale')?.addEventListener('click', event => {
+  const link=event.currentTarget, target=new URL(link.href);
+  target.hash=document.getElementById(location.hash.slice(1)) ? location.hash : '';
+  link.href=target.href;
+});
 
 document.body.classList.add('js');
 const menu = document.querySelector('.menu-button');
@@ -69,18 +95,20 @@ if (toolbar) {
       toolbar.querySelectorAll('[data-filter]').forEach(control => {
         control.setAttribute('aria-pressed', String(control === button));
       });
-      rows.forEach(row => { row.hidden = category !== 'all' && row.dataset.category !== category; });
-      count.textContent = `${rows.filter(row => !row.hidden).length} ${count.dataset.countLabel}`;
+      rows.forEach(row => { row.hidden = category !== 'all' && !row.dataset.categories.split(' ').includes(category); });
+      const total=rows.filter(row => !row.hidden).length;
+      if (count) count.textContent = `${total} ${document.documentElement.lang==='fr' ? (total===1?'projet affiché':'projets affichés') : (total===1?'project shown':'projects shown')}`;
     });
   });
 }
 
 const copy = document.querySelector('[data-copy]');
-if (copy && navigator.clipboard?.writeText && window.isSecureContext) {
+if (copy) {
   copy.hidden = false;
   copy.addEventListener('click', async () => {
     const feedback = document.querySelector('#copy-feedback');
     try {
+      if (!navigator.clipboard?.writeText || !window.isSecureContext) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(copy.dataset.copy);
       feedback.textContent = copy.dataset.success;
     } catch {
@@ -99,7 +127,7 @@ if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      const id = ['project-index', 'publication'].includes(entry.target.id) ? 'projects' : entry.target.id;
+      const id = entry.target.id === 'project-index' ? 'projects' : entry.target.id;
       sectionNav?.querySelectorAll('a').forEach(link => {
         if (link.hash === `#${id}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');

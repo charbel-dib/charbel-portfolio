@@ -1,6 +1,7 @@
 import { site } from '../../content/site.mjs';
 import { profiles, publication } from '../../content/profiles.mjs';
 import { visuals } from '../../content/visuals.mjs';
+import { cvs } from '../../content/cvs.mjs';
 import { arrow, base, casePath, esc, homePath, number, out, publicPath, rel } from './html.mjs';
 
 export function shell({ lang, path, title, description, body, project, profile = 'pro', error = false }) {
@@ -39,7 +40,7 @@ export function shell({ lang, path, title, description, body, project, profile =
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="main-nav" aria-label="${lang === 'fr' ? 'Navigation principale' : 'Main navigation'}">
-        ${['projects', 'about', 'contact'].map((id, i) => `<a href="${home}#${id}" ${homeAttrs} data-home-anchor="${id}">${t.nav[i]}</a>`).join('')}
+        ${(profile === 'research' || project ? [['publication', 'Publication'], ['projects', profile==='research' ? (lang === 'fr' ? 'Travaux' : 'Work') : t.nav[0]], ['about', t.nav[1]], ['contact', t.nav[2]]] : [['projects', t.nav[0]], ['about', t.nav[1]], ['contact', t.nav[2]]]).map(([id, label]) => `<a href="${home}#${id}" ${homeAttrs} data-home-anchor="${id}"${id==='publication' && profile==='pro' ? ' hidden' : ''}>${label}</a>`).join('')}
       </nav>
       <a class="locale" href="${alternate}" lang="${other}" hreflang="${other}" aria-label="${t.locale}">${other.toUpperCase()} ${arrow}</a>
     </div>
@@ -65,14 +66,24 @@ export function flow(t) {
   </div>`;
 }
 
-export function methodDiagram(project, lang) {
+export function cvLink(lang, profile, path, contextual = true) {
+  const cv = cvs[profile][lang];
+  return `<a class="underlink" href="${rel(path, cv.file)}" download ${contextual ? `data-cv data-cv-pro="${rel(path, cvs.pro[lang].file)}" data-cv-research="${rel(path, cvs.research[lang].file)}" data-label-pro="${cvs.pro[lang].label}" data-label-research="${cvs.research[lang].label}"` : ''} aria-label="${cv.label}"><span data-cv-label>${cv.label}</span> ↓</a>`;
+}
+
+export function cvAlternatives(lang, path) {
+  return `<details class="cv-alternatives"><summary>${lang === 'fr' ? 'Autres versions du CV' : 'Other CV versions'}</summary><div class="case-links">${['pro','research'].map(profile => cvLink(lang, profile, path, false)).join('')}</div></details>`;
+}
+
+export function methodDiagram(project, lang, compact = false) {
   const visual = visuals[project.slug]?.[lang];
   if (!visual) return '';
-  return `<figure class="method-diagram" aria-labelledby="method-title">
+  const id = `method-${project.slug}`;
+  return `<figure class="method-diagram" aria-labelledby="${id}">
     <p class="eyebrow">${lang === 'fr' ? 'LA DÉMARCHE' : 'THE APPROACH'}</p>
-    <h2 id="method-title">${visual.title}</h2>
+    <${compact ? 'h4' : 'h2'} id="${id}">${visual.title}</${compact ? 'h4' : 'h2'}>
     <ol class="method-steps">${visual.steps.map(([label, detail], i) => `<li>
-      <span class="method-number" aria-hidden="true">0${i + 1}</span><h3>${label}</h3><p>${detail}</p>
+      <span class="method-number" aria-hidden="true">0${i + 1}</span><${compact ? 'h5' : 'h3'}>${label}</${compact ? 'h5' : 'h3'}><p>${detail}</p>
     </li>`).join('')}</ol>
     <figcaption>${visual.note}</figcaption>
   </figure>`;
