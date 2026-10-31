@@ -20,7 +20,7 @@ export const site = {
     "resume": "CV",
     "github": "Mon GitHub",
     "proof": [
-      "ENSTA · Diplôme d’ingénieur · 2026",
+      "ENSTA – IP Paris · Double diplôme d’ingénieur · 2026",
       "1er prix · SPASEA 2025",
       "Premier auteur · IEEE 3SCEA 2026"
     ],
@@ -49,26 +49,32 @@ export const site = {
     "paperLink": "Consulter sur IEEE",
     "about": "Parcours",
     "aboutTitle": "Une base d’ingénieur. Une attention aux détails.",
-    "aboutText": "Je suis ingénieur diplômé de l’ENSTA, spécialisé en systèmes d’observation et intelligence artificielle. Ce qui m’intéresse : transformer des données dispersées en un outil que quelqu’un peut réellement utiliser.",
+    "aboutText": "Je suis ingénieur diplômé de l’ENSTA (Institut Polytechnique de Paris) et de l’Université Libanaise, en double diplôme, spécialisé en systèmes d’observation et intelligence artificielle. Ce qui m’intéresse : transformer des données dispersées en un outil que quelqu’un peut réellement utiliser.",
     "aboutText2": "Mes projets relient le traitement du langage, l’évaluation des modèles et le développement logiciel. J’accorde autant d’attention aux sources, aux erreurs et aux permissions qu’à la réponse finale.",
     "timeline": [
       [
         "2024–2026",
-        "ENSTA",
-        "Diplôme d’ingénieur · Systèmes d’observation et intelligence artificielle",
-        "Campus de Brest"
+        "ENSTA – Institut Polytechnique de Paris",
+        "Diplôme d’ingénieur (double diplôme) · Systèmes d’observation et intelligence artificielle",
+        "Brest, France"
+      ],
+      [
+        "2021–2026",
+        "Université Libanaise · Faculté de Génie",
+        "Diplôme d’ingénieur (double diplôme) · Génie des télécommunications : électronique, traitement du signal, ondes",
+        "Liban"
       ],
       [
         "mars–sept. 2026",
-        "Astek Innovation Lab",
+        "Astek Research Network",
         "Stage de fin d’études · NLP, RAG & évaluation",
-        "La Défense"
+        "La Défense, France"
       ],
       [
         "mai–août 2025",
         "CESI / LINEACT",
         "Stage IA & machine learning · Fabrication additive",
-        "Nanterre"
+        "Nanterre, France"
       ]
     ],
     "skillsTitle": "Mes outils, dans leur contexte",
@@ -154,7 +160,7 @@ export const site = {
     "resume": "CV",
     "github": "My GitHub",
     "proof": [
-      "ENSTA · Engineering degree · 2026",
+      "ENSTA – IP Paris · Double engineering degree · 2026",
       "1st prize · SPASEA 2025",
       "First author · IEEE 3SCEA 2026"
     ],
@@ -183,26 +189,32 @@ export const site = {
     "paperLink": "Read on IEEE",
     "about": "Background",
     "aboutTitle": "Engineering foundations. Attention to detail.",
-    "aboutText": "I am an ENSTA engineering graduate specialised in observation systems and artificial intelligence. I enjoy turning scattered data into a tool someone can actually use.",
+    "aboutText": "I hold a double engineering degree from ENSTA (Institut Polytechnique de Paris) and the Lebanese University, specialised in observation systems and artificial intelligence. I enjoy turning scattered data into a tool someone can actually use.",
     "aboutText2": "My projects connect natural language processing, model evaluation and software development. I pay as much attention to sources, errors and permissions as to the final answer.",
     "timeline": [
       [
         "2024–2026",
-        "ENSTA",
-        "Engineering degree (Master’s level) · Observation systems and artificial intelligence",
-        "Brest campus"
+        "ENSTA – Institut Polytechnique de Paris",
+        "Engineering degree (Master’s level, double degree) · Observation systems and artificial intelligence",
+        "Brest, France"
+      ],
+      [
+        "2021–2026",
+        "Lebanese University · Faculty of Engineering",
+        "Engineering degree (double degree) · Telecommunications engineering: electronics, signal processing, waves",
+        "Lebanon"
       ],
       [
         "March–Sept. 2026",
-        "Astek Innovation Lab",
+        "Astek Research Network",
         "Final-year internship · NLP, RAG & evaluation",
-        "La Défense"
+        "La Défense, France"
       ],
       [
         "May–Aug. 2025",
         "CESI / LINEACT",
         "AI & machine learning internship · Additive manufacturing",
-        "Nanterre"
+        "Nanterre, France"
       ]
     ],
     "skillsTitle": "My tools, in context",

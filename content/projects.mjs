@@ -101,8 +101,8 @@ export const projects = [
       "en": "Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible."
     },
     "limit": {
-      "fr": "Classification sur un jeu public anonymisé, pas prévision d’une panne future. Les résultats ne valident pas un usage en flotte réelle. L’infrastructure AWS est préparée dans le dépôt ; un déploiement AWS effectif n’est pas établi par le rapport consulté. Le choix des hyperparamètres et la calibration ne sont pas entièrement indépendants : ce protocole ne constitue pas une validation imbriquée.",
-      "en": "Classification on an anonymised public dataset, not a forecast of future failures. Results do not validate use on a real fleet. AWS infrastructure is prepared in the repository; the inspected report does not establish an actual AWS deployment. Hyperparameter selection and calibration are not fully independent: this protocol is not nested validation."
+      "fr": "Il s’agit d’une classification sur un jeu public anonymisé, pas d’une prévision de panne : ces résultats ne suffisent pas à valider un usage sur une flotte réelle. L’infrastructure AWS est codée dans le dépôt ; la mise en ligne est ma prochaine étape. Limite méthodologique : hyperparamètres et calibration sont choisis sans validation imbriquée, d’où un léger biais optimiste possible.",
+      "en": "This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. Methodological limit: hyperparameters and calibration are selected without nested validation, so scores may be slightly optimistic."
     },
     "links": [
       {
@@ -226,8 +226,8 @@ export const projects = [
       "en": "Bridge heterogeneous data, technical analysis and a concrete question from an operator."
     },
     "limit": {
-      "fr": "Prototype de hackathon réalisé en équipe. Il ne s’agit pas d’un système opérationnel de surveillance ni d’une performance de détection validée en mer. Aucun dépôt public du prototype n’est présenté ici.",
-      "en": "A team-built hackathon prototype. This is not an operational surveillance system or a detection capability validated at sea. No public prototype repository is presented here."
+      "fr": "Prototype de hackathon réalisé en équipe, non validé en conditions opérationnelles en mer. Le code du prototype n’est pas public.",
+      "en": "A team-built hackathon prototype, not validated under operational conditions at sea. The prototype code is not public."
     },
     "links": [
       {
@@ -344,8 +344,8 @@ export const projects = [
       "en": "Treat permissions and approval as software rules, independent of instructions given to the model."
     },
     "limit": {
-      "fr": "Preuve de concept sur données fictives. Les tests hors ligne ne démontrent ni la qualité d’un modèle réel, ni une résistance générale aux injections. La version actuelle utilise notamment des jetons statiques et une base SQLite locale.",
-      "en": "Proof of concept using fictional data. Offline tests do not establish real-model quality or general prompt-injection resistance. The current version uses static tokens and a local SQLite database."
+      "fr": "Preuve de concept sur données fictives, avec des jetons statiques et une base SQLite locale. Mes tests hors ligne vérifient les règles du workflow ; ils ne mesurent ni la qualité d’un vrai modèle, ni une résistance générale aux injections de prompt.",
+      "en": "Proof of concept on fictional data, with static tokens and a local SQLite database. My offline tests check the workflow rules; they measure neither real-model quality nor general prompt-injection resistance."
     },
     "links": [
       {
@@ -368,8 +368,8 @@ export const projects = [
       "rag"
     ],
     "evaluation": {
-      "fr": "Le dépôt documente des tests logiciels et des scénarios hors ligne, avec Docker Compose et CI. Ils concernent le workflow et ses règles, pas la qualité d’un LLM en conditions réelles. Les mécanismes de contrôle décrits ici ne sont pas présentés comme des tests réexécutés pour ce portfolio.",
-      "en": "The repository documents software tests and offline scenarios, with Docker Compose and CI. They concern workflow rules, not real-world LLM quality. The controls described here are not presented as tests rerun for this portfolio."
+      "fr": "J’ai écrit des tests logiciels et des scénarios hors ligne, exécutés avec Docker Compose et en CI. Ils couvrent le workflow et ses règles d’autorisation, pas la qualité d’un LLM en conditions réelles.",
+      "en": "I wrote software tests and offline scenarios, run with Docker Compose and in CI. They cover the workflow and its authorisation rules, not real-world LLM quality."
     },
     "example": {
       "fr": "Scénario illustratif sur données fictives : un service est indisponible. Le workflow consulte la procédure, le statut et les incidents, propose un ticket figé, puis attend l’accord de l’utilisateur. Le serveur vérifie les droits avant de créer le ticket.",
@@ -384,8 +384,8 @@ export const projects = [
     },
     "year": "2026",
     "kind": {
-      "fr": "Astek Innovation Lab · Stage R&D",
-      "en": "Astek Innovation Lab · R&D internship"
+      "fr": "Astek Research Network · Stage R&D",
+      "en": "Astek Research Network · R&D internship"
     },
     "status": {
       "fr": "Stage de fin d’études · mars–septembre 2026",
@@ -466,8 +466,8 @@ export const projects = [
       "en": "Identify what actually improves the final answer, beyond an isolated component score."
     },
     "limit": {
-      "fr": "Présentation des contributions à haut niveau. Les rapports, données internes et résultats détaillés du stage ne sont pas diffusés sur ce site.",
-      "en": "High-level contribution overview. Internship reports, internal data and detailed results are not shared on this website."
+      "fr": "Vue d’ensemble de mes contributions : le rapport, les données internes et les résultats détaillés restent confidentiels.",
+      "en": "An overview of my contributions: the report, internal data and detailed results remain confidential."
     },
     "links": [
       {
@@ -575,8 +575,8 @@ export const projects = [
       "en": "Turn a document collection into a usable service whose answers remain connected to their origin."
     },
     "limit": {
-      "fr": "Prototype académique : le dépôt ne démontre pas un déploiement institutionnel officiel ni un niveau de qualité mesuré à grande échelle.",
-      "en": "Academic prototype: the repository does not establish an official institutional deployment or large-scale measured answer quality."
+      "fr": "Prototype académique, non déployé officiellement par l’école. Prochaine étape : un jeu de questions annoté pour mesurer la qualité des réponses.",
+      "en": "Academic prototype, not officially deployed by the school. Next step: an annotated question set to measure answer quality."
     },
     "links": [
       {
@@ -684,8 +684,8 @@ export const projects = [
       "en": "Make data provenance and quality the starting point of an AI product."
     },
     "limit": {
-      "fr": "Travail en cours. La couche conversationnelle complète, les réponses financières évaluées et une application déployée ne sont pas revendiquées à ce stade.",
-      "en": "Work in progress. A complete conversational layer, evaluated financial answers and a deployed application are not claimed at this stage."
+      "fr": "Travail en cours : l’ingestion des données est en place ; la couche conversationnelle, l’évaluation des réponses et le déploiement sont les prochaines étapes.",
+      "en": "Work in progress: data ingestion is in place; the conversational layer, answer evaluation and deployment are the next steps."
     },
     "links": [
       {
@@ -796,8 +796,8 @@ export const projects = [
       "en": "Connect data preparation and model evaluation to an industrial engineering question."
     },
     "limit": {
-      "fr": "Travaux de recherche. Aucune performance industrielle ou réduction de coût en production n’est revendiquée ici.",
-      "en": "Research work. No industrial performance or production cost savings are claimed here."
+      "fr": "Travaux de recherche : résultats valables dans le cadre expérimental de l’étude, pas encore validés en production.",
+      "en": "Research work: results hold within the study’s experimental setting and are not yet validated in production."
     },
     "links": [
       {

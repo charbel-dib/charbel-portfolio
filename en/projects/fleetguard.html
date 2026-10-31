@@ -68,7 +68,7 @@
 
           <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>Classification on an anonymised public dataset, not a forecast of future failures. Results do not validate use on a real fleet. AWS infrastructure is prepared in the repository; the inspected report does not establish an actual AWS deployment. Hyperparameter selection and calibration are not fully independent: this protocol is not nested validation.</p></section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. Methodological limit: hyperparameters and calibration are selected without nested validation, so scores may be slightly optimistic.</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="servicepilot.html?profile=pro" data-next-project

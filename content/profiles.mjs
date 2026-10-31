@@ -148,12 +148,12 @@ export const researchStudies = {
   "fr": [
     {
       "slug": "fact-checking",
-      "label": "Astek Innovation Lab · 2026 · mars–septembre",
+      "label": "Astek Research Network · 2026 · mars–septembre",
       "title": "Comprendre où un pipeline de fact-checking perd en qualité.",
       "question": "Comment distinguer les erreurs de recherche documentaire, d’extraction de preuves et de classification dans un pipeline RAG ?",
       "method": "Comparaison de stratégies de segmentation, recherche hybride et reranking ; évaluation séparée des étapes, puis analyse de leur effet sur la classification finale.",
       "contribution": "Une méthode de diagnostic pour localiser les pertes de qualité et orienter les améliorations à partir des résultats, avec des protocoles communs et des expériences reproductibles.",
-      "limit": "Les contributions sont présentées à haut niveau. Le rapport interne et les résultats détaillés ne sont pas publiés sur ce site.",
+      "limit": "Vue d’ensemble de mes contributions : le rapport interne et les résultats détaillés restent confidentiels.",
       "personal": "Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, analyse d’erreurs et organisation des expériences."
     },
     {
@@ -163,19 +163,19 @@ export const researchStudies = {
       "question": "Comment exploiter les paramètres de fabrication pour étudier la densité relative de pièces obtenues par fusion laser sur lit de poudre ?",
       "method": "Construction et structuration d’une base expérimentale, analyse des configurations de fabrication, clustering et comparaison de modèles prédictifs.",
       "contribution": "Une étude reliant données, apprentissage automatique et qualité des pièces, valorisée par un article de conférence IEEE en premier auteur avec Rima Hleiss.",
-      "limit": "Les résultats concernent le cadre de l’étude ; ils ne constituent pas une validation en production industrielle.",
+      "limit": "Résultats valables dans le cadre de l’étude, pas encore validés en production industrielle.",
       "personal": "Construction de la base expérimentale, comparaison de modèles et analyse des configurations pendant mon stage au CESI / LINEACT. Contribution à l’article en premier auteur avec Rima Hleiss."
     }
   ],
   "en": [
     {
       "slug": "fact-checking",
-      "label": "Astek Innovation Lab · 2026 · March–September",
+      "label": "Astek Research Network · 2026 · March–September",
       "title": "Understand where a fact-checking pipeline loses quality.",
       "question": "How can retrieval, evidence-extraction and classification errors be distinguished within a RAG pipeline?",
       "method": "Compare chunking, hybrid retrieval and reranking configurations; evaluate the stages separately, then examine their effect on final classification.",
       "contribution": "A diagnostic approach to locate quality losses and guide improvements using results, shared protocols and reproducible experiments.",
-      "limit": "Contributions are presented at a high level. The internal report and detailed results are not published on this website.",
+      "limit": "An overview of my contributions: the internal report and detailed results remain confidential.",
       "personal": "Configuration comparisons, shared evaluation framework, extraction prompts, error analysis and experiment organisation."
     },
     {
@@ -185,7 +185,7 @@ export const researchStudies = {
       "question": "How can manufacturing parameters help study the relative density of parts produced by laser powder bed fusion?",
       "method": "Build and structure an experimental database, analyse manufacturing configurations, use clustering and compare predictive models.",
       "contribution": "A study connecting data, machine learning and part quality, developed into a first-author IEEE conference paper with Rima Hleiss.",
-      "limit": "The findings concern the study setting; they do not establish validation in industrial production.",
+      "limit": "Results hold within the study setting and are not yet validated in industrial production.",
       "personal": "Experimental database construction, model comparison and configuration analysis during my CESI / LINEACT internship. First-author contribution to the paper with Rima Hleiss."
     }
   ]

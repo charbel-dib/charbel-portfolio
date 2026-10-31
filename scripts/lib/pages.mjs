@@ -22,7 +22,7 @@ function hero(lang, profile, path, t) {
 
 function experience(lang,path) {
   const fr=lang==='fr';
-  return `<section class="wrap experience" aria-labelledby="experience-title"><div><p class="eyebrow">${fr?'EXPÉRIENCE EN R&D':'R&D EXPERIENCE'}</p><h2 id="experience-title">Astek Innovation Lab · NLP, RAG & ${fr?'évaluation':'evaluation'}</h2><p class="experience-date">${fr?'Stage de fin d’études · mars–septembre 2026':'Final-year internship · March–September 2026'}</p></div><div><p>${fr?'Comparaison de stratégies de recherche documentaire, extraction de preuves et analyse des erreurs d’un pipeline de fact-checking climatique.':'Compared document retrieval strategies, studied evidence extraction and analysed errors across a climate fact-checking pipeline.'}</p><a class="underlink" href="${caseLink(path,lang,projectBySlug('fact-checking'),'pro')}">${fr?'Voir ma démarche d’évaluation':'Explore the evaluation approach'} ${arrow}</a></div></section>`;
+  return `<section class="wrap experience" aria-labelledby="experience-title"><div><p class="eyebrow">${fr?'EXPÉRIENCE EN R&D':'R&D EXPERIENCE'}</p><h2 id="experience-title">Astek Research Network · NLP, RAG & ${fr?'évaluation':'evaluation'}</h2><p class="experience-date">${fr?'Stage de fin d’études · mars–septembre 2026':'Final-year internship · March–September 2026'}</p></div><div><p>${fr?'Comparaison de stratégies de recherche documentaire, extraction de preuves et analyse des erreurs d’un pipeline de fact-checking climatique.':'Compared document retrieval strategies, studied evidence extraction and analysed errors across a climate fact-checking pipeline.'}</p><a class="underlink" href="${caseLink(path,lang,projectBySlug('fact-checking'),'pro')}">${fr?'Voir ma démarche d’évaluation':'Explore the evaluation approach'} ${arrow}</a></div></section>`;
 }
 
 function researchInterests(lang,path) {
@@ -96,7 +96,7 @@ function researchContent(lang, path) {
 function background(lang, path, t) {
   return `<section class="wrap section about" id="about" aria-labelledby="about-title">
     <div><p class="eyebrow">${t.about}</p><h2 id="about-title">${t.aboutTitle}</h2><p>${t.aboutText}</p>
-    </div><ol class="timeline">${t.timeline.map(([year, company, role, location]) => `<li><span class="timeline-date">${year}</span><div><h3>${company}</h3><p>${role}</p><small>${location}, France</small></div></li>`).join('')}</ol>
+    </div><ol class="timeline">${t.timeline.map(([year, company, role, location]) => `<li><span class="timeline-date">${year}</span><div><h3>${company}</h3><p>${role}</p><small>${location}</small></div></li>`).join('')}</ol>
   </section>
   <section class="wrap skills" aria-labelledby="skills-title"><h2 id="skills-title">${t.skillsTitle}</h2>
     <div class="skill-list">${t.skills.map(([label, tools, evidence]) => `<article><h3>${label}</h3><p>${tools}</p><small>↳ ${evidence}</small></article>`).join('')}</div>

@@ -71,7 +71,7 @@ for (const lang of ['fr','en']) {
   assert.ok(html.includes(profiles[profile][lang].availability));
   assert.ok(html.includes(cvs[profile][lang].file));
   assert.ok(html.includes(cvs[profile][lang].label));
-  assert.ok(html.indexOf('ENSTA</h3>')<html.indexOf('Astek Innovation Lab</h3>'));
+  assert.ok(html.indexOf('ENSTA – Institut Polytechnique de Paris</h3>')<html.indexOf('Astek Research Network</h3>'));
   assert.ok(html.includes(certificate.url));
   assert.ok(html.includes(`datetime="${certificate.date}"`));
   assert.ok(html.includes('Google-Data-Analytics-Charbel-Dib.pdf'));
