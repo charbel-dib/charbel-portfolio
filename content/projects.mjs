@@ -1,7 +1,7 @@
 // Public editorial content. Technical claims are tied to the sources below.
 export const fleetguardMetrics = {
-  observations: 16000, positives: 375, truePositives: 359, recall: 95.73, precision: 43.05,
-  missedFailures: 16, falseAlerts: 475, missedFailureCost: 500, falseAlertCost: 10
+  observations: 16000, positives: 375, truePositives: 369, recall: 98.4, precision: 40.02,
+  missedFailures: 6, falseAlerts: 553, missedFailureCost: 500, falseAlertCost: 10
 };
 const totalCost = fleetguardMetrics.missedFailures * fleetguardMetrics.missedFailureCost
   + fleetguardMetrics.falseAlerts * fleetguardMetrics.falseAlertCost;
@@ -9,8 +9,8 @@ export function fleetguardResult(lang) {
   const number = value => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB').format(value);
   const m = fleetguardMetrics;
   return lang === 'fr'
-    ? `Sur les ${number(m.observations)} observations du test officiel : ${number(m.recall)} % de rappel et ${number(m.precision)} % de précision. ${m.truePositives} cas APS détectés sur ${m.positives} ; ${m.missedFailures} défaillances manquées et ${m.falseAlerts} fausses alertes. Coût : ${m.falseAlertCost} × ${m.falseAlerts} + ${m.missedFailureCost} × ${m.missedFailures} = ${number(totalCost)} unités du challenge, pas des euros économisés. Résultats consignés dans la model card du dépôt.`
-    : `On the ${number(m.observations)}-row official test: ${number(m.recall)}% recall and ${number(m.precision)}% precision. ${m.truePositives} APS cases detected out of ${m.positives}; ${m.missedFailures} missed failures and ${m.falseAlerts} false alarms. Cost: ${m.falseAlertCost} × ${m.falseAlerts} + ${m.missedFailureCost} × ${m.missedFailures} = ${number(totalCost)} challenge units, not euros saved. Results recorded in the repository’s model card.`;
+    ? `Sur les ${number(m.observations)} observations du test officiel : ${number(m.recall)} % de rappel et ${number(m.precision)} % de précision. ${m.truePositives} cas APS détectés sur ${m.positives} ; ${m.missedFailures} défaillances manquées et ${m.falseAlerts} fausses alertes. Coût : ${m.falseAlertCost} × ${m.falseAlerts} + ${m.missedFailureCost} × ${m.missedFailures} = ${number(totalCost)}, sous le vainqueur du challenge IDA 2016 (9 920) et contre 12 750 pour ma version précédente. Unités du challenge, pas des euros économisés ; rapport complet dans le dépôt.`
+    : `On the ${number(m.observations)}-row official test: ${number(m.recall)}% recall and ${number(m.precision)}% precision. ${m.truePositives} APS cases detected out of ${m.positives}; ${m.missedFailures} missed failures and ${m.falseAlerts} false alarms. Cost: ${m.falseAlertCost} × ${m.falseAlerts} + ${m.missedFailureCost} × ${m.missedFailures} = ${number(totalCost)}, below the IDA 2016 challenge winner (9,920) and down from 12,750 for my previous release. Challenge units, not euros saved; full report in the repository.`;
 }
 export const projects = [
   {
@@ -69,11 +69,11 @@ export const projects = [
       "fr": [
         [
           "Évaluer avant d’optimiser",
-          "Baselines explicites, partitions par groupes de doublons et séparation des rôles d’entraînement, de calibration et de choix du seuil."
+          "Baselines explicites et validation croisée par groupes de doublons sur les 60 000 lignes d’entraînement ; le seuil minimise le coût du challenge sur les prédictions hors pli."
         ],
         [
           "Figer une décision complète",
-          "Le modèle, le prétraitement, la calibration et le seuil sont enregistrés ensemble. Le test officiel est évalué après ce gel."
+          "Le modèle et son seuil sont figés avec leurs empreintes avant toute lecture du test officiel, qui n’est évalué qu’une fois."
         ],
         [
           "Rendre le modèle utilisable",
@@ -83,11 +83,11 @@ export const projects = [
       "en": [
         [
           "Evaluate before optimising",
-          "Explicit baselines, duplicate-aware group splits, and separate fitting, calibration and threshold-selection roles."
+          "Explicit baselines and duplicate-aware grouped cross-validation on all 60,000 training rows; the threshold minimises the challenge cost on out-of-fold scores."
         ],
         [
           "Freeze the entire decision",
-          "Model, preprocessing, calibration and threshold are recorded together. The official test is evaluated after that freeze."
+          "Model and threshold are frozen with checksums before the official test is read, and the test is scored only once."
         ],
         [
           "Make the model usable",
@@ -101,8 +101,8 @@ export const projects = [
       "en": "Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible."
     },
     "limit": {
-      "fr": "Il s’agit d’une classification sur un jeu public anonymisé, pas d’une prévision de panne : ces résultats ne suffisent pas à valider un usage sur une flotte réelle. L’infrastructure AWS est codée dans le dépôt ; la mise en ligne est ma prochaine étape. Limite méthodologique : hyperparamètres et calibration sont choisis sans validation imbriquée, d’où un léger biais optimiste possible.",
-      "en": "This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. Methodological limit: hyperparameters and calibration are selected without nested validation, so scores may be slightly optimistic."
+      "fr": "Il s’agit d’une classification sur un jeu public anonymisé, pas d’une prévision de panne : ces résultats ne suffisent pas à valider un usage sur une flotte réelle. L’infrastructure AWS est codée dans le dépôt ; la mise en ligne est ma prochaine étape. L’API publiée sert encore la version précédente ; le passage au nouveau modèle accompagnera la mise en ligne. L’écart avec le vainqueur reste dans l’intervalle de bootstrap du coût (6 410 à 11 160).",
+      "en": "This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. The published API still serves the previous release; switching to the new model comes with the cloud deployment. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160)."
     },
     "links": [
       {
@@ -134,8 +134,8 @@ export const projects = [
       "data"
     ],
     "evaluation": {
-      "fr": "Le prétraitement, le modèle, la calibration et le seuil sont figés avant le test officiel. Rappel et précision se lisent ensemble : détecter davantage de cas APS implique ici de nombreuses fausses alertes.",
-      "en": "Preprocessing, model, calibration and threshold are frozen before the official test. Recall and precision must be read together: detecting more APS cases comes with many false alarms here."
+      "fr": "Moyenne de trois modèles de gradient boosting pondérés, entraînés sur tout le jeu d’entraînement, hyperparamètres fixés a priori. Une panne manquée coûte autant que 50 fausses alertes : la précision de 40 % est le compromis voulu, pas un défaut.",
+      "en": "Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms: 40% precision is the intended trade-off, not a defect."
     }
   },
   {

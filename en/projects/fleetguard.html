@@ -48,13 +48,13 @@
     </section><div class="wrap case-artifact"><figure class="case-visual case-interface"><img src="../../assets/fleetguard.webp" alt="FleetGuard interface: batch upload and frozen model information." width="1440" height="1280"><figcaption>Interface screenshot published in the FleetGuard repository. <a href="../../assets/fleetguard.webp">Enlarge screenshot <span aria-hidden="true">↗</span></a></figcaption></figure></div>
     <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#results">What the project delivers</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Scope & limits</a><ul class="tags"><li>Python</li><li>XGBoost</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul></nav>
       <div class="case-body">
-        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>What the project delivers</h2><p>On the 16,000-row official test: 95.73% recall and 43.05% precision. 359 APS cases detected out of 375; 16 missed failures and 475 false alarms. Cost: 10 × 475 + 500 × 16 = 12,750 challenge units, not euros saved. Results recorded in the repository’s model card.</p>
+        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>What the project delivers</h2><p>On the 16,000-row official test: 98.4% recall and 40.02% precision. 369 APS cases detected out of 375; 6 missed failures and 553 false alarms. Cost: 10 × 553 + 500 × 6 = 8,530, below the IDA 2016 challenge winner (9,920) and down from 12,750 for my previous release. Challenge units, not euros saved; full report in the repository.</p>
           <div class="result-panel">
     <p class="eyebrow">THE MEASURED TRADE-OFF</p>
     <dl class="result-stats">
-      <div><dt>Missed failures</dt><dd>16</dd></div>
-      <div><dt>False alerts</dt><dd>475</dd></div>
-      <div><dt>Challenge cost</dt><dd>12,750</dd></div>
+      <div><dt>Missed failures</dt><dd>6</dd></div>
+      <div><dt>False alerts</dt><dd>553</dd></div>
+      <div><dt>Challenge cost</dt><dd>8,530</dd></div>
     </dl>
     <p>Official test · 16,000 observations. A missed failure costs 500 units; a false alert, 10.</p>
     <a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a>
@@ -62,13 +62,13 @@
 
         </section>
         <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>The problem</h2><p>On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure. That trade-off should drive the decision.</p></section>
-        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Evaluate before optimising</h3><p>Explicit baselines, duplicate-aware group splits, and separate fitting, calibration and threshold-selection roles.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Freeze the entire decision</h3><p>Model, preprocessing, calibration and threshold are recorded together. The official test is evaluated after that freeze.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Make the model usable</h3><p>FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.</p></div></article></section>
-        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>Preprocessing, model, calibration and threshold are frozen before the official test. Recall and precision must be read together: detecting more APS cases comes with many false alarms here.</p>
+        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Evaluate before optimising</h3><p>Explicit baselines and duplicate-aware grouped cross-validation on all 60,000 training rows; the threshold minimises the challenge cost on out-of-fold scores.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Freeze the entire decision</h3><p>Model and threshold are frozen with checksums before the official test is read, and the test is scored only once.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Make the model usable</h3><p>FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.</p></div></article></section>
+        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms: 40% precision is the intended trade-off, not a defect.</p>
 
 
           <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. Methodological limit: hyperparameters and calibration are selected without nested validation, so scores may be slightly optimistic.</p></section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. The published API still serves the previous release; switching to the new model comes with the cloud deployment. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160).</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="servicepilot.html?profile=pro" data-next-project
