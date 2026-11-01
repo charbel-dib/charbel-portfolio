@@ -604,115 +604,87 @@ export const projects = [
     }
   },
   {
-    "slug": "atlas",
+    "slug": "algorithm-tags",
     "name": {
-      "fr": "ATLAS",
-      "en": "ATLAS"
+      "fr": "Algorithm tags",
+      "en": "Algorithm tags"
     },
     "year": "2026",
     "kind": {
-      "fr": "Projet personnel · Données financières",
-      "en": "Personal project · Financial data"
+      "fr": "Projet personnel · Classification multi-label",
+      "en": "Personal project · Multi-label classification"
     },
     "descriptor": {
-      "fr": "Collecte SEC et provenance des documents",
-      "en": "SEC ingestion and document provenance"
+      "fr": "Énoncé, solution Python et AST",
+      "en": "Statement, Python solution and AST"
     },
     "status": {
-      "fr": "En cours · ingestion et stockage",
-      "en": "In progress · ingestion and storage"
+      "fr": "Terminé · validation croisée",
+      "en": "Completed · cross-validated"
     },
     "headline": {
-      "fr": "Collecter et structurer des documents financiers en conservant leur provenance.",
-      "en": "Collect and structure financial documents while preserving provenance."
+      "fr": "Prédire les tags algorithmiques d’un problème de programmation à partir de son énoncé et de sa solution.",
+      "en": "Predict the algorithm tags of a programming problem from its statement and its solution."
     },
     "summary": {
-      "fr": "Les fondations d’un assistant d’analyse d’entreprises : collecte des documents SEC, suivi des métadonnées et stockage structuré.",
-      "en": "Foundations for a company-analysis assistant: SEC document collection, metadata tracking and structured storage."
+      "fr": "4 982 problèmes Codeforces, 8 tags, dont 46 % sans aucun tag : F1 macro9 de 67,5 en validation croisée contre 64,4 pour un SVM sur l’énoncé seul.",
+      "en": "4,982 Codeforces problems, 8 tags, 46% with no tag at all: macro9 F1 of 67.5 in cross-validation versus 64.4 for a statement-only SVM."
     },
     "tags": {
-      "fr": [
-        "Python",
-        "SEC EDGAR",
-        "SQLAlchemy",
-        "Alembic"
-      ],
-      "en": [
-        "Python",
-        "SEC EDGAR",
-        "SQLAlchemy",
-        "Alembic"
-      ]
+      "fr": ["Python", "scikit-learn", "TF-IDF", "AST Python", "pytest"],
+      "en": ["Python", "scikit-learn", "TF-IDF", "Python AST", "pytest"]
     },
     "role": {
-      "fr": "Développement de la couche d’ingestion et du modèle de données.",
-      "en": "Development of the ingestion layer and data model."
+      "fr": "Projet individuel : exploration, features, protocole d’évaluation, modèles, CLI et tests.",
+      "en": "Individual project: exploration, features, evaluation protocol, models, CLI and tests."
     },
     "problem": {
-      "fr": "Analyser une entreprise suppose de relier les chiffres à leurs documents d’origine. Avant la génération d’une réponse, il faut savoir quel document a été collecté, pour quelle entreprise et à quelle date.",
-      "en": "Company analysis requires linking figures to their original documents. Before generating an answer, the system must know which document was collected, for which company and on what date."
+      "fr": "Un problème peut avoir plusieurs tags ou aucun. Un modèle qui tague tout semble bon sur les tags fréquents mais se trompe sur près de la moitié des problèmes.",
+      "en": "A problem can have several tags or none. A model that tags everything looks good on frequent tags but is wrong on almost half of the problems."
     },
     "decisions": {
       "fr": [
-        [
-          "Partir des documents officiels",
-          "Client SEC, ingestion des métadonnées des filings et téléchargement des documents."
-        ],
-        [
-          "Structurer la provenance",
-          "Modèles de données, identifiants de dépôt, contraintes d’unicité et migrations de schéma."
-        ],
-        [
-          "Vérifier les composants de collecte",
-          "Tests du téléchargement et du parsing pour construire une base avant d’ajouter une couche d’assistance."
-        ]
+        ["Mesurer aussi l’absence de tag", "F1 macro9 : les 8 tags plus l’état « aucun tag », traité comme une 9e classe et utilisé comme critère de sélection."],
+        ["Lire le code, pas seulement l’énoncé", "Six blocs de features, dont les jetons de l’AST Python de la solution, la difficulté et les exemples d’entrée/sortie."],
+        ["Préférer le modèle simple quand il suffit", "Environ 130 variantes essayées (LightGBM, MLP, embeddings gelés, stacking) ; aucune ne justifiait sa complexité face aux SVM linéaires."]
       ],
       "en": [
-        [
-          "Start with official documents",
-          "SEC client, filing metadata ingestion and document downloads."
-        ],
-        [
-          "Structure provenance",
-          "Data models, filing identifiers, uniqueness constraints and schema migrations."
-        ],
-        [
-          "Check ingestion components",
-          "Downloader and parser tests establish a foundation before adding the assistant layer."
-        ]
+        ["Measure the no-tag case too", "Macro9 F1: the 8 tags plus the no-tag state, treated as a 9th class and used as the selection criterion."],
+        ["Read the code, not only the statement", "Six feature blocks, including Python AST tokens from the solution, difficulty and input/output examples."],
+        ["Keep the simple model when it is enough", "About 130 variants tried (LightGBM, MLP, frozen embeddings, stacking); none justified its complexity over linear SVMs."]
       ]
     },
     "result": {
-      "fr": "Réalisé : client SEC EDGAR, ingestion de métadonnées et documents, identifiants, contraintes d’unicité, modèle SQLAlchemy et migrations Alembic.",
-      "en": "Completed: SEC EDGAR client, metadata and document ingestion, identifiers, uniqueness constraints, SQLAlchemy model and Alembic migrations."
+      "fr": "F1 macro9 de 67,5 en validation croisée contre 64,4 pour la référence, devant à chacune des 4 répétitions ; 65,7 contre 64,6 sur le test, tenu à l’écart de toute décision.",
+      "en": "Macro9 F1 of 67.5 in cross-validation versus 64.4 for the baseline, ahead in each of the 4 repeats; 65.7 versus 64.6 on the test set, kept out of every decision."
     },
     "value": {
-      "fr": "Prendre la provenance et la qualité des données comme point de départ d’un produit d’IA.",
-      "en": "Make data provenance and quality the starting point of an AI product."
+      "fr": "Choisir la métrique qui reflète l’usage réel avant de choisir le modèle.",
+      "en": "Choose the metric that reflects real use before choosing the model."
     },
     "limit": {
-      "fr": "Travail en cours : l’ingestion des données est en place ; la couche conversationnelle, l’évaluation des réponses et le déploiement sont les prochaines étapes.",
-      "en": "Work in progress: data ingestion is in place; the conversational layer, answer evaluation and deployment are the next steps."
+      "fr": "Sur le test seul, l’écart (1 point) reste dans l’intervalle de confiance (±2,5 points) : c’est pourquoi les choix reposent sur la validation croisée. Les confusions trees/graphs et number theory/math viennent en partie d’annotations floues.",
+      "en": "On the test set alone, the 1-point gap is within the confidence interval (±2.5 points), which is why choices rely on cross-validation. The trees/graphs and number theory/math confusions partly reflect fuzzy annotations."
     },
     "links": [
       {
         "label": {
-          "fr": "Explorer le dépôt",
-          "en": "Explore the repository"
+          "fr": "Code source",
+          "en": "Source code"
         },
-        "url": "https://github.com/charbel-dib/atlas-ai"
+        "url": "https://github.com/charbel-dib/algorithm-tags"
       }
     ],
     "categories": [
-      "data"
+      "ml"
     ],
     "roadmap": {
-      "fr": "Suite envisagée : rapprocher les données quantitatives et les éléments documentaires, puis construire une couche d’assistance.",
-      "en": "Planned next: connect quantitative data and documentary evidence, then build an assistant layer."
+      "fr": "Suite envisagée : un encodeur de code fine-tuné, comparé à ces SVM sur le même protocole.",
+      "en": "Planned next: a fine-tuned code encoder, compared with these SVMs under the same protocol."
     },
     "evaluation": {
-      "fr": "Le dépôt documente des tests de téléchargement et de parsing. Leur périmètre est celui des composants d’ingestion ; aucune évaluation de réponses financières n’est revendiquée.",
-      "en": "The repository documents download and parser tests. Their scope is ingestion components; no evaluation of financial answers is claimed."
+      "fr": "Validation croisée répétée sur train + validation, test évalué une fois ; intervalles par bootstrap ; résultats par tag et matrices de confusion publiés dans le dépôt.",
+      "en": "Repeated cross-validation on train + validation, test evaluated once; bootstrap intervals; per-tag results and confusion matrices published in the repository."
     }
   },
   {

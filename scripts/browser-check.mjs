@@ -32,7 +32,7 @@ try {
  await page.screenshot({path:reports+'desktop.png',fullPage:true});
  await page.screenshot({path:reports+'desktop-fold.png'});
  await page.locator('#projects').screenshot({path:reports+'selected-work.png'});
- for(const [category,total] of [['agents',2],['rag',3],['ml',3],['data',5],['all',7]]){
+ for(const [category,total] of [['agents',2],['rag',3],['ml',4],['data',4],['all',7]]){
   await page.locator(`[data-filter="${category}"]`).click();
   assert.equal(await page.locator('.project-row:visible').count(),total);checks++;
   assert.equal(await page.locator(`[data-filter="${category}"]`).getAttribute('aria-pressed'),'true');checks++;
@@ -56,9 +56,9 @@ try {
  assert.equal(new URL(page.url()).pathname,'/en/pro/index.html');checks++;
  const certificate=await context.request.get(base+'/assets/Google-Data-Analytics-Charbel-Dib.pdf');
  assert.equal(certificate.status(),200);assert.equal((await certificate.body()).subarray(0,4).toString(),'%PDF');checks+=2;
- await page.goto(base+'/projects/atlas.html');
- await page.getByRole('link',{name:'English',exact:true}).click();assert.equal(new URL(page.url()).pathname,'/en/projects/atlas.html');checks++;
- assert.match(await page.locator('.case-meta').innerText(),/In progress/);checks++;
+ await page.goto(base+'/projects/algorithm-tags.html');
+ await page.getByRole('link',{name:'English',exact:true}).click();assert.equal(new URL(page.url()).pathname,'/en/projects/algorithm-tags.html');checks++;
+ assert.match(await page.locator('.case-meta').innerText(),/Completed/);checks++;
  await page.goto(base+'/projects/servicepilot.html');await page.screenshot({path:reports+'servicepilot.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});await page.goto(base);
  assert.equal(await page.locator('#main-nav').isVisible(),false);checks++;
@@ -96,8 +96,8 @@ try {
  assert.match(await page.locator('h1').innerText(),/Quality in additive manufacturing/);checks++;
  assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  await page.locator('[data-next-project]').click();
- assert.equal(new URL(page.url()).pathname,'/en/projects/atlas.html');checks++;
- await page.goto(base+'/projects/atlas.html?profile=invalid');
+ assert.equal(new URL(page.url()).pathname,'/en/projects/algorithm-tags.html');checks++;
+ await page.goto(base+'/projects/algorithm-tags.html?profile=invalid');
  assert.equal(await page.locator('body').getAttribute('data-profile'),'pro');checks++;
  await page.goto(base);await page.screenshot({path:reports+'mobile.png',fullPage:true});
  for(const [lang,path] of [['fr','/pro/'],['en','/en/pro/']]) {

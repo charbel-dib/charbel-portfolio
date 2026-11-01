@@ -29,7 +29,7 @@ export const profiles = {
       "fact-checking",
       "posaidon",
       "lpbf",
-      "atlas"
+      "algorithm-tags"
     ],
     "fr": {
       "title": "Charbel Dib — Ingénieur IA & machine learning",
@@ -68,7 +68,7 @@ export const profiles = {
       "fleetguard",
       "servicepilot",
       "posaidon",
-      "atlas"
+      "algorithm-tags"
     ],
     "fr": {
       "title": "Charbel Dib — Recherche en IA & candidature doctorale",

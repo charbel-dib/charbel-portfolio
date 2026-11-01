@@ -106,42 +106,24 @@ export const visuals = {
       "note": "Academic prototype architecture: FastAPI service, interface and sessions. Web corpus rebuilt daily; PDF/XLSX documents updated manually."
     }
   },
-  "atlas": {
+  "algorithm-tags": {
     "fr": {
-      "title": "Les fondations déjà présentes dans le dépôt",
+      "title": "Du problème au tag",
       "steps": [
-        [
-          "Collecter",
-          "Métadonnées et documents SEC EDGAR"
-        ],
-        [
-          "Structurer",
-          "Identifiants · provenance · contraintes d’unicité"
-        ],
-        [
-          "Vérifier",
-          "Tests de téléchargement et de parsing"
-        ]
+        ["Lire", "Énoncé · solution Python · difficulté · exemples"],
+        ["Représenter", "Six blocs TF-IDF et numériques, dont l’AST du code"],
+        ["Décider", "Huit SVM linéaires · seuil commun · « aucun tag » mesuré"]
       ],
-      "note": "État actuel : ingestion et stockage. Prochaine étape : rapprocher données quantitatives et documents, puis construire la couche d’assistance."
+      "note": "Choix faits en validation croisée répétée ; test évalué une seule fois."
     },
     "en": {
-      "title": "The foundations already present in the repository",
+      "title": "From problem to tag",
       "steps": [
-        [
-          "Collect",
-          "SEC EDGAR metadata and documents"
-        ],
-        [
-          "Structure",
-          "Identifiers · provenance · uniqueness constraints"
-        ],
-        [
-          "Check",
-          "Download and parser tests"
-        ]
+        ["Read", "Statement · Python solution · difficulty · examples"],
+        ["Represent", "Six TF-IDF and numeric blocks, including the code AST"],
+        ["Decide", "Eight linear SVMs · shared threshold · no-tag case measured"]
       ],
-      "note": "Current stage: ingestion and storage. Next: connect quantitative data with documents, then build the assistant layer."
+      "note": "Choices made in repeated cross-validation; test evaluated once."
     }
   },
   "lpbf": {
