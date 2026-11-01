@@ -574,16 +574,16 @@ export const projects = [
       ]
     },
     "result": {
-      "fr": "Sur 48 questions annotées (français et anglais), la bonne source fait partie des 8 passages transmis au modèle dans 93,8 % des cas, 95,8 % avec un reranker ; elle arrive dans les 3 premiers dans 89,6 % des cas avec reranking, contre 81,2 % sans. Prototype de bout en bout : API FastAPI, sessions, interface de chat, widget intégrable, refus et escalade par email.",
-      "en": "On 48 annotated questions (French and English), the right source is among the 8 passages sent to the model in 93.8% of cases, 95.8% with a reranker; it ranks in the top 3 in 89.6% of cases with reranking, versus 81.2% without. End-to-end prototype: FastAPI service, sessions, chat interface, embeddable widget, refusal and email escalation."
+      "fr": "Sur 60 questions annotées en français et en anglais, la bonne source fait partie des 8 passages transmis au modèle dans 55 cas (91,7 %). Un reranker fait passer la bonne source dans les 3 premiers de 81,2 % à 89,6 % des cas. Un seuil recalibré à 0,84 écarte 10 questions hors sujet sur 11 jamais vues, en gardant 10 questions valides sur 12. Prototype de bout en bout : API FastAPI, sessions, interface de chat, widget intégrable, refus et escalade par email.",
+      "en": "On 60 annotated questions in French and English, the right source is among the 8 passages sent to the model in 55 cases (91.7%). A reranker lifts the right source into the top 3 from 81.2% to 89.6% of cases. A threshold recalibrated to 0.84 turns away 10 of 11 unseen off-topic questions while keeping 10 of 12 valid ones. End-to-end prototype: FastAPI service, sessions, chat interface, embeddable widget, refusal and email escalation."
     },
     "value": {
       "fr": "Passer d’une collection de documents à un service consultable dont les réponses restent rattachées à leur origine.",
       "en": "Turn a document collection into a usable service whose answers remain connected to their origin."
     },
     "limit": {
-      "fr": "Prototype académique, non déployé officiellement par l’école. L’évaluation a montré que le seuil de similarité ne refusait aucune question hors sujet : le refus repose aujourd’hui sur le modèle de langage. La qualité des réponses elles-mêmes reste à mesurer.",
-      "en": "Academic prototype, not officially deployed by the school. The evaluation showed that the similarity threshold refused no out-of-scope question: refusals currently rely on the language model. Answer quality itself is still to be measured."
+      "fr": "Prototype académique, non déployé officiellement par l’école. Le premier jeu de questions s’est révélé optimiste : sur des questions jamais vues, la bonne source n’arrive dans le contexte que dans 83 % des cas, contre 94 %. Le seuil de 0,84 a été choisi après avoir vu les deux jeux. La qualité des réponses elles-mêmes reste à mesurer.",
+      "en": "Academic prototype, not officially deployed by the school. The first question set turned out optimistic: on unseen questions, the right source reaches the context in 83% of cases, versus 94%. The 0.84 threshold was chosen after seeing both sets. Answer quality itself is still to be measured."
     },
     "links": [
       {
@@ -606,8 +606,8 @@ export const projects = [
       "data"
     ],
     "evaluation": {
-      "fr": "Jeu de 60 questions tirées du corpus indexé (48 avec source et faits attendus, 12 hors sujet), relues une à une ; mesures Hit@k et MRR, avec et sans reranking. Avec 48 questions, une question vaut environ 2 points. Les citations, le seuil de similarité, le refus et la transmission humaine sont des mécanismes de contrôle, pas une garantie d’absence d’hallucinations. Projet de 3A encadré par le Dr Abdelmalek Toumi.",
-      "en": "A 60-question set drawn from the indexed corpus (48 with expected source and facts, 12 out of scope), reviewed one by one; Hit@k and MRR, with and without reranking. With 48 questions, one question is worth about 2 points. Citations, a similarity threshold, refusal and human escalation are controls, not a guarantee against hallucinations. Final-year project supervised by Dr Abdelmalek Toumi."
+      "fr": "Un jeu principal de 60 questions et un jeu de contrôle de 23 questions jamais vues, tirés du corpus indexé et relus un à un, avec source et faits attendus ; mesures Hit@k et MRR, avec et sans reranking. Avec si peu de questions, un écart de quelques points n’est pas significatif. Les citations, le seuil de similarité, le refus et la transmission humaine sont des mécanismes de contrôle, pas une garantie d’absence d’hallucinations. Projet de 3A encadré par le Dr Abdelmalek Toumi.",
+      "en": "A 60-question main set and a 23-question held-out set of unseen questions, drawn from the indexed corpus and reviewed one by one, with expected source and facts; Hit@k and MRR, with and without reranking. With so few questions, a gap of a few points is not significant. Citations, a similarity threshold, refusal and human escalation are controls, not a guarantee against hallucinations. Final-year project supervised by Dr Abdelmalek Toumi."
     }
   },
   {
