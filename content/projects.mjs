@@ -101,8 +101,8 @@ export const projects = [
       "en": "Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible."
     },
     "limit": {
-      "fr": "Il s’agit d’une classification sur un jeu public anonymisé, pas d’une prévision de panne : ces résultats ne suffisent pas à valider un usage sur une flotte réelle. L’infrastructure AWS est codée dans le dépôt ; la mise en ligne est ma prochaine étape. L’API publiée sert encore la version précédente ; le passage au nouveau modèle accompagnera la mise en ligne. L’écart avec le vainqueur reste dans l’intervalle de bootstrap du coût (6 410 à 11 160).",
-      "en": "This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. The published API still serves the previous release; switching to the new model comes with the cloud deployment. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160)."
+      "fr": "Il s’agit d’une classification sur un jeu public anonymisé, pas d’une prévision de panne : ces résultats ne suffisent pas à valider un usage sur une flotte réelle. Le modèle a été déployé sur AWS (CloudFront, ECS Fargate, rôles GitHub OIDC) puis l’environnement a été éteint pour limiter les coûts ; la démo publique tourne sur Hugging Face. L’écart avec le vainqueur reste dans l’intervalle de bootstrap du coût (6 410 à 11 160).",
+      "en": "This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The model was deployed on AWS (CloudFront, ECS Fargate, GitHub OIDC roles), then the environment was shut down to limit costs; the public demo runs on Hugging Face. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160)."
     },
     "links": [
       {
@@ -117,7 +117,14 @@ export const projects = [
           "fr": "Résultats & model card",
           "en": "Results & model card"
         },
-        "url": "https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md"
+        "url": "https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md"
+      },
+      {
+        "label": {
+          "fr": "Démo en ligne",
+          "en": "Live demo"
+        },
+        "url": "https://huggingface.co/spaces/Charbeld77/fleetguard"
       }
     ],
     "image": "fleetguard.webp",
