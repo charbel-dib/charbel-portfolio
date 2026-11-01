@@ -574,16 +574,16 @@ export const projects = [
       ]
     },
     "result": {
-      "fr": "Un prototype de bout en bout avec API FastAPI, sessions, interface de chat et widget intégrable. Un parcours de refus et d’escalade par email complète les réponses sourcées.",
-      "en": "An end-to-end prototype with a FastAPI service, sessions, chat interface and embeddable widget. Refusal and email escalation complement source-backed answers."
+      "fr": "Sur 48 questions annotées (français et anglais), la bonne source fait partie des 8 passages transmis au modèle dans 93,8 % des cas, 95,8 % avec un reranker ; elle arrive dans les 3 premiers dans 89,6 % des cas avec reranking, contre 81,2 % sans. Prototype de bout en bout : API FastAPI, sessions, interface de chat, widget intégrable, refus et escalade par email.",
+      "en": "On 48 annotated questions (French and English), the right source is among the 8 passages sent to the model in 93.8% of cases, 95.8% with a reranker; it ranks in the top 3 in 89.6% of cases with reranking, versus 81.2% without. End-to-end prototype: FastAPI service, sessions, chat interface, embeddable widget, refusal and email escalation."
     },
     "value": {
       "fr": "Passer d’une collection de documents à un service consultable dont les réponses restent rattachées à leur origine.",
       "en": "Turn a document collection into a usable service whose answers remain connected to their origin."
     },
     "limit": {
-      "fr": "Prototype académique, non déployé officiellement par l’école. Prochaine étape : un jeu de questions annoté pour mesurer la qualité des réponses.",
-      "en": "Academic prototype, not officially deployed by the school. Next step: an annotated question set to measure answer quality."
+      "fr": "Prototype académique, non déployé officiellement par l’école. L’évaluation a montré que le seuil de similarité ne refusait aucune question hors sujet : le refus repose aujourd’hui sur le modèle de langage. La qualité des réponses elles-mêmes reste à mesurer.",
+      "en": "Academic prototype, not officially deployed by the school. The evaluation showed that the similarity threshold refused no out-of-scope question: refusals currently rely on the language model. Answer quality itself is still to be measured."
     },
     "links": [
       {
@@ -592,6 +592,13 @@ export const projects = [
           "en": "Source code"
         },
         "url": "https://github.com/charbel-dib/ensta_chatbot"
+      },
+      {
+        "label": {
+          "fr": "Résultats de l’évaluation",
+          "en": "Evaluation results"
+        },
+        "url": "https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval"
       }
     ],
     "categories": [
@@ -599,8 +606,8 @@ export const projects = [
       "data"
     ],
     "evaluation": {
-      "fr": "Le rapport académique du 27 février 2026 décrit des tests fonctionnels du prototype, pas un benchmark de qualité des réponses. Les citations, le seuil de similarité, le refus et la transmission humaine sont des mécanismes de contrôle, pas une garantie d’absence d’hallucinations. Projet de 3A encadré par le Dr Abdelmalek Toumi.",
-      "en": "The academic report dated 27 February 2026 describes functional prototype checks, not an answer-quality benchmark. Citations, a similarity threshold, refusal and human escalation are controls, not a guarantee against hallucinations. Final-year project supervised by Dr Abdelmalek Toumi."
+      "fr": "Jeu de 60 questions tirées du corpus indexé (48 avec source et faits attendus, 12 hors sujet), relues une à une ; mesures Hit@k et MRR, avec et sans reranking. Avec 48 questions, une question vaut environ 2 points. Les citations, le seuil de similarité, le refus et la transmission humaine sont des mécanismes de contrôle, pas une garantie d’absence d’hallucinations. Projet de 3A encadré par le Dr Abdelmalek Toumi.",
+      "en": "A 60-question set drawn from the indexed corpus (48 with expected source and facts, 12 out of scope), reviewed one by one; Hit@k and MRR, with and without reranking. With 48 questions, one question is worth about 2 points. Citations, a similarity threshold, refusal and human escalation are controls, not a guarantee against hallucinations. Final-year project supervised by Dr Abdelmalek Toumi."
     }
   },
   {

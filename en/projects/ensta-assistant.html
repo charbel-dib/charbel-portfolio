@@ -44,7 +44,7 @@
       <h1 id="case-title">ENSTA assistant<span>.</span></h1>
       <p class="case-headline">A bilingual document assistant, from ingestion to sourced answers.</p><p class="case-summary">A bilingual assistant indexing campus information, answering with citations and providing escalation when it cannot answer adequately. The prototype uses a RAG (retrieval-augmented generation) pipeline.</p>
       <dl class="case-meta"><div><dt>Context</dt><dd>Prototype · Web, PDF & XLSX corpus</dd></div><div><dt>My contribution</dt><dd>Document pipeline, answer service, session management and web integration.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval" target="_blank" rel="noopener noreferrer">Evaluation results <span aria-hidden="true">↗</span></a></div>
     </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-ensta-assistant">
     <p class="eyebrow">THE APPROACH</p>
     <h2 id="method-ensta-assistant">Two stages: prepare data, then answer</h2>
@@ -57,18 +57,18 @@
   </figure></div>
     <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#results">What the project delivers</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Scope & limits</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav>
       <div class="case-body">
-        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>What the project delivers</h2><p>An end-to-end prototype with a FastAPI service, sessions, chat interface and embeddable widget. Refusal and email escalation complement source-backed answers.</p>
+        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>What the project delivers</h2><p>On 48 annotated questions (French and English), the right source is among the 8 passages sent to the model in 93.8% of cases, 95.8% with a reranker; it ranks in the top 3 in 89.6% of cases with reranking, versus 81.2% without. End-to-end prototype: FastAPI service, sessions, chat interface, embeddable widget, refusal and email escalation.</p>
 
 
         </section>
         <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>The problem</h2><p>Campus information is spread across webpages, PDFs and spreadsheets. It needs to become searchable while retaining source references and handling updates.</p></section>
         <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Separate ingestion from serving</h3><p>Collect, clean, chunk and index documents upstream of the answering service.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Keep sources in the answer</h3><p>Multilingual-E5 embeddings, a FAISS index, retrieval threshold and citations connect answers to documents.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Account for corpus updates</h3><p>Daily web-corpus rebuild and index reloading without restarting the service. PDF and XLSX updates are manual, according to the academic report.</p></div></article></section>
-        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>The academic report dated 27 February 2026 describes functional prototype checks, not an answer-quality benchmark. Citations, a similarity threshold, refusal and human escalation are controls, not a guarantee against hallucinations. Final-year project supervised by Dr Abdelmalek Toumi.</p>
+        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>A 60-question set drawn from the indexed corpus (48 with expected source and facts, 12 out of scope), reviewed one by one; Hit@k and MRR, with and without reranking. With 48 questions, one question is worth about 2 points. Citations, a similarity threshold, refusal and human escalation are controls, not a guarantee against hallucinations. Final-year project supervised by Dr Abdelmalek Toumi.</p>
 
 
-          <div class="takeaway"><h3>What I take from it</h3><p>Turn a document collection into a usable service whose answers remain connected to their origin.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+          <div class="takeaway"><h3>What I take from it</h3><p>Turn a document collection into a usable service whose answers remain connected to their origin.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval" target="_blank" rel="noopener noreferrer">Evaluation results <span aria-hidden="true">↗</span></a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>Academic prototype, not officially deployed by the school. Next step: an annotated question set to measure answer quality.</p></section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>Academic prototype, not officially deployed by the school. The evaluation showed that the similarity threshold refused no out-of-scope question: refusals currently rely on the language model. Answer quality itself is still to be measured.</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="fact-checking.html?profile=pro" data-next-project
