@@ -44,7 +44,7 @@
       <h1 id="case-title">FleetGuard<span>.</span></h1>
       <p class="case-headline">Classify APS failures while accounting for the cost of errors.</p><p class="case-summary">On the public Scania APS (Air Pressure System) dataset, classify failures and choose a threshold based on error costs, then make the decision inspectable in an application.</p>
       <dl class="case-meta"><div><dt>Context</dt><dd>Evaluated model · API & interface</dd></div><div><dt>My contribution</dt><dd>ML pipeline, evaluation protocol, API and review interface.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a><a class="underlink" href="https://huggingface.co/spaces/Charbeld77/fleetguard" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a></div>
     </section><div class="wrap case-artifact"><figure class="case-visual case-interface"><img src="../../assets/fleetguard.webp" alt="FleetGuard interface: batch upload and frozen model information." width="1440" height="1280"><figcaption>Interface screenshot published in the FleetGuard repository. <a href="../../assets/fleetguard.webp">Enlarge screenshot <span aria-hidden="true">↗</span></a></figcaption></figure></div>
     <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#results">What the project delivers</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Scope & limits</a><ul class="tags"><li>Python</li><li>XGBoost</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul></nav>
       <div class="case-body">
@@ -57,7 +57,7 @@
       <div><dt>Challenge cost</dt><dd>8,530</dd></div>
     </dl>
     <p>Official test · 16,000 observations. A missed failure costs 500 units; a false alert, 10.</p>
-    <a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a>
+    <a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a>
   </div>
 
         </section>
@@ -66,9 +66,9 @@
         <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms: 40% precision is the intended trade-off, not a defect.</p>
 
 
-          <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/release-04.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a></div>
+          <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a><a class="underlink" href="https://huggingface.co/spaces/Charbeld77/fleetguard" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The AWS infrastructure is written as code in the repository; putting it live is my next step. The published API still serves the previous release; switching to the new model comes with the cloud deployment. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160).</p></section>
+        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The model was deployed on AWS (CloudFront, ECS Fargate, GitHub OIDC roles), then the environment was shut down to limit costs; the public demo runs on Hugging Face. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160).</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="servicepilot.html?profile=pro" data-next-project
