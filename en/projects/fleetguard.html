@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FleetGuard — Cost-aware failure classification — Charbel Dib</title><meta name="description" content="On the public Scania APS (Air Pressure System) dataset, classify failures and choose a threshold based on error costs, then make the decision inspectable in an application.">
-  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="canonical" href="https://charbel-dib.vercel.app/en/projects/fleetguard.html">
   <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/fleetguard.html">
   <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/fleetguard.html">
@@ -15,6 +15,7 @@
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../styles.css"><script src="../../script.js" defer></script>
 </head>
 <body id="top" data-profile="pro" data-page="case">
@@ -22,13 +23,13 @@
   <header class="header">
     <div class="wrap header-inner">
       <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" aria-label="Charbel Dib">
-        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+        <span>Charbel Dib</span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="main-nav" aria-label="Main navigation">
         <a href="../pro/index.html#publication" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="publication" hidden>Publication</a><a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="projects">Projects</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="about">Background</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="contact">Contact</a>
       </nav>
-      <a class="locale" href="../../projects/fleetguard.html?profile=pro" lang="fr" hreflang="fr" aria-label="Français">FR <span aria-hidden="true">↗</span></a>
+      <a class="locale" href="../../projects/fleetguard.html?profile=pro" lang="fr" hreflang="fr" aria-label="Français">FR </a>
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
@@ -39,50 +40,62 @@
   </div></div>
   <main id="main" class="case-main">
     <section class="wrap case-hero" aria-labelledby="case-title">
-      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../research/index.html">← All projects</a>
-      <p class="eyebrow">Personal project · Applied ML · 2026</p>
-      <h1 id="case-title">FleetGuard<span>.</span></h1>
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../research/index.html">All projects</a>
+      <p class="project-byline"><span>Personal project</span><span>Applied ML</span><span>2026</span></p>
+      <h1 id="case-title">FleetGuard</h1>
       <p class="case-headline">Classify APS failures while accounting for the cost of errors.</p><p class="case-summary">On the public Scania APS (Air Pressure System) dataset, classify failures and choose a threshold based on error costs, then make the decision inspectable in an application.</p>
-      <dl class="case-meta"><div><dt>Context</dt><dd>Evaluated model · API & interface</dd></div><div><dt>My contribution</dt><dd>ML pipeline, evaluation protocol, API and review interface.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a><a class="underlink" href="https://huggingface.co/spaces/Charbeld77/fleetguard" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a></div>
-    </section><div class="wrap case-artifact"><figure class="case-visual case-interface"><img src="../../assets/fleetguard.webp" alt="FleetGuard interface: batch upload and frozen model information." width="1440" height="1280"><figcaption>Interface screenshot published in the FleetGuard repository. <a href="../../assets/fleetguard.webp">Enlarge screenshot <span aria-hidden="true">↗</span></a></figcaption></figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#results">What the project delivers</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Scope & limits</a><ul class="tags"><li>Python</li><li>XGBoost</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul></nav>
+      <dl class="case-meta"><div><dt>Context</dt><dd>Evaluated model, API & interface</dd></div><div><dt>My contribution</dt><dd>ML pipeline, evaluation protocol, API and review interface.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code</a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card</a><a class="underlink" href="https://huggingface.co/spaces/Charbeld77/fleetguard" target="_blank" rel="noopener noreferrer">Live demo</a></div>
+    </section><div class="wrap case-artifact"><figure class="case-visual case-interface"><img src="../../assets/fleetguard.webp" alt="FleetGuard interface: batch upload and frozen model information." width="1440" height="1280"><figcaption>Interface screenshot published in the FleetGuard repository. <a href="../../assets/fleetguard.webp">Enlarge screenshot</a></figcaption></figure></div>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="case-toc-label">In this project</p><a href="#results">Results</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Limits</a><ul class="tags"><li>Python</li><li>XGBoost</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul></nav>
       <div class="case-body">
-        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>What the project delivers</h2><p>On the 16,000-row official test: 98.4% recall and 40.02% precision. 369 APS cases detected out of 375; 6 missed failures and 553 false alarms. Cost: 10 × 553 + 500 × 6 = 8,530, below the IDA 2016 challenge winner (9,920) and down from 12,750 for my previous release. Challenge units, not euros saved; full report in the repository.</p>
+        <section id="results"><h2>Results</h2><p>On the 16,000-row official test: 98.4% recall and 40.02% precision. 369 APS cases detected out of 375; 6 missed failures and 553 false alarms. Cost: 10 × 553 + 500 × 6 = 8,530, below the IDA 2016 challenge winner (9,920) and down from 12,750 for my previous release. Challenge units, not euros saved; full report in the repository.</p>
           <div class="result-panel">
-    <p class="eyebrow">THE MEASURED TRADE-OFF</p>
+    <h3>The measured trade-off</h3>
     <dl class="result-stats">
       <div><dt>Missed failures</dt><dd>6</dd></div>
       <div><dt>False alerts</dt><dd>553</dd></div>
       <div><dt>Challenge cost</dt><dd>8,530</dd></div>
     </dl>
-    <p>Official test · 16,000 observations. A missed failure costs 500 units; a false alert, 10.</p>
-    <a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a>
+    <p>Official test, 16,000 rows. A missed failure costs 500 units, a false alert 10.</p>
+    <a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card </a>
   </div>
+          <figure class="measure">
+    <figcaption><strong>Challenge cost on the official test</strong><span>Lower is better. Challenge units, not euros.</span></figcaption>
+    <ol class="measure-rows"><li class="measure-row is-main"><span class="measure-label">FleetGuard</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><rect class="measure-band" x="5.86%" y="11" width="67.85%" height="14" rx="3"></rect><circle cx="36.14%" cy="18" r="7"></circle><text x="36.14%" y="18" dx="13" dy=".35em" text-anchor="start">8,530</text></svg>
+      <span class="visually-hidden">8,530 (6,410 – 11,160)</span></li><li class="measure-row"><span class="measure-label">IDA 2016 winner</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="56%" cy="18" r="6"></circle><text x="56%" y="18" dx="13" dy=".35em" text-anchor="start">9,920</text></svg>
+      <span class="visually-hidden">9,920</span></li><li class="measure-row"><span class="measure-label">My previous release</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="96.43%" cy="18" r="6"></circle><text x="96.43%" y="18" dx="-13" dy=".35em" text-anchor="end">12,750</text></svg>
+      <span class="visually-hidden">12,750</span></li></ol>
+    <div class="measure-axis"><span class="measure-axis-gap"></span><svg class="measure-axis-scale" width="100%" height="28" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="1" y2="1"></line><line x1="0%" x2="0%" y1="1" y2="6"></line><text x="0%" y="22" text-anchor="middle">6,000</text><line x1="28.57%" x2="28.57%" y1="1" y2="6"></line><text x="28.57%" y="22" text-anchor="middle">8,000</text><line x1="57.14%" x2="57.14%" y1="1" y2="6"></line><text x="57.14%" y="22" text-anchor="middle">10,000</text><line x1="85.71%" x2="85.71%" y1="1" y2="6"></line><text x="85.71%" y="22" text-anchor="middle">12,000</text></svg></div>
+    <p class="measure-note">The blue band is FleetGuard’s cost bootstrap interval: the gap to the winner lies inside it.</p>
+  </figure>
 
         </section>
-        <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>The problem</h2><p>On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure. That trade-off should drive the decision.</p></section>
-        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Evaluate before optimising</h3><p>Explicit baselines and duplicate-aware grouped cross-validation on all 60,000 training rows; the threshold minimises the challenge cost on out-of-fold scores.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Freeze the entire decision</h3><p>Model and threshold are frozen with checksums before the official test is read, and the test is scored only once.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Make the model usable</h3><p>FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.</p></div></article></section>
-        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms: 40% precision is the intended trade-off, not a defect.</p>
+        <section id="problem"><h2>The problem</h2><p>On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure, so the threshold has to be chosen on that cost.</p></section>
+        <section id="choices"><h2>Technical decisions</h2><article class="decision"><h3>Evaluate before optimising</h3><p>Explicit baselines and duplicate-aware grouped cross-validation on all 60,000 training rows; the threshold minimises the challenge cost on out-of-fold scores.</p></article><article class="decision"><h3>Freeze the entire decision</h3><p>Model and threshold are frozen with checksums before the official test is read, and the test is scored only once.</p></article><article class="decision"><h3>Make the model usable</h3><p>FastAPI service, CSV batch review and a React interface. Scores and missing values remain visible to help interpret decisions.</p></article></section>
+        <section id="evaluation"><h2>Evaluation</h2><p>Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms, so the threshold accepts many false alarms, which gives 40% precision.</p>
 
 
-          <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card <span aria-hidden="true">↗</span></a><a class="underlink" href="https://huggingface.co/spaces/Charbeld77/fleetguard" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a></div>
+          <div class="takeaway"><h3>What I take from it</h3><p>Connect an ML metric to an operational decision and show how many false alarms it costs.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/fleetguard" target="_blank" rel="noopener noreferrer">Source code</a><a class="underlink" href="https://github.com/charbel-dib/fleetguard/blob/main/docs/results/fulltrain-08.md" target="_blank" rel="noopener noreferrer">Results & model card</a><a class="underlink" href="https://huggingface.co/spaces/Charbeld77/fleetguard" target="_blank" rel="noopener noreferrer">Live demo</a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The model was deployed on AWS (CloudFront, ECS Fargate, GitHub OIDC roles), then the environment was shut down to limit costs; the public demo runs on Hugging Face. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160).</p></section>
+        <section id="limits" class="limits"><h2>Limits</h2><p>This is classification on an anonymised public dataset, not failure forecasting: the results are not enough to validate use on a real fleet. The model was deployed on AWS (CloudFront, ECS Fargate, GitHub OIDC roles), then the environment was shut down to limit costs; the public demo runs on Hugging Face. The gap to the winner lies within the cost bootstrap interval (6,410 to 11,160).</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="servicepilot.html?profile=pro" data-next-project
       data-next-pro="servicepilot.html?profile=pro" data-next-research="servicepilot.html?profile=research"
       data-name-pro="ServicePilot" data-name-research="ServicePilot" data-label-pro="Next project" data-label-research="Next project">
-      <span class="eyebrow" data-next-label>Next project</span><span><span data-next-name>ServicePilot</span><span aria-hidden="true">↗</span></span>
+      <span class="next-label" data-next-label>Next project</span><span class="next-name"><span data-next-name>ServicePilot</span></span>
     </a>
     <section class="wrap contact section" id="contact" aria-labelledby="contact-title">
-    <div><p class="eyebrow">Contact</p><h2 id="contact-title">Let’s discuss this work.</h2><p>Contact me about a career opportunity or research topic.</p></div>
-    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr <span aria-hidden="true">↗</span></a>
-      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Email copied" data-error="Copy unavailable — you can still use the email link." hidden>Copy email address</button></div>
-      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download data-cv data-cv-pro="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" data-cv-research="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" data-label-pro="Industry CV · EN · 1 page" data-label-research="Research CV · EN · 2 pages" aria-label="Industry CV · EN · 1 page"><span data-cv-label>Industry CV · EN · 1 page</span> ↓</a><details class="cv-alternatives"><summary>Other CV versions</summary><div class="case-links"><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download  aria-label="Industry CV · EN · 1 page"><span data-cv-label>Industry CV · EN · 1 page</span> ↓</a><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" download  aria-label="Research CV · EN · 2 pages"><span data-cv-label>Research CV · EN · 2 pages</span> ↓</a></div></details><p class="contact-location">Paris region · Mobile across France<br>Fluent French · Fluent English · Native Arabic</p>
+    <div><h2 id="contact-title">Let’s talk about this project</h2><p>For a job opening or a research topic, write to me.</p></div>
+    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr</a>
+      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub</a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Email copied" data-error="Copy unavailable. The email link still works." hidden>Copy email address</button></div>
+      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download data-cv data-cv-pro="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" data-cv-research="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" data-label-pro="Industry CV (EN, 1 page)" data-label-research="Research CV (EN, 2 pages)" aria-label="Industry CV (EN, 1 page)"><span data-cv-label>Industry CV (EN, 1 page)</span> ↓</a><details class="cv-alternatives"><summary>Other CV versions</summary><div class="case-links"><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download  aria-label="Industry CV (EN, 1 page)"><span data-cv-label>Industry CV (EN, 1 page)</span> ↓</a><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" download  aria-label="Research CV (EN, 2 pages)"><span data-cv-label>Research CV (EN, 2 pages)</span> ↓</a></div></details><p class="contact-location">Paris region, Mobile across France<br>Fluent French, Fluent English, Native Arabic</p>
     </div>
   </section>
   </main>
-  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Designed to show the work.</span><a href="#top">Back to top ↑</a></footer>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>No cookies, no tracking.</span><a href="#top">Back to top</a></footer>
 </body></html>

@@ -27,7 +27,7 @@ try {
  page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(r.status()>=400&&!r.url().endsWith('/missing/deep/page'))errors.push(`${r.status()} ${r.url()}`);});
  await page.goto(base,{waitUntil:'networkidle'});
- assert.equal(await page.locator('h1').innerText(),'Charbel Dib.');checks++;
+ assert.equal(await page.locator('h1').innerText(),'Charbel Dib');checks++;
  await assertOpeningProject(page,'desktop');
  await page.screenshot({path:reports+'desktop.png',fullPage:true});
  await page.screenshot({path:reports+'desktop-fold.png'});
@@ -129,7 +129,7 @@ try {
  assert.equal(await plain.locator('.profile-nav a').count(),2);checks++;
  assert.ok(await plain.getByRole('link',{name:'Recherche & doctorat',exact:true}).isVisible());checks++;
  const missing=await page.goto(base+'/missing/deep/page');assert.equal(missing.status(),404);checks++;
- assert.equal(await page.locator('h1').innerText(),'Page introuvable.');checks++;
+ assert.equal(await page.locator('h1').innerText(),'Page introuvable');checks++;
  assert.ok(await page.getByRole('link',{name:'Open the English portfolio'}).isVisible());checks++;
  assert.equal(await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgba(0, 0, 0, 0)');
  await page.getByRole('link',{name:'Revenir au portfolio'}).click();assert.equal(new URL(page.url()).pathname,'/pro/index.html');checks++;

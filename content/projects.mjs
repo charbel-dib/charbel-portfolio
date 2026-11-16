@@ -29,6 +29,16 @@ export const projects = [
       "en": "Cost-aware failure classification"
     },
     "metrics": fleetguardMetrics,
+    "chart": {
+      min: 6000, max: 13000, ticks: [6000, 8000, 10000, 12000],
+      rows: [{ value: totalCost, lo: 6410, hi: 11160, main: true }, { value: 9920 }, { value: 12750 }],
+      fr: { title: "Coût du challenge sur le test officiel", scope: "Plus bas = mieux. Unités du challenge, pas des euros.",
+        rows: ["FleetGuard", "Vainqueur IDA 2016", "Ma version précédente"],
+        note: "La bande bleue est l’intervalle de bootstrap du coût de FleetGuard : l’écart avec le vainqueur reste à l’intérieur." },
+      en: { title: "Challenge cost on the official test", scope: "Lower is better. Challenge units, not euros.",
+        rows: ["FleetGuard", "IDA 2016 winner", "My previous release"],
+        note: "The blue band is FleetGuard’s cost bootstrap interval: the gap to the winner lies inside it." }
+    },
     "status": {
       "fr": "Modèle évalué · API & interface",
       "en": "Evaluated model · API & interface"
@@ -62,8 +72,8 @@ export const projects = [
       "en": "ML pipeline, evaluation protocol, API and review interface."
     },
     "problem": {
-      "fr": "Sur un jeu déséquilibré, un bon taux d’exactitude peut masquer les défaillances les plus coûteuses. Le défi Scania attribue un coût de 10 à une fausse alerte et de 500 à une panne APS manquée. C’est ce compromis qui doit guider la décision.",
-      "en": "On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure. That trade-off should drive the decision."
+      "fr": "Sur un jeu déséquilibré, un bon taux d’exactitude peut masquer les défaillances les plus coûteuses. Le défi Scania attribue un coût de 10 à une fausse alerte et de 500 à une panne APS manquée. Le seuil doit donc être choisi sur ce coût.",
+      "en": "On an imbalanced dataset, high accuracy can hide the most costly failures. The Scania challenge assigns a cost of 10 to a false alarm and 500 to a missed APS failure, so the threshold has to be chosen on that cost."
     },
     "decisions": {
       "fr": [
@@ -97,8 +107,8 @@ export const projects = [
     },
     "result": {fr: fleetguardResult("fr"), en: fleetguardResult("en")},
     "value": {
-      "fr": "Relier une métrique ML à une décision opérationnelle, sans dissimuler le prix à payer en fausses alertes.",
-      "en": "Connect an ML metric to an operational decision while keeping the false-alarm trade-off visible."
+      "fr": "Relier une métrique ML à une décision opérationnelle, en montrant combien de fausses alertes elle coûte.",
+      "en": "Connect an ML metric to an operational decision and show how many false alarms it costs."
     },
     "limit": {
       "fr": "Il s’agit d’une classification sur un jeu public anonymisé, pas d’une prévision de panne : ces résultats ne suffisent pas à valider un usage sur une flotte réelle. Le modèle a été déployé sur AWS (CloudFront, ECS Fargate, rôles GitHub OIDC) puis l’environnement a été éteint pour limiter les coûts ; la démo publique tourne sur Hugging Face. L’écart avec le vainqueur reste dans l’intervalle de bootstrap du coût (6 410 à 11 160).",
@@ -141,8 +151,8 @@ export const projects = [
       "data"
     ],
     "evaluation": {
-      "fr": "Moyenne de trois modèles de gradient boosting pondérés, entraînés sur tout le jeu d’entraînement, hyperparamètres fixés a priori. Une panne manquée coûte autant que 50 fausses alertes : la précision de 40 % est le compromis voulu, pas un défaut.",
-      "en": "Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms: 40% precision is the intended trade-off, not a defect."
+      "fr": "Moyenne de trois modèles de gradient boosting pondérés, entraînés sur tout le jeu d’entraînement, hyperparamètres fixés a priori. Une panne manquée coûte autant que 50 fausses alertes : le seuil accepte donc beaucoup de fausses alertes, d’où une précision de 40 %.",
+      "en": "Average of three class-weighted gradient boosting models trained on the full training set, with hyperparameters fixed a priori. A missed failure costs as much as 50 false alarms, so the threshold accepts many false alarms, which gives 40% precision."
     }
   },
   {
@@ -165,8 +175,8 @@ export const projects = [
       "en": "1st prize · SPASEA 2025"
     },
     "headline": {
-      "fr": "Voir ce qu’un signal seul ne raconte pas.",
-      "en": "See what a single signal cannot reveal."
+      "fr": "Croiser AIS, radiofréquences et satellites pour expliquer une situation en mer.",
+      "en": "Combine AIS, radio frequencies and satellites to explain a situation at sea."
     },
     "summary": {
       "fr": "Un copilote maritime qui croise les positions de navires AIS (système d’identification automatique), les signaux RF (radiofréquences) et les éphémérides satellites pour aider à comprendre une situation.",
@@ -191,8 +201,8 @@ export const projects = [
       "en": "Contributed agent tools, multi-source correlation and decision-support reports as part of the PosAIdon team."
     },
     "problem": {
-      "fr": "Un navire qui ne transmet plus sa position AIS n’est pas nécessairement suspect. L’enjeu est de croiser plusieurs observations pour fournir à un opérateur une situation explicable, plutôt qu’une alerte isolée.",
-      "en": "A vessel that stops transmitting its AIS position is not necessarily suspicious. The challenge is to combine observations into an explainable situation for an operator, rather than an isolated alert."
+      "fr": "Un navire qui ne transmet plus sa position AIS n’est pas forcément suspect. Pour qu’un opérateur puisse en juger, il faut croiser plusieurs observations et lui présenter une situation qu’il peut vérifier.",
+      "en": "A vessel that stops transmitting its AIS position is not necessarily suspicious. For an operator to judge, several observations have to be combined into a situation they can check."
     },
     "decisions": {
       "fr": [
@@ -431,8 +441,8 @@ export const projects = [
       "en": "Configuration comparisons, shared evaluation framework, extraction prompts, error analysis and experiment organisation."
     },
     "problem": {
-      "fr": "Trouver le bon document ne suffit pas : le système doit retrouver le bon passage, en extraire une preuve pertinente et classifier la déclaration sans amplifier les erreurs des étapes précédentes.",
-      "en": "Finding the right document is not enough: the system must retrieve the right passage, extract relevant evidence and classify the claim without amplifying upstream errors."
+      "fr": "Le système doit retrouver le bon passage dans le bon document, en extraire une preuve pertinente, puis classer la déclaration sans amplifier les erreurs des étapes précédentes.",
+      "en": "The system has to retrieve the right passage in the right document, extract relevant evidence, then classify the claim without amplifying upstream errors."
     },
     "decisions": {
       "fr": [
@@ -469,8 +479,8 @@ export const projects = [
       "en": "A diagnostic and experimental comparison method, from retrieval to the final decision. I evaluated the Phi-3 classifier, already LoRA-adapted in earlier work; I did not fine-tune it."
     },
     "value": {
-      "fr": "Identifier ce qui améliore réellement la réponse finale, au-delà d’un score isolé sur un composant.",
-      "en": "Identify what actually improves the final answer, beyond an isolated component score."
+      "fr": "Mesurer l’effet d’un changement sur la réponse finale, et pas seulement sur le composant modifié.",
+      "en": "Measure the effect of a change on the final answer as well as on the component that changed."
     },
     "limit": {
       "fr": "Vue d’ensemble de mes contributions : le rapport, les données internes et les résultats détaillés restent confidentiels.",
@@ -601,6 +611,14 @@ export const projects = [
         "url": "https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval"
       }
     ],
+    "chart": {
+      min: 70, max: 100, ticks: [70, 80, 90, 100], unit: "%",
+      rows: [{ value: 81.2 }, { value: 89.6, main: true }, { value: 91.7 }],
+      fr: { title: "La bonne source fait-elle partie des passages retenus ?", scope: "60 questions annotées, français et anglais.",
+        rows: ["Top 3, sans reranker", "Top 3, avec reranker", "Top 8, contexte du modèle"] },
+      en: { title: "Is the right source among the retrieved passages?", scope: "60 annotated questions, French and English.",
+        rows: ["Top 3, no reranker", "Top 3, with reranker", "Top 8, model context"] }
+    },
     "categories": [
       "rag",
       "data"
@@ -685,9 +703,19 @@ export const projects = [
     "categories": [
       "ml"
     ],
+    "chart": {
+      min: 60, max: 70, ticks: [60, 62, 64, 66, 68, 70],
+      rows: [{ value: 64.4 }, { value: 67.5, main: true }, { value: 64.6 }, { value: 65.7, main: true }],
+      fr: { title: "F1 macro9 (8 tags + « aucun tag »)", scope: "Plus haut = mieux.",
+        rows: ["Validation croisée, SVM sur l’énoncé seul", "Validation croisée, modèle final", "Test, SVM sur l’énoncé seul", "Test, modèle final"],
+        note: "Sur le test seul, l’écart d’environ 1 point reste dans l’intervalle de confiance (±2,5 points)." },
+      en: { title: "Macro9 F1 (8 tags + “no tag”)", scope: "Higher is better.",
+        rows: ["Cross-validation, statement-only SVM", "Cross-validation, final model", "Test, statement-only SVM", "Test, final model"],
+        note: "On the test set alone, the gap of about 1 point is within the confidence interval (±2.5 points)." }
+    },
     "roadmap": {
-      "fr": "Suite envisagée : un encodeur de code fine-tuné, comparé à ces SVM sur le même protocole.",
-      "en": "Planned next: a fine-tuned code encoder, compared with these SVMs under the same protocol."
+      "fr": "Un encodeur de code fine-tuné, comparé à ces SVM sur le même protocole.",
+      "en": "A fine-tuned code encoder, compared with these SVMs under the same protocol."
     },
     "evaluation": {
       "fr": "Validation croisée répétée sur train + validation, test évalué une fois ; intervalles par bootstrap ; résultats par tag et matrices de confusion publiés dans le dépôt.",

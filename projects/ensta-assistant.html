@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Assistant ENSTA — Réponses documentaires bilingues et sourcées — Charbel Dib</title><meta name="description" content="Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante. Le prototype utilise un pipeline RAG (génération augmentée par recherche documentaire).">
-  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="canonical" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
   <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/ensta-assistant.html">
   <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/ensta-assistant.html">
@@ -15,6 +15,7 @@
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../styles.css"><script src="../script.js" defer></script>
 </head>
 <body id="top" data-profile="pro" data-page="case">
@@ -22,13 +23,13 @@
   <header class="header">
     <div class="wrap header-inner">
       <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" aria-label="Charbel Dib">
-        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+        <span>Charbel Dib</span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="main-nav" aria-label="Navigation principale">
         <a href="../pro/index.html#publication" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="publication" hidden>Publication</a><a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="projects">Projets</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="about">Parcours</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="contact">Contact</a>
       </nav>
-      <a class="locale" href="../en/projects/ensta-assistant.html?profile=pro" lang="en" hreflang="en" aria-label="English">EN <span aria-hidden="true">↗</span></a>
+      <a class="locale" href="../en/projects/ensta-assistant.html?profile=pro" lang="en" hreflang="en" aria-label="English">EN </a>
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
@@ -39,50 +40,61 @@
   </div></div>
   <main id="main" class="case-main">
     <section class="wrap case-hero" aria-labelledby="case-title">
-      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../recherche/index.html">← Tous les projets</a>
-      <p class="eyebrow">Projet académique · Assistant documentaire · 2026</p>
-      <h1 id="case-title">Assistant ENSTA<span>.</span></h1>
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../recherche/index.html">Tous les projets</a>
+      <p class="project-byline"><span>Projet académique</span><span>Assistant documentaire</span><span>2026</span></p>
+      <h1 id="case-title">Assistant ENSTA</h1>
       <p class="case-headline">Un assistant documentaire bilingue, de la collecte aux réponses sourcées.</p><p class="case-summary">Un assistant bilingue qui indexe les informations du campus, répond avec des citations et prévoit une escalade lorsqu’il ne dispose pas d’une réponse suffisante. Le prototype utilise un pipeline RAG (génération augmentée par recherche documentaire).</p>
-      <dl class="case-meta"><div><dt>Contexte</dt><dd>Prototype · Corpus web, PDF & XLSX</dd></div><div><dt>Ma contribution</dt><dd>Pipeline documentaire, service de réponse, gestion des sessions et intégration web.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval" target="_blank" rel="noopener noreferrer">Résultats de l’évaluation <span aria-hidden="true">↗</span></a></div>
+      <dl class="case-meta"><div><dt>Contexte</dt><dd>Prototype, Corpus web, PDF & XLSX</dd></div><div><dt>Ma contribution</dt><dd>Pipeline documentaire, service de réponse, gestion des sessions et intégration web.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source</a><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval" target="_blank" rel="noopener noreferrer">Résultats de l’évaluation</a></div>
     </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-ensta-assistant">
-    <p class="eyebrow">LA DÉMARCHE</p>
     <h2 id="method-ensta-assistant">Deux étapes : préparer les données, puis répondre</h2>
     <ol class="method-steps"><li>
-      <span class="method-number" aria-hidden="true">01</span><h3>Préparer les données</h3><p>Web / PDF / XLSX → nettoyage → segmentation → embeddings multilingual-E5 → index FAISS</p>
+      <h3>Préparer les données</h3><p>Web / PDF / XLSX → nettoyage → segmentation → embeddings multilingual-E5 → index FAISS</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">02</span><h3>Répondre</h3><p>Recherche → seuil de similarité → réponse avec citations ou refus et transmission humaine</p>
+      <h3>Répondre</h3><p>Recherche → seuil de similarité → réponse avec citations ou refus et transmission humaine</p>
     </li></ol>
     <figcaption>Architecture du prototype académique : API FastAPI, interface et sessions. Corpus web reconstruit quotidiennement ; documents PDF/XLSX mis à jour manuellement.</figcaption>
   </figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="eyebrow">Dans ce projet</p><a href="#results">Ce que le projet produit</a><a href="#problem">Le problème</a><a href="#choices">Les choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Périmètre & limites</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="case-toc-label">Dans ce projet</p><a href="#results">Résultats</a><a href="#problem">Le problème</a><a href="#choices">Choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Limites</a><ul class="tags"><li>FastAPI</li><li>FAISS</li><li>multilingual-E5</li><li>Python</li></ul></nav>
       <div class="case-body">
-        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>Ce que le projet produit</h2><p>Sur 60 questions annotées en français et en anglais, la bonne source fait partie des 8 passages transmis au modèle dans 55 cas (91,7 %). Un reranker fait passer la bonne source dans les 3 premiers de 81,2 % à 89,6 % des cas. Un seuil recalibré à 0,84 écarte 10 questions hors sujet sur 11 jamais vues, en gardant 10 questions valides sur 12. Prototype de bout en bout : API FastAPI, sessions, interface de chat, widget intégrable, refus et escalade par email.</p>
+        <section id="results"><h2>Résultats</h2><p>Sur 60 questions annotées en français et en anglais, la bonne source fait partie des 8 passages transmis au modèle dans 55 cas (91,7 %). Un reranker fait passer la bonne source dans les 3 premiers de 81,2 % à 89,6 % des cas. Un seuil recalibré à 0,84 écarte 10 questions hors sujet sur 11 jamais vues, en gardant 10 questions valides sur 12. Prototype de bout en bout : API FastAPI, sessions, interface de chat, widget intégrable, refus et escalade par email.</p>
 
+          <figure class="measure">
+    <figcaption><strong>La bonne source fait-elle partie des passages retenus ?</strong><span>60 questions annotées, français et anglais.</span></figcaption>
+    <ol class="measure-rows"><li class="measure-row"><span class="measure-label">Top 3, sans reranker</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="37.33%" cy="18" r="6"></circle><text x="37.33%" y="18" dx="13" dy=".35em" text-anchor="start">81,2 %</text></svg>
+      <span class="visually-hidden">81,2 %</span></li><li class="measure-row is-main"><span class="measure-label">Top 3, avec reranker</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="65.33%" cy="18" r="7"></circle><text x="65.33%" y="18" dx="13" dy=".35em" text-anchor="start">89,6 %</text></svg>
+      <span class="visually-hidden">89,6 %</span></li><li class="measure-row"><span class="measure-label">Top 8, contexte du modèle</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="72.33%" cy="18" r="6"></circle><text x="72.33%" y="18" dx="-13" dy=".35em" text-anchor="end">91,7 %</text></svg>
+      <span class="visually-hidden">91,7 %</span></li></ol>
+    <div class="measure-axis"><span class="measure-axis-gap"></span><svg class="measure-axis-scale" width="100%" height="28" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="1" y2="1"></line><line x1="0%" x2="0%" y1="1" y2="6"></line><text x="0%" y="22" text-anchor="middle">70 %</text><line x1="33.33%" x2="33.33%" y1="1" y2="6"></line><text x="33.33%" y="22" text-anchor="middle">80 %</text><line x1="66.67%" x2="66.67%" y1="1" y2="6"></line><text x="66.67%" y="22" text-anchor="middle">90 %</text><line x1="100%" x2="100%" y1="1" y2="6"></line><text x="100%" y="22" text-anchor="middle">100 %</text></svg></div>
+
+  </figure>
 
         </section>
-        <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>Le problème</h2><p>Les informations d’un campus sont réparties entre pages web, PDF et tableaux. Il faut les rendre interrogeables tout en conservant les sources et en tenant compte de leur mise à jour.</p></section>
-        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Les choix techniques</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Un pipeline distinct du service</h3><p>Collecter, nettoyer, segmenter et indexer les documents en amont du service de réponse.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Des sources dans la réponse</h3><p>Embeddings multilingual-E5, index FAISS, seuil de recherche et citations pour rattacher la réponse aux documents.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Prévoir le renouvellement du corpus</h3><p>Reconstruction quotidienne du corpus web et rechargement de l’index sans redémarrer le service. Les mises à jour des PDF et XLSX sont manuelles, selon le rapport académique.</p></div></article></section>
-        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Évaluation</h2><p>Un jeu principal de 60 questions et un jeu de contrôle de 23 questions jamais vues, tirés du corpus indexé et relus un à un, avec source et faits attendus ; mesures Hit@k et MRR, avec et sans reranking. Avec si peu de questions, un écart de quelques points n’est pas significatif. Les citations, le seuil de similarité, le refus et la transmission humaine sont des mécanismes de contrôle, pas une garantie d’absence d’hallucinations. Projet de 3A encadré par le Dr Abdelmalek Toumi.</p>
+        <section id="problem"><h2>Le problème</h2><p>Les informations d’un campus sont réparties entre pages web, PDF et tableaux. Il faut les rendre interrogeables tout en conservant les sources et en tenant compte de leur mise à jour.</p></section>
+        <section id="choices"><h2>Choix techniques</h2><article class="decision"><h3>Un pipeline distinct du service</h3><p>Collecter, nettoyer, segmenter et indexer les documents en amont du service de réponse.</p></article><article class="decision"><h3>Des sources dans la réponse</h3><p>Embeddings multilingual-E5, index FAISS, seuil de recherche et citations pour rattacher la réponse aux documents.</p></article><article class="decision"><h3>Prévoir le renouvellement du corpus</h3><p>Reconstruction quotidienne du corpus web et rechargement de l’index sans redémarrer le service. Les mises à jour des PDF et XLSX sont manuelles, selon le rapport académique.</p></article></section>
+        <section id="evaluation"><h2>Évaluation</h2><p>Un jeu principal de 60 questions et un jeu de contrôle de 23 questions jamais vues, tirés du corpus indexé et relus un à un, avec source et faits attendus ; mesures Hit@k et MRR, avec et sans reranking. Avec si peu de questions, un écart de quelques points n’est pas significatif. Les citations, le seuil de similarité, le refus et la transmission humaine sont des mécanismes de contrôle, pas une garantie d’absence d’hallucinations. Projet de 3A encadré par le Dr Abdelmalek Toumi.</p>
 
 
-          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Passer d’une collection de documents à un service consultable dont les réponses restent rattachées à leur origine.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">↗</span></a><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval" target="_blank" rel="noopener noreferrer">Résultats de l’évaluation <span aria-hidden="true">↗</span></a></div>
+          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Passer d’une collection de documents à un service consultable dont les réponses restent rattachées à leur origine.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot" target="_blank" rel="noopener noreferrer">Code source</a><a class="underlink" href="https://github.com/charbel-dib/ensta_chatbot#results-november-2026-retrieval" target="_blank" rel="noopener noreferrer">Résultats de l’évaluation</a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Périmètre & limites</h2><p>Prototype académique, non déployé officiellement par l’école. Le premier jeu de questions s’est révélé optimiste : sur des questions jamais vues, la bonne source n’arrive dans le contexte que dans 83 % des cas, contre 94 %. Le seuil de 0,84 a été choisi après avoir vu les deux jeux. La qualité des réponses elles-mêmes reste à mesurer.</p></section>
+        <section id="limits" class="limits"><h2>Limites</h2><p>Prototype académique, non déployé officiellement par l’école. Le premier jeu de questions s’est révélé optimiste : sur des questions jamais vues, la bonne source n’arrive dans le contexte que dans 83 % des cas, contre 94 %. Le seuil de 0,84 a été choisi après avoir vu les deux jeux. La qualité des réponses elles-mêmes reste à mesurer.</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="fact-checking.html?profile=pro" data-next-project
       data-next-pro="fact-checking.html?profile=pro" data-next-research="fleetguard.html?profile=research"
       data-name-pro="Fact-checking climatique" data-name-research="FleetGuard" data-label-pro="Projet suivant" data-label-research="Projet suivant">
-      <span class="eyebrow" data-next-label>Projet suivant</span><span><span data-next-name>Fact-checking climatique</span><span aria-hidden="true">↗</span></span>
+      <span class="next-label" data-next-label>Projet suivant</span><span class="next-name"><span data-next-name>Fact-checking climatique</span></span>
     </a>
     <section class="wrap contact section" id="contact" aria-labelledby="contact-title">
-    <div><p class="eyebrow">Contact</p><h2 id="contact-title">Échangeons sur ce travail.</h2><p>Pour une opportunité professionnelle ou un sujet de recherche, contactez-moi.</p></div>
-    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr <span aria-hidden="true">↗</span></a>
-      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Adresse copiée" data-error="Copie indisponible — le lien email reste accessible." hidden>Copier l’adresse</button></div>
-      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi · FR · 1 page" data-label-research="CV recherche · FR · 2 pages" aria-label="CV emploi · FR · 1 page"><span data-cv-label>CV emploi · FR · 1 page</span> ↓</a><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi · FR · 1 page"><span data-cv-label>CV emploi · FR · 1 page</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a></div></details><p class="contact-location">Île-de-France · Mobilité France<br>Français courant · Anglais courant · Arabe langue maternelle</p>
+    <div><h2 id="contact-title">Parlons de ce projet</h2><p>Pour une offre d’emploi ou un sujet de recherche, écrivez-moi.</p></div>
+    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr</a>
+      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub</a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Adresse copiée" data-error="Copie indisponible. Le lien vers l’adresse fonctionne toujours." hidden>Copier l’adresse</button></div>
+      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi (FR, 1 page)" data-label-research="CV recherche (FR, 2 pages)" aria-label="CV emploi (FR, 1 page)"><span data-cv-label>CV emploi (FR, 1 page)</span> ↓</a><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi (FR, 1 page)"><span data-cv-label>CV emploi (FR, 1 page)</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche (FR, 2 pages)"><span data-cv-label>CV recherche (FR, 2 pages)</span> ↓</a></div></details><p class="contact-location">Île-de-France, Mobilité France<br>Français courant, Anglais courant, Arabe langue maternelle</p>
     </div>
   </section>
   </main>
-  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Conçu pour montrer le travail.</span><a href="#top">Retour en haut ↑</a></footer>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Sans cookies ni traceur.</span><a href="#top">Retour en haut</a></footer>
 </body></html>

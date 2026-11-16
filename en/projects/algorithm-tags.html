@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Algorithm tags — Statement, Python solution and AST — Charbel Dib</title><meta name="description" content="4,982 Codeforces problems, 8 tags, 46% with no tag at all: macro9 F1 of 67.5 in cross-validation versus 64.4 for a statement-only SVM.">
-  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="canonical" href="https://charbel-dib.vercel.app/en/projects/algorithm-tags.html">
   <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/algorithm-tags.html">
   <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/algorithm-tags.html">
@@ -15,6 +15,7 @@
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../styles.css"><script src="../../script.js" defer></script>
 </head>
 <body id="top" data-profile="pro" data-page="case">
@@ -22,13 +23,13 @@
   <header class="header">
     <div class="wrap header-inner">
       <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" aria-label="Charbel Dib">
-        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+        <span>Charbel Dib</span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="main-nav" aria-label="Main navigation">
         <a href="../pro/index.html#publication" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="publication" hidden>Publication</a><a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="projects">Projects</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="about">Background</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../research/index.html" data-home-anchor="contact">Contact</a>
       </nav>
-      <a class="locale" href="../../projects/algorithm-tags.html?profile=pro" lang="fr" hreflang="fr" aria-label="Français">FR <span aria-hidden="true">↗</span></a>
+      <a class="locale" href="../../projects/algorithm-tags.html?profile=pro" lang="fr" hreflang="fr" aria-label="Français">FR </a>
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
@@ -39,52 +40,65 @@
   </div></div>
   <main id="main" class="case-main">
     <section class="wrap case-hero" aria-labelledby="case-title">
-      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../research/index.html">← All projects</a>
-      <p class="eyebrow">Personal project · Multi-label classification · 2026</p>
-      <h1 id="case-title">Algorithm tags<span>.</span></h1>
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../research/index.html">All projects</a>
+      <p class="project-byline"><span>Personal project</span><span>Multi-label classification</span><span>2026</span></p>
+      <h1 id="case-title">Algorithm tags</h1>
       <p class="case-headline">Predict the algorithm tags of a programming problem from its statement and its solution.</p><p class="case-summary">4,982 Codeforces problems, 8 tags, 46% with no tag at all: macro9 F1 of 67.5 in cross-validation versus 64.4 for a statement-only SVM.</p>
-      <dl class="case-meta"><div><dt>Context</dt><dd>Completed · cross-validated</dd></div><div><dt>My contribution</dt><dd>Individual project: exploration, features, evaluation protocol, models, CLI and tests.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/algorithm-tags" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+      <dl class="case-meta"><div><dt>Context</dt><dd>Completed, cross-validated</dd></div><div><dt>My contribution</dt><dd>Individual project: exploration, features, evaluation protocol, models, CLI and tests.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/algorithm-tags" target="_blank" rel="noopener noreferrer">Source code</a></div>
     </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-algorithm-tags">
-    <p class="eyebrow">THE APPROACH</p>
     <h2 id="method-algorithm-tags">From problem to tag</h2>
     <ol class="method-steps"><li>
-      <span class="method-number" aria-hidden="true">01</span><h3>Read</h3><p>Statement · Python solution · difficulty · examples</p>
+      <h3>Read</h3><p>Statement, Python solution, difficulty, examples</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">02</span><h3>Represent</h3><p>Six TF-IDF and numeric blocks, including the code AST</p>
+      <h3>Represent</h3><p>Six TF-IDF and numeric blocks, including the code AST</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">03</span><h3>Decide</h3><p>Eight linear SVMs · shared threshold · no-tag case measured</p>
+      <h3>Decide</h3><p>Eight linear SVMs, shared threshold, no-tag case measured</p>
     </li></ol>
     <figcaption>Choices made in repeated cross-validation; test evaluated once.</figcaption>
   </figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="eyebrow">In this project</p><a href="#results">What the project delivers</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Scope & limits</a><ul class="tags"><li>Python</li><li>scikit-learn</li><li>TF-IDF</li><li>Python AST</li><li>pytest</li></ul></nav>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="case-toc-label">In this project</p><a href="#results">Results</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Limits</a><ul class="tags"><li>Python</li><li>scikit-learn</li><li>TF-IDF</li><li>Python AST</li><li>pytest</li></ul></nav>
       <div class="case-body">
-        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>What the project delivers</h2><p>Macro9 F1 of 67.5 in cross-validation versus 64.4 for the baseline, ahead in each of the 4 repeats; 65.7 versus 64.6 on the test set, kept out of every decision.</p>
+        <section id="results"><h2>Results</h2><p>Macro9 F1 of 67.5 in cross-validation versus 64.4 for the baseline, ahead in each of the 4 repeats; 65.7 versus 64.6 on the test set, kept out of every decision.</p>
 
-          <h3>Planned next</h3><p>Planned next: a fine-tuned code encoder, compared with these SVMs under the same protocol.</p>
+          <figure class="measure">
+    <figcaption><strong>Macro9 F1 (8 tags + “no tag”)</strong><span>Higher is better.</span></figcaption>
+    <ol class="measure-rows"><li class="measure-row"><span class="measure-label">Cross-validation, statement-only SVM</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="44%" cy="18" r="6"></circle><text x="44%" y="18" dx="13" dy=".35em" text-anchor="start">64.4</text></svg>
+      <span class="visually-hidden">64.4</span></li><li class="measure-row is-main"><span class="measure-label">Cross-validation, final model</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="75%" cy="18" r="7"></circle><text x="75%" y="18" dx="-13" dy=".35em" text-anchor="end">67.5</text></svg>
+      <span class="visually-hidden">67.5</span></li><li class="measure-row"><span class="measure-label">Test, statement-only SVM</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="46%" cy="18" r="6"></circle><text x="46%" y="18" dx="13" dy=".35em" text-anchor="start">64.6</text></svg>
+      <span class="visually-hidden">64.6</span></li><li class="measure-row is-main"><span class="measure-label">Test, final model</span>
+      <svg class="measure-track" width="100%" height="36" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="18" y2="18"></line><circle cx="57%" cy="18" r="7"></circle><text x="57%" y="18" dx="13" dy=".35em" text-anchor="start">65.7</text></svg>
+      <span class="visually-hidden">65.7</span></li></ol>
+    <div class="measure-axis"><span class="measure-axis-gap"></span><svg class="measure-axis-scale" width="100%" height="28" aria-hidden="true" focusable="false"><line x1="0" x2="100%" y1="1" y2="1"></line><line x1="0%" x2="0%" y1="1" y2="6"></line><text x="0%" y="22" text-anchor="middle">60</text><line x1="20%" x2="20%" y1="1" y2="6"></line><text x="20%" y="22" text-anchor="middle">62</text><line x1="40%" x2="40%" y1="1" y2="6"></line><text x="40%" y="22" text-anchor="middle">64</text><line x1="60%" x2="60%" y1="1" y2="6"></line><text x="60%" y="22" text-anchor="middle">66</text><line x1="80%" x2="80%" y1="1" y2="6"></line><text x="80%" y="22" text-anchor="middle">68</text><line x1="100%" x2="100%" y1="1" y2="6"></line><text x="100%" y="22" text-anchor="middle">70</text></svg></div>
+    <p class="measure-note">On the test set alone, the gap of about 1 point is within the confidence interval (±2.5 points).</p>
+  </figure>
+          <h3>Planned next</h3><p>A fine-tuned code encoder, compared with these SVMs under the same protocol.</p>
         </section>
-        <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>The problem</h2><p>A problem can have several tags or none. A model that tags everything looks good on frequent tags but is wrong on almost half of the problems.</p></section>
-        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Technical decisions</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Measure the no-tag case too</h3><p>Macro9 F1: the 8 tags plus the no-tag state, treated as a 9th class and used as the selection criterion.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Read the code, not only the statement</h3><p>Six feature blocks, including Python AST tokens from the solution, difficulty and input/output examples.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Keep the simple model when it is enough</h3><p>About 130 variants tried (LightGBM, MLP, frozen embeddings, stacking); none justified its complexity over linear SVMs.</p></div></article></section>
-        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Evaluation</h2><p>Repeated cross-validation on train + validation, test evaluated once; bootstrap intervals; per-tag results and confusion matrices published in the repository.</p>
+        <section id="problem"><h2>The problem</h2><p>A problem can have several tags or none. A model that tags everything looks good on frequent tags but is wrong on almost half of the problems.</p></section>
+        <section id="choices"><h2>Technical decisions</h2><article class="decision"><h3>Measure the no-tag case too</h3><p>Macro9 F1: the 8 tags plus the no-tag state, treated as a 9th class and used as the selection criterion.</p></article><article class="decision"><h3>Read the code, not only the statement</h3><p>Six feature blocks, including Python AST tokens from the solution, difficulty and input/output examples.</p></article><article class="decision"><h3>Keep the simple model when it is enough</h3><p>About 130 variants tried (LightGBM, MLP, frozen embeddings, stacking); none justified its complexity over linear SVMs.</p></article></section>
+        <section id="evaluation"><h2>Evaluation</h2><p>Repeated cross-validation on train + validation, test evaluated once; bootstrap intervals; per-tag results and confusion matrices published in the repository.</p>
 
 
-          <div class="takeaway"><h3>What I take from it</h3><p>Choose the metric that reflects real use before choosing the model.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/algorithm-tags" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+          <div class="takeaway"><h3>What I take from it</h3><p>Choose the metric that reflects real use before choosing the model.</p></div><div class="case-links"><a class="underlink" href="https://github.com/charbel-dib/algorithm-tags" target="_blank" rel="noopener noreferrer">Source code</a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Scope & limits</h2><p>On the test set alone, the 1-point gap is within the confidence interval (±2.5 points), which is why choices rely on cross-validation. The trees/graphs and number theory/math confusions partly reflect fuzzy annotations.</p></section>
+        <section id="limits" class="limits"><h2>Limits</h2><p>On the test set alone, the 1-point gap is within the confidence interval (±2.5 points), which is why choices rely on cross-validation. The trees/graphs and number theory/math confusions partly reflect fuzzy annotations.</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="../pro/index.html#project-index" data-next-project
       data-next-pro="../pro/index.html#project-index" data-next-research="../research/index.html#project-index"
       data-name-pro="All projects" data-name-research="All projects" data-label-pro="End of projects" data-label-research="End of projects">
-      <span class="eyebrow" data-next-label>End of projects</span><span><span data-next-name>All projects</span><span aria-hidden="true">↗</span></span>
+      <span class="next-label" data-next-label>End of projects</span><span class="next-name"><span data-next-name>All projects</span></span>
     </a>
     <section class="wrap contact section" id="contact" aria-labelledby="contact-title">
-    <div><p class="eyebrow">Contact</p><h2 id="contact-title">Let’s discuss this work.</h2><p>Contact me about a career opportunity or research topic.</p></div>
-    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr <span aria-hidden="true">↗</span></a>
-      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Email copied" data-error="Copy unavailable — you can still use the email link." hidden>Copy email address</button></div>
-      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download data-cv data-cv-pro="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" data-cv-research="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" data-label-pro="Industry CV · EN · 1 page" data-label-research="Research CV · EN · 2 pages" aria-label="Industry CV · EN · 1 page"><span data-cv-label>Industry CV · EN · 1 page</span> ↓</a><details class="cv-alternatives"><summary>Other CV versions</summary><div class="case-links"><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download  aria-label="Industry CV · EN · 1 page"><span data-cv-label>Industry CV · EN · 1 page</span> ↓</a><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" download  aria-label="Research CV · EN · 2 pages"><span data-cv-label>Research CV · EN · 2 pages</span> ↓</a></div></details><p class="contact-location">Paris region · Mobile across France<br>Fluent French · Fluent English · Native Arabic</p>
+    <div><h2 id="contact-title">Let’s talk about this project</h2><p>For a job opening or a research topic, write to me.</p></div>
+    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr</a>
+      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub</a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Email copied" data-error="Copy unavailable. The email link still works." hidden>Copy email address</button></div>
+      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download data-cv data-cv-pro="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" data-cv-research="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" data-label-pro="Industry CV (EN, 1 page)" data-label-research="Research CV (EN, 2 pages)" aria-label="Industry CV (EN, 1 page)"><span data-cv-label>Industry CV (EN, 1 page)</span> ↓</a><details class="cv-alternatives"><summary>Other CV versions</summary><div class="case-links"><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download  aria-label="Industry CV (EN, 1 page)"><span data-cv-label>Industry CV (EN, 1 page)</span> ↓</a><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" download  aria-label="Research CV (EN, 2 pages)"><span data-cv-label>Research CV (EN, 2 pages)</span> ↓</a></div></details><p class="contact-location">Paris region, Mobile across France<br>Fluent French, Fluent English, Native Arabic</p>
     </div>
   </section>
   </main>
-  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Designed to show the work.</span><a href="#top">Back to top ↑</a></footer>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>No cookies, no tracking.</span><a href="#top">Back to top</a></footer>
 </body></html>

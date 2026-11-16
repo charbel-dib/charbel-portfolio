@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PosAIdon — Copilote maritime multi-sources — Charbel Dib</title><meta name="description" content="Un copilote maritime qui croise les positions de navires AIS (système d’identification automatique), les signaux RF (radiofréquences) et les éphémérides satellites pour aider à comprendre une situation.">
-  <meta name="theme-color" content="#f5f3ee"><meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
   <link rel="canonical" href="https://charbel-dib.vercel.app/projects/posaidon.html">
   <link rel="alternate" hreflang="en" href="https://charbel-dib.vercel.app/en/projects/posaidon.html">
   <link rel="alternate" hreflang="fr" href="https://charbel-dib.vercel.app/projects/posaidon.html">
@@ -15,6 +15,7 @@
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../styles.css"><script src="../script.js" defer></script>
 </head>
 <body id="top" data-profile="pro" data-page="case">
@@ -22,13 +23,13 @@
   <header class="header">
     <div class="wrap header-inner">
       <a class="identity" href="../pro/index.html" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" aria-label="Charbel Dib">
-        <span class="identity-mark" aria-hidden="true">c/d</span><span>Charbel Dib<span class="identity-dot">.</span></span>
+        <span>Charbel Dib</span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="main-nav" aria-label="Navigation principale">
         <a href="../pro/index.html#publication" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="publication" hidden>Publication</a><a href="../pro/index.html#projects" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="projects">Projets</a><a href="../pro/index.html#about" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="about">Parcours</a><a href="../pro/index.html#contact" data-profile-home data-pro-href="../pro/index.html" data-research-href="../recherche/index.html" data-home-anchor="contact">Contact</a>
       </nav>
-      <a class="locale" href="../en/projects/posaidon.html?profile=pro" lang="en" hreflang="en" aria-label="English">EN <span aria-hidden="true">↗</span></a>
+      <a class="locale" href="../en/projects/posaidon.html?profile=pro" lang="en" hreflang="en" aria-label="English">EN </a>
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
@@ -39,52 +40,52 @@
   </div></div>
   <main id="main" class="case-main">
     <section class="wrap case-hero" aria-labelledby="case-title">
-      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../recherche/index.html">← Tous les projets</a>
-      <p class="eyebrow">Projet d’équipe · Hackathon SPASEA · 2025</p>
-      <h1 id="case-title">PosAIdon<span>.</span></h1>
-      <p class="case-headline">Voir ce qu’un signal seul ne raconte pas.</p><p class="case-summary">Un copilote maritime qui croise les positions de navires AIS (système d’identification automatique), les signaux RF (radiofréquences) et les éphémérides satellites pour aider à comprendre une situation.</p>
-      <dl class="case-meta"><div><dt>Contexte</dt><dd>1er prix · SPASEA 2025</dd></div><div><dt>Ma contribution</dt><dd>Contribution aux outils agentiques, à la corrélation multi-sources et aux rapports d’aide à la décision, au sein de l’équipe PosAIdon.</dd></div></dl>
-      <div class="case-links"><a class="underlink" href="https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea" target="_blank" rel="noopener noreferrer">L’article de l’ENSTA <span aria-hidden="true">↗</span></a></div>
-    </section><div class="wrap case-artifact"><figure class="case-visual "><img src="../assets/posaidon.webp" alt="L’équipe PosAIdon sur scène lors du hackathon SPASEA 2025." width="1920" height="1080"><figcaption>L’équipe PosAIdon, lauréate de SPASEA 2025. Photo publiée par l’ENSTA. <a href="https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea" target="_blank" rel="noopener noreferrer">ENSTA <span aria-hidden="true">↗</span></a></figcaption></figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="eyebrow">Dans ce projet</p><a href="#results">Ce que le projet produit</a><a href="#problem">Le problème</a><a href="#choices">Les choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Périmètre & limites</a><ul class="tags"><li>Agents IA</li><li>AIS</li><li>RF</li><li>Fusion de données</li></ul></nav>
+      <a class="back-link" href="../pro/index.html#project-index" data-profile-home data-home-anchor="project-index" data-pro-href="../pro/index.html" data-research-href="../recherche/index.html">Tous les projets</a>
+      <p class="project-byline"><span>Projet d’équipe</span><span>Hackathon SPASEA</span><span>2025</span></p>
+      <h1 id="case-title">PosAIdon</h1>
+      <p class="case-headline">Croiser AIS, radiofréquences et satellites pour expliquer une situation en mer.</p><p class="case-summary">Un copilote maritime qui croise les positions de navires AIS (système d’identification automatique), les signaux RF (radiofréquences) et les éphémérides satellites pour aider à comprendre une situation.</p>
+      <dl class="case-meta"><div><dt>Contexte</dt><dd>1er prix, SPASEA 2025</dd></div><div><dt>Ma contribution</dt><dd>Contribution aux outils agentiques, à la corrélation multi-sources et aux rapports d’aide à la décision, au sein de l’équipe PosAIdon.</dd></div></dl>
+      <div class="case-links"><a class="underlink" href="https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea" target="_blank" rel="noopener noreferrer">L’article de l’ENSTA</a></div>
+    </section><div class="wrap case-artifact"><figure class="case-visual "><img src="../assets/posaidon.webp" alt="L’équipe PosAIdon sur scène lors du hackathon SPASEA 2025." width="1920" height="1080"><figcaption>L’équipe PosAIdon, lauréate de SPASEA 2025. Photo publiée par l’ENSTA. <a href="https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea" target="_blank" rel="noopener noreferrer">ENSTA</a></figcaption></figure></div>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="case-toc-label">Dans ce projet</p><a href="#results">Résultats</a><a href="#problem">Le problème</a><a href="#choices">Choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Limites</a><ul class="tags"><li>Agents IA</li><li>AIS</li><li>RF</li><li>Fusion de données</li></ul></nav>
       <div class="case-body">
-        <section id="results"><p class="eyebrow" aria-hidden="true">01</p><h2>Ce que le projet produit</h2><p>Premier prix du hackathon SPASEA 2025, organisé par Naval Group et la DGA en partenariat avec l’ENSTA. L’événement et le classement de l’équipe sont documentés par l’ENSTA.</p>
+        <section id="results"><h2>Résultats</h2><p>Premier prix du hackathon SPASEA 2025, organisé par Naval Group et la DGA en partenariat avec l’ENSTA. L’événement et le classement de l’équipe sont documentés par l’ENSTA.</p>
+
 
 
         </section>
-        <section id="problem"><p class="eyebrow" aria-hidden="true">02</p><h2>Le problème</h2><p>Un navire qui ne transmet plus sa position AIS n’est pas nécessairement suspect. L’enjeu est de croiser plusieurs observations pour fournir à un opérateur une situation explicable, plutôt qu’une alerte isolée.</p></section>
-        <section id="choices"><p class="eyebrow" aria-hidden="true">03</p><h2>Les choix techniques</h2><article class="decision"><span aria-hidden="true">01</span><div><h3>Croiser les observations</h3><p>Exploiter les trajectoires AIS, les signaux radiofréquences et les éphémérides satellites à travers des outils dédiés.</p></div></article><article class="decision"><span aria-hidden="true">02</span><div><h3>Donner une place à l’opérateur</h3><p>Une interface de type assistant permet d’interroger la situation et d’obtenir une synthèse des éléments analysés.</p></div></article><article class="decision"><span aria-hidden="true">03</span><div><h3>Livrer en équipe et sous contrainte</h3><p>Concentrer le prototype sur un scénario démontrable et présenter l’approche à un jury technique et opérationnel.</p></div></article></section>
-        <section id="evaluation"><p class="eyebrow" aria-hidden="true">04</p><h2>Évaluation</h2><p>Démonstration et présentation d’un prototype d’équipe au jury du hackathon. Le premier prix distingue ce travail collectif ; il ne mesure pas une performance de détection en mer.</p>
+        <section id="problem"><h2>Le problème</h2><p>Un navire qui ne transmet plus sa position AIS n’est pas forcément suspect. Pour qu’un opérateur puisse en juger, il faut croiser plusieurs observations et lui présenter une situation qu’il peut vérifier.</p></section>
+        <section id="choices"><h2>Choix techniques</h2><article class="decision"><h3>Croiser les observations</h3><p>Exploiter les trajectoires AIS, les signaux radiofréquences et les éphémérides satellites à travers des outils dédiés.</p></article><article class="decision"><h3>Donner une place à l’opérateur</h3><p>Une interface de type assistant permet d’interroger la situation et d’obtenir une synthèse des éléments analysés.</p></article><article class="decision"><h3>Livrer en équipe et sous contrainte</h3><p>Concentrer le prototype sur un scénario démontrable et présenter l’approche à un jury technique et opérationnel.</p></article></section>
+        <section id="evaluation"><h2>Évaluation</h2><p>Démonstration et présentation d’un prototype d’équipe au jury du hackathon. Le premier prix distingue ce travail collectif ; il ne mesure pas une performance de détection en mer.</p>
 
           <figure class="method-diagram" aria-labelledby="method-posaidon">
-    <p class="eyebrow">LA DÉMARCHE</p>
     <h2 id="method-posaidon">Des observations à une situation explicable</h2>
     <ol class="method-steps"><li>
-      <span class="method-number" aria-hidden="true">01</span><h3>Observer</h3><p>Trajectoires AIS · signaux RF · satellites</p>
+      <h3>Observer</h3><p>Trajectoires AIS, signaux RF, satellites</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">02</span><h3>Corréler</h3><p>Outils agentiques et analyse multi-sources</p>
+      <h3>Corréler</h3><p>Outils agentiques et analyse multi-sources</p>
     </li><li>
-      <span class="method-number" aria-hidden="true">03</span><h3>Restituer</h3><p>Synthèse pour l’opérateur</p>
+      <h3>Restituer</h3><p>Synthèse pour l’opérateur</p>
     </li></ol>
     <figcaption>Schéma du prototype de hackathon. Ma contribution : outils agentiques, corrélation et rapports, au sein de l’équipe.</figcaption>
   </figure>
-          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Faire le lien entre des données hétérogènes, une analyse technique et une question concrète posée par un opérateur.</p></div><div class="case-links"><a class="underlink" href="https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea" target="_blank" rel="noopener noreferrer">L’article de l’ENSTA <span aria-hidden="true">↗</span></a></div>
+          <div class="takeaway"><h3>Ce que j’en retiens</h3><p>Faire le lien entre des données hétérogènes, une analyse technique et une question concrète posée par un opérateur.</p></div><div class="case-links"><a class="underlink" href="https://www.ensta.fr/actualites/lia-au-service-des-marins-avec-le-hackathon-spasea" target="_blank" rel="noopener noreferrer">L’article de l’ENSTA</a></div>
         </section>
-        <section id="limits" class="limits"><p class="eyebrow" aria-hidden="true">05</p><h2>Périmètre & limites</h2><p>Prototype de hackathon réalisé en équipe, non validé en conditions opérationnelles en mer. Le code du prototype n’est pas public.</p></section>
+        <section id="limits" class="limits"><h2>Limites</h2><p>Prototype de hackathon réalisé en équipe, non validé en conditions opérationnelles en mer. Le code du prototype n’est pas public.</p></section>
       </div>
     </div>
     <a class="wrap next-project" href="lpbf.html?profile=pro" data-next-project
       data-next-pro="lpbf.html?profile=pro" data-next-research="algorithm-tags.html?profile=research"
       data-name-pro="Qualité en fabrication additive" data-name-research="Algorithm tags" data-label-pro="Projet suivant" data-label-research="Projet suivant">
-      <span class="eyebrow" data-next-label>Projet suivant</span><span><span data-next-name>Qualité en fabrication additive</span><span aria-hidden="true">↗</span></span>
+      <span class="next-label" data-next-label>Projet suivant</span><span class="next-name"><span data-next-name>Qualité en fabrication additive</span></span>
     </a>
     <section class="wrap contact section" id="contact" aria-labelledby="contact-title">
-    <div><p class="eyebrow">Contact</p><h2 id="contact-title">Échangeons sur ce travail.</h2><p>Pour une opportunité professionnelle ou un sujet de recherche, contactez-moi.</p></div>
-    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr <span aria-hidden="true">↗</span></a>
-      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Adresse copiée" data-error="Copie indisponible — le lien email reste accessible." hidden>Copier l’adresse</button></div>
-      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi · FR · 1 page" data-label-research="CV recherche · FR · 2 pages" aria-label="CV emploi · FR · 1 page"><span data-cv-label>CV emploi · FR · 1 page</span> ↓</a><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi · FR · 1 page"><span data-cv-label>CV emploi · FR · 1 page</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche · FR · 2 pages"><span data-cv-label>CV recherche · FR · 2 pages</span> ↓</a></div></details><p class="contact-location">Île-de-France · Mobilité France<br>Français courant · Anglais courant · Arabe langue maternelle</p>
+    <div><h2 id="contact-title">Parlons de ce projet</h2><p>Pour une offre d’emploi ou un sujet de recherche, écrivez-moi.</p></div>
+    <div class="contact-right"><a class="contact-email" href="mailto:charbel.dib@ensta.fr">charbel.dib@ensta.fr</a>
+      <div class="contact-links"><a href="https://www.linkedin.com/in/charbel-dib7" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/charbel-dib" target="_blank" rel="noopener noreferrer">GitHub</a><button type="button" data-copy="charbel.dib@ensta.fr" data-success="Adresse copiée" data-error="Copie indisponible. Le lien vers l’adresse fonctionne toujours." hidden>Copier l’adresse</button></div>
+      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi (FR, 1 page)" data-label-research="CV recherche (FR, 2 pages)" aria-label="CV emploi (FR, 1 page)"><span data-cv-label>CV emploi (FR, 1 page)</span> ↓</a><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi (FR, 1 page)"><span data-cv-label>CV emploi (FR, 1 page)</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche (FR, 2 pages)"><span data-cv-label>CV recherche (FR, 2 pages)</span> ↓</a></div></details><p class="contact-location">Île-de-France, Mobilité France<br>Français courant, Anglais courant, Arabe langue maternelle</p>
     </div>
   </section>
   </main>
-  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Conçu pour montrer le travail.</span><a href="#top">Retour en haut ↑</a></footer>
+  <footer class="wrap footer"><span>© 2026 Charbel Dib</span><span>Sans cookies ni traceur.</span><a href="#top">Retour en haut</a></footer>
 </body></html>

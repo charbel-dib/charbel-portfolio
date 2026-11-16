@@ -5,7 +5,8 @@ import { profiles } from '../../content/profiles.mjs';
 export const base = 'https://charbel-dib.vercel.app';
 export const esc = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;').replaceAll('"', '&quot;');
-export const arrow = '<span aria-hidden="true">↗</span>';
+// Internal links carry no glyph; external links get their icon from CSS (a[target=_blank]).
+export const arrow = '';
 export const down = '<span aria-hidden="true">↓</span>';
 export const out = 'target="_blank" rel="noopener noreferrer"';
 export const homePath = (lang, profile = 'pro') =>
@@ -24,8 +25,11 @@ export const caseLink = (from, lang, project, profile) =>
 export const number = (value, lang) => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB').format(value);
 export const tagList = (project, lang) =>
   `<ul class="tags">${project.tags[lang].map(tag => `<li>${esc(tag)}</li>`).join('')}</ul>`;
-export const sectionHeading = (eyebrow, title, description, id) => `
+export const sectionHeading = (_label, title, description, id) => `
   <div class="section-heading">
-    <div><p class="eyebrow">${eyebrow}</p><h2 id="${id}">${title}<span>.</span></h2></div>
+    <h2 id="${id}">${title}</h2>
     ${description ? `<p>${description}</p>` : ''}
   </div>`;
+// "A · B · C" strings become separate items laid out by spacing, not by middle dots.
+export const meta = (value, tag = 'span') => String(value).split(' · ').map(part => `<${tag}>${part}</${tag}>`).join('');
+export const commas = value => String(value).replaceAll(' · ', ', ');

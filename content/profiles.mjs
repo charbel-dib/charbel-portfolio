@@ -37,13 +37,13 @@ export const profiles = {
       "label": "Emploi & projets",
       "overline": "Ingénieur diplômé de l’ENSTA",
       "hero": "Ingénieur IA & machine learning",
-      "heroNote": "Diplômé de l’ENSTA, je conçois et j’évalue des systèmes de machine learning, de recherche documentaire et d’agents IA. Mes travaux vont de la préparation des données aux API et aux interfaces.",
-      "selectedDesc": "Du modèle évalué au prototype utilisable : trois réalisations, leurs choix techniques et leurs limites.",
-      "availability": "Recherche CDI · IA, machine learning & data · Mobilité France",
-      "contactText": "Je recherche un CDI en France. Disponible immédiatement, je suis prêt à échanger sur les besoins de votre équipe et les projets auxquels je pourrais contribuer.",
+      "heroNote": "Je conçois et j’évalue des systèmes de machine learning, de recherche documentaire et d’agents IA, de la préparation des données jusqu’à l’API et l’interface.",
+      "selectedDesc": "Pour chacun : ce que j’ai construit, ce que j’ai mesuré et ce qui reste limité.",
+      "availability": "Un CDI en IA, machine learning ou data, partout en France",
+      "contactText": "Je cherche un CDI en France et je suis disponible tout de suite. Dites-moi sur quoi travaille votre équipe.",
       "discover": "Voir mes réalisations",
       "email": "Me contacter",
-      "contactTitle": "Une opportunité en IA, machine learning ou data ?"
+      "contactTitle": "Un poste en IA, machine learning ou data ?"
     },
     "en": {
       "title": "Charbel Dib — AI & Machine Learning Engineer",
@@ -51,13 +51,13 @@ export const profiles = {
       "label": "Careers & projects",
       "overline": "ENSTA engineering graduate",
       "hero": "AI & Machine Learning Engineer",
-      "heroNote": "An ENSTA engineering graduate, I build and evaluate machine learning, document retrieval and AI agent systems, from data preparation to APIs and interfaces.",
-      "selectedDesc": "From an evaluated model to a usable prototype: three projects, their technical decisions and their limits.",
-      "availability": "Seeking a permanent role · AI, machine learning & data · Open to relocation within France",
-      "contactText": "I’m looking for a permanent role in France. Available immediately, I would welcome a discussion about your team’s needs.",
+      "heroNote": "I design and evaluate machine learning, document retrieval and AI agent systems, from data preparation to the API and the interface.",
+      "selectedDesc": "For each one: what I built, what I measured and what is still limited.",
+      "availability": "A permanent role in AI, machine learning or data, anywhere in France",
+      "contactText": "I’m looking for a permanent role in France and can start now. Tell me what your team is working on.",
       "discover": "View my work",
       "email": "Contact me",
-      "contactTitle": "An opportunity in AI, machine learning or data?"
+      "contactTitle": "A role in AI, machine learning or data?"
     }
   },
   "research": {
@@ -75,16 +75,16 @@ export const profiles = {
       "description": "Publication IEEE en premier auteur, stages de recherche chez CESI/LINEACT et Astek : machine learning, RAG et évaluation expérimentale.",
       "label": "Recherche & doctorat",
       "overline": "Candidature en doctorat · Intelligence artificielle",
-      "hero": "Apprendre à partir des données. Évaluer les modèles.",
-      "heroNote": "Ingénieur diplômé de l’ENSTA, je m’intéresse à l’apprentissage à partir de données et à l’évaluation des modèles. Mes travaux portent sur le machine learning en fabrication additive et sur les systèmes RAG appliqués au fact-checking.",
-      "availability": "Recherche d’un doctorat en IA · Mobilité France",
+      "hero": "Apprentissage à partir de données et évaluation des modèles",
+      "heroNote": "J’ai travaillé sur le machine learning en fabrication additive, puis sur l’évaluation de systèmes RAG appliqués au fact-checking. Je cherche une thèse dans cette direction.",
+      "availability": "Un doctorat en IA, partout en France",
       "discover": "Lire ma publication",
-      "all": "Les projets, en complément",
+      "all": "Tous les projets",
       "allDesc": "Les mêmes travaux et réalisations, avec la recherche en premier. Les prototypes montrent aussi ma capacité à mettre une méthode en œuvre.",
-      "aboutTitle": "Une formation d’ingénieur. Une démarche expérimentale.",
+      "aboutTitle": "Formation et recherche",
       "aboutText": "Diplômé de l’ENSTA en systèmes d’observation et intelligence artificielle, j’ai étudié des problèmes de machine learning en fabrication additive, puis l’évaluation de systèmes RAG appliqués au fact-checking.",
-      "aboutText2": "Ces expériences m’ont donné envie de poursuivre en recherche : poser une question précise, construire un protocole, comparer des méthodes et expliquer les limites des conclusions.",
-      "skillsTitle": "Méthodes & mise en œuvre",
+      "aboutText2": "Ces stages m’ont donné envie de continuer en recherche : poser une question précise, construire un protocole, comparer des méthodes et dire jusqu’où vont les conclusions.",
+      "skillsTitle": "Méthodes et outils",
       "skills": [
         [
           "Évaluation expérimentale",
@@ -103,7 +103,7 @@ export const profiles = {
         ]
       ],
       "contactTitle": "Un sujet de thèse à discuter ?",
-      "contactText": "Je souhaite poursuivre en doctorat en intelligence artificielle. Je suis disponible pour échanger sur vos sujets et les besoins de votre équipe.",
+      "contactText": "Je cherche un doctorat en intelligence artificielle. Parlez-moi des sujets de votre équipe.",
       "email": "Échanger sur un sujet de thèse"
     },
     "en": {
@@ -111,16 +111,16 @@ export const profiles = {
       "description": "First-author IEEE publication and research internships at CESI/LINEACT and Astek: machine learning, RAG and experimental evaluation.",
       "label": "Research & PhD",
       "overline": "PhD applications · Artificial intelligence",
-      "hero": "Learn from data. Evaluate models.",
-      "heroNote": "An ENSTA engineering graduate interested in learning from data and evaluating models. My work spans machine learning for additive manufacturing and RAG systems for fact-checking.",
-      "availability": "Seeking a PhD in AI · Open to relocation within France",
+      "hero": "Learning from data and evaluating models",
+      "heroNote": "I worked on machine learning for additive manufacturing, then on evaluating RAG systems for fact-checking. I am looking for a PhD in that direction.",
+      "availability": "A PhD in AI, anywhere in France",
       "discover": "Read my publication",
-      "all": "Projects beyond the studies",
+      "all": "All projects",
       "allDesc": "The same work and projects, with research first. The prototypes also demonstrate my ability to implement a method.",
-      "aboutTitle": "Engineering foundations. An experimental approach.",
+      "aboutTitle": "Education and research",
       "aboutText": "An ENSTA graduate in observation systems and artificial intelligence, I studied machine learning problems in additive manufacturing, then the evaluation of RAG systems for fact-checking.",
-      "aboutText2": "These experiences motivated me to pursue research: define a precise question, build a protocol, compare methods and explain the limits of the conclusions.",
-      "skillsTitle": "Methods & implementation",
+      "aboutText2": "These internships made me want to continue in research: ask a precise question, build a protocol, compare methods and say how far the conclusions go.",
+      "skillsTitle": "Methods and tools",
       "skills": [
         [
           "Experimental evaluation",
@@ -139,7 +139,7 @@ export const profiles = {
         ]
       ],
       "contactTitle": "A PhD topic to discuss?",
-      "contactText": "I’m seeking a PhD in artificial intelligence and would welcome a discussion about your team’s research.",
+      "contactText": "I’m looking for a PhD in artificial intelligence. Tell me about your team’s topics.",
       "email": "Discuss a PhD opportunity"
     }
   }
@@ -148,8 +148,8 @@ export const researchStudies = {
   "fr": [
     {
       "slug": "fact-checking",
-      "label": "Astek Research Network · 2026 · mars–septembre",
-      "title": "Comprendre où un pipeline de fact-checking perd en qualité.",
+      "label": "Astek Research Network · mars–septembre 2026",
+      "title": "Trouver où un pipeline de fact-checking perd en qualité",
       "question": "Comment distinguer les erreurs de recherche documentaire, d’extraction de preuves et de classification dans un pipeline RAG ?",
       "method": "Comparaison de stratégies de segmentation, recherche hybride et reranking ; évaluation séparée des étapes, puis analyse de leur effet sur la classification finale.",
       "contribution": "Une méthode de diagnostic pour localiser les pertes de qualité et orienter les améliorations à partir des résultats, avec des protocoles communs et des expériences reproductibles.",
@@ -158,8 +158,8 @@ export const researchStudies = {
     },
     {
       "slug": "lpbf",
-      "label": "CESI / LINEACT · 2025 · mai–août",
-      "title": "Prédire la densité relative à partir des paramètres du procédé.",
+      "label": "CESI / LINEACT · mai–août 2025",
+      "title": "Prédire la densité relative à partir des paramètres du procédé",
       "question": "Comment exploiter les paramètres de fabrication pour étudier la densité relative de pièces obtenues par fusion laser sur lit de poudre ?",
       "method": "Construction et structuration d’une base expérimentale, analyse des configurations de fabrication, clustering et comparaison de modèles prédictifs.",
       "contribution": "Une étude reliant données, apprentissage automatique et qualité des pièces, valorisée par un article de conférence IEEE en premier auteur avec Rima Hleiss.",
@@ -170,8 +170,8 @@ export const researchStudies = {
   "en": [
     {
       "slug": "fact-checking",
-      "label": "Astek Research Network · 2026 · March–September",
-      "title": "Understand where a fact-checking pipeline loses quality.",
+      "label": "Astek Research Network · March–September 2026",
+      "title": "Find where a fact-checking pipeline loses quality",
       "question": "How can retrieval, evidence-extraction and classification errors be distinguished within a RAG pipeline?",
       "method": "Compare chunking, hybrid retrieval and reranking configurations; evaluate the stages separately, then examine their effect on final classification.",
       "contribution": "A diagnostic approach to locate quality losses and guide improvements using results, shared protocols and reproducible experiments.",
@@ -180,8 +180,8 @@ export const researchStudies = {
     },
     {
       "slug": "lpbf",
-      "label": "CESI / LINEACT · 2025 · May–August",
-      "title": "Predict relative density from process parameters.",
+      "label": "CESI / LINEACT · May–August 2025",
+      "title": "Predict relative density from process parameters",
       "question": "How can manufacturing parameters help study the relative density of parts produced by laser powder bed fusion?",
       "method": "Build and structure an experimental database, analyse manufacturing configurations, use clustering and compare predictive models.",
       "contribution": "A study connecting data, machine learning and part quality, developed into a first-author IEEE conference paper with Rima Hleiss.",
