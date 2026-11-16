@@ -33,7 +33,7 @@
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
-    <p>Explore my work</p>
+    <p>Choose a view:</p>
     <nav class="profile-nav" aria-label="Choose a profile">
       <a href="../pro/index.html" data-profile-choice="pro">Careers & projects</a><a href="../research/index.html" data-profile-choice="research" aria-current="page">Research & PhD</a>
     </nav>
@@ -44,7 +44,7 @@
       <p class="project-byline"><span>Astek Research Network</span><span>R&D internship</span><span>2026</span></p>
       <h1 id="case-title">Climate fact-checking</h1>
       <p class="case-headline">Evaluate a fact-checking pipeline, stage by stage.</p><p class="case-summary">During my final-year internship at Astek, I compared chunking, hybrid retrieval and reranking strategies, then studied evidence extraction and climate-claim classification. The aim was to identify quality losses and error propagation across the RAG (retrieval-augmented generation) pipeline.</p>
-      <dl class="case-meta"><div><dt>Context</dt><dd>Final-year internship, March–September 2026</dd></div><div><dt>My contribution</dt><dd>Configuration comparisons, shared evaluation framework, extraction prompts, error analysis and experiment organisation.</dd></div></dl>
+      <dl class="case-meta"><div><dt>Context</dt><dd>Final-year internship, March–September 2026</dd></div><div><dt>My contribution</dt><dd>Configuration comparisons, shared evaluation framework, extraction prompts, LoRA fine-tuning and evaluation of the Phi-3 classifier, error analysis and experiment organisation.</dd></div></dl>
       <div class="case-links"><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" download data-cv data-cv-pro="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" data-cv-research="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" data-label-pro="Industry CV (EN, 1 page)" data-label-research="Research CV (EN, 2 pages)" aria-label="Research CV (EN, 2 pages)"><span data-cv-label>Research CV (EN, 2 pages)</span> ↓</a></div><details class="cv-alternatives"><summary>Other CV versions</summary><div class="case-links"><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_Emploi_EN.pdf" download  aria-label="Industry CV (EN, 1 page)"><span data-cv-label>Industry CV (EN, 1 page)</span> ↓</a><a class="underlink" href="../../assets/cv/CV_Charbel_Dib_These_EN.pdf" download  aria-label="Research CV (EN, 2 pages)"><span data-cv-label>Research CV (EN, 2 pages)</span> ↓</a></div></details>
     </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-fact-checking">
     <h2 id="method-fact-checking">Evaluate each stage, then the final answer</h2>
@@ -53,13 +53,13 @@
     </li><li>
       <h3>Retrieve</h3><p>Hybrid retrieval → reranking, NDCG and recall evaluation</p>
     </li><li>
-      <h3>Extract and classify</h3><p>Evidence extraction → existing Phi-3 classifier, error analysis and macro-F1</p>
+      <h3>Extract and classify</h3><p>Evidence extraction → Phi-3 classifier fine-tuned with LoRA, error analysis and macro-F1</p>
     </li></ol>
     <figcaption>Method overview. Errors are examined separately to understand how they propagate. No internal results are shown.</figcaption>
   </figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="case-toc-label">In this project</p><a href="#results">Results</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Limits</a><ul class="tags"><li>RAG</li><li>DPR + BM25</li><li>Reranking</li><li>Phi-3</li><li>Evaluation</li></ul></nav>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="In this project"><p class="case-toc-label">In this project</p><a href="#results">Results</a><a href="#problem">The problem</a><a href="#choices">Technical decisions</a><a href="#evaluation">Evaluation</a><a href="#limits">Limits</a><ul class="tags"><li>RAG</li><li>DPR + BM25</li><li>Reranking</li><li>Phi-3</li><li>LoRA</li><li>Evaluation</li></ul></nav>
       <div class="case-body">
-        <section id="results"><h2>Results</h2><p>A diagnostic and experimental comparison method, from retrieval to the final decision. I evaluated the Phi-3 classifier, already LoRA-adapted in earlier work; I did not fine-tune it.</p>
+        <section id="results"><h2>Results</h2><p>A diagnostic and experimental comparison method, from retrieval to the final decision. I fine-tuned the Phi-3 classifier with LoRA, then evaluated it.</p>
 
 
 

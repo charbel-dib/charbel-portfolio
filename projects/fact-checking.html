@@ -33,7 +33,7 @@
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
-    <p>Explorer mon travail</p>
+    <p>Choisir un parcours :</p>
     <nav class="profile-nav" aria-label="Choisir un parcours">
       <a href="../pro/index.html" data-profile-choice="pro">Emploi & projets</a><a href="../recherche/index.html" data-profile-choice="research" aria-current="page">Recherche & doctorat</a>
     </nav>
@@ -44,7 +44,7 @@
       <p class="project-byline"><span>Astek Research Network</span><span>Stage R&D</span><span>2026</span></p>
       <h1 id="case-title">Fact-checking climatique</h1>
       <p class="case-headline">Évaluer un pipeline de fact-checking, étape par étape.</p><p class="case-summary">Pendant mon stage de fin d’études chez Astek, j’ai comparé des stratégies de segmentation, de recherche hybride et de reranking, puis étudié l’extraction de preuves et la classification de déclarations climatiques. L’objectif était d’identifier les pertes de qualité et la propagation des erreurs entre les étapes du pipeline RAG (génération augmentée par recherche documentaire).</p>
-      <dl class="case-meta"><div><dt>Contexte</dt><dd>Stage de fin d’études, mars–septembre 2026</dd></div><div><dt>Ma contribution</dt><dd>Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, analyse d’erreurs et organisation des expériences.</dd></div></dl>
+      <dl class="case-meta"><div><dt>Contexte</dt><dd>Stage de fin d’études, mars–septembre 2026</dd></div><div><dt>Ma contribution</dt><dd>Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, fine-tuning LoRA et évaluation du classifieur Phi-3, analyse d’erreurs et organisation des expériences.</dd></div></dl>
       <div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download data-cv data-cv-pro="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" data-cv-research="../assets/cv/CV_Charbel_Dib_These_FR.pdf" data-label-pro="CV emploi (FR, 1 page)" data-label-research="CV recherche (FR, 2 pages)" aria-label="CV recherche (FR, 2 pages)"><span data-cv-label>CV recherche (FR, 2 pages)</span> ↓</a></div><details class="cv-alternatives"><summary>Autres versions du CV</summary><div class="case-links"><a class="underlink" href="../assets/cv/CV_Charbel_Dib_Emploi_FR.pdf" download  aria-label="CV emploi (FR, 1 page)"><span data-cv-label>CV emploi (FR, 1 page)</span> ↓</a><a class="underlink" href="../assets/cv/CV_Charbel_Dib_These_FR.pdf" download  aria-label="CV recherche (FR, 2 pages)"><span data-cv-label>CV recherche (FR, 2 pages)</span> ↓</a></div></details>
     </section><div class="wrap case-artifact"><figure class="method-diagram" aria-labelledby="method-fact-checking">
     <h2 id="method-fact-checking">Évaluer chaque étape, puis la réponse finale</h2>
@@ -53,13 +53,13 @@
     </li><li>
       <h3>Rechercher</h3><p>Recherche hybride → reranking, évaluation NDCG et rappel</p>
     </li><li>
-      <h3>Extraire et classifier</h3><p>Extraction de preuves → classification Phi-3 préexistant, analyse d’erreurs et macro-F1</p>
+      <h3>Extraire et classifier</h3><p>Extraction de preuves → classification Phi-3 fine-tunée par LoRA, analyse d’erreurs et macro-F1</p>
     </li></ol>
     <figcaption>Schéma de la démarche. Les erreurs sont étudiées séparément pour comprendre leur propagation. Aucun résultat interne n’est présenté.</figcaption>
   </figure></div>
-    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="case-toc-label">Dans ce projet</p><a href="#results">Résultats</a><a href="#problem">Le problème</a><a href="#choices">Choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Limites</a><ul class="tags"><li>RAG</li><li>DPR + BM25</li><li>Reranking</li><li>Phi-3</li><li>Évaluation</li></ul></nav>
+    <div class="wrap case-layout"><nav class="case-toc" aria-label="Dans ce projet"><p class="case-toc-label">Dans ce projet</p><a href="#results">Résultats</a><a href="#problem">Le problème</a><a href="#choices">Choix techniques</a><a href="#evaluation">Évaluation</a><a href="#limits">Limites</a><ul class="tags"><li>RAG</li><li>DPR + BM25</li><li>Reranking</li><li>Phi-3</li><li>LoRA</li><li>Évaluation</li></ul></nav>
       <div class="case-body">
-        <section id="results"><h2>Résultats</h2><p>Une méthode de diagnostic et de comparaison expérimentale, de la recherche documentaire à la décision finale. J’ai évalué le classifieur Phi-3, déjà adapté par LoRA dans des travaux antérieurs ; je ne l’ai pas fine-tuné.</p>
+        <section id="results"><h2>Résultats</h2><p>Une méthode de diagnostic et de comparaison expérimentale, de la recherche documentaire à la décision finale. J’ai fine-tuné le classifieur Phi-3 par LoRA, puis je l’ai évalué.</p>
 
 
 

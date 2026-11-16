@@ -154,7 +154,7 @@ export const researchStudies = {
       "method": "Comparaison de stratégies de segmentation, recherche hybride et reranking ; évaluation séparée des étapes, puis analyse de leur effet sur la classification finale.",
       "contribution": "Une méthode de diagnostic pour localiser les pertes de qualité et orienter les améliorations à partir des résultats, avec des protocoles communs et des expériences reproductibles.",
       "limit": "Vue d’ensemble de mes contributions : le rapport interne et les résultats détaillés restent confidentiels.",
-      "personal": "Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, analyse d’erreurs et organisation des expériences."
+      "personal": "Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, fine-tuning LoRA et évaluation du classifieur Phi-3, analyse d’erreurs et organisation des expériences."
     },
     {
       "slug": "lpbf",
@@ -176,7 +176,7 @@ export const researchStudies = {
       "method": "Compare chunking, hybrid retrieval and reranking configurations; evaluate the stages separately, then examine their effect on final classification.",
       "contribution": "A diagnostic approach to locate quality losses and guide improvements using results, shared protocols and reproducible experiments.",
       "limit": "An overview of my contributions: the internal report and detailed results remain confidential.",
-      "personal": "Configuration comparisons, shared evaluation framework, extraction prompts, error analysis and experiment organisation."
+      "personal": "Configuration comparisons, shared evaluation framework, extraction prompts, LoRA fine-tuning and evaluation of the Phi-3 classifier, error analysis and experiment organisation."
     },
     {
       "slug": "lpbf",

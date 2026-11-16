@@ -47,7 +47,7 @@ export function shell({ lang, path, title, description, body, project, profile =
     </div>
   </header>
   <div class="profile-bar"><div class="wrap profile-inner">
-    <p>${lang === 'fr' ? 'Explorer mon travail' : 'Explore my work'}</p>
+    <p>${lang === 'fr' ? 'Choisir un parcours :' : 'Choose a view:'}</p>
     <nav class="profile-nav" aria-label="${lang === 'fr' ? 'Choisir un parcours' : 'Choose a profile'}">
       ${['pro', 'research'].map(key => `<a href="${rel(path, homePath(lang, key))}" data-profile-choice="${key}"${profile === key ? ' aria-current="page"' : ''}>${profiles[key][lang].label}</a>`).join('')}
     </nav>

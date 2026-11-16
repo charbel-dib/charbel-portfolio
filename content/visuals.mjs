@@ -52,7 +52,7 @@ export const visuals = {
         ],
         [
           "Extraire et classifier",
-          "Extraction de preuves → classification Phi-3 préexistant · analyse d’erreurs et macro-F1"
+          "Extraction de preuves → classification Phi-3 fine-tunée par LoRA · analyse d’erreurs et macro-F1"
         ]
       ],
       "note": "Schéma de la démarche. Les erreurs sont étudiées séparément pour comprendre leur propagation. Aucun résultat interne n’est présenté."
@@ -70,7 +70,7 @@ export const visuals = {
         ],
         [
           "Extract and classify",
-          "Evidence extraction → existing Phi-3 classifier · error analysis and macro-F1"
+          "Evidence extraction → Phi-3 classifier fine-tuned with LoRA · error analysis and macro-F1"
         ]
       ],
       "note": "Method overview. Errors are examined separately to understand how they propagate. No internal results are shown."

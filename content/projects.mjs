@@ -426,6 +426,7 @@ export const projects = [
         "DPR + BM25",
         "Reranking",
         "Phi-3",
+        "LoRA",
         "Évaluation"
       ],
       "en": [
@@ -433,12 +434,13 @@ export const projects = [
         "DPR + BM25",
         "Reranking",
         "Phi-3",
+        "LoRA",
         "Evaluation"
       ]
     },
     "role": {
-      "fr": "Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, analyse d’erreurs et organisation des expériences.",
-      "en": "Configuration comparisons, shared evaluation framework, extraction prompts, error analysis and experiment organisation."
+      "fr": "Comparaison des configurations, cadre d’évaluation commun, prompts d’extraction, fine-tuning LoRA et évaluation du classifieur Phi-3, analyse d’erreurs et organisation des expériences.",
+      "en": "Configuration comparisons, shared evaluation framework, extraction prompts, LoRA fine-tuning and evaluation of the Phi-3 classifier, error analysis and experiment organisation."
     },
     "problem": {
       "fr": "Le système doit retrouver le bon passage dans le bon document, en extraire une preuve pertinente, puis classer la déclaration sans amplifier les erreurs des étapes précédentes.",
@@ -475,8 +477,8 @@ export const projects = [
       ]
     },
     "result": {
-      "fr": "Une méthode de diagnostic et de comparaison expérimentale, de la recherche documentaire à la décision finale. J’ai évalué le classifieur Phi-3, déjà adapté par LoRA dans des travaux antérieurs ; je ne l’ai pas fine-tuné.",
-      "en": "A diagnostic and experimental comparison method, from retrieval to the final decision. I evaluated the Phi-3 classifier, already LoRA-adapted in earlier work; I did not fine-tune it."
+      "fr": "Une méthode de diagnostic et de comparaison expérimentale, de la recherche documentaire à la décision finale. J’ai fine-tuné le classifieur Phi-3 par LoRA, puis je l’ai évalué.",
+      "en": "A diagnostic and experimental comparison method, from retrieval to the final decision. I fine-tuned the Phi-3 classifier with LoRA, then evaluated it."
     },
     "value": {
       "fr": "Mesurer l’effet d’un changement sur la réponse finale, et pas seulement sur le composant modifié.",
